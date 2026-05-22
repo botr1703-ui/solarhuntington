@@ -4,42 +4,62 @@ import LeadForm from '../components/LeadForm.astro';
 import { areas, services } from '../config/site';
 
 const business =
-  import.meta.env.PUBLIC_BUSINESS_NAME || 'Your Local Service';
-const city = import.meta.env.PUBLIC_CITY || 'Your City';
-const state = import.meta.env.PUBLIC_STATE || 'ST';
-const phoneTel = import.meta.env.PUBLIC_PHONE_TEL || '+15555550100';
+  import.meta.env.PUBLIC_BUSINESS_NAME || 'Huntington Solar Co';
+const city = import.meta.env.PUBLIC_CITY || 'Huntington';
+const state = import.meta.env.PUBLIC_STATE || 'NY';
+const phoneTel = import.meta.env.PUBLIC_PHONE_TEL || '+16315550188';
+const phoneDisplay = import.meta.env.PUBLIC_PHONE_DISPLAY || '(631) 555-0188';
 const siteUrl =
-  import.meta.env.PUBLIC_SITE_URL?.replace(/\/$/, '') || 'https://example.com';
+  import.meta.env.PUBLIC_SITE_URL?.replace(/\/$/, '') ||
+  'https://solarinstallationhuntington.pages.dev';
 
-const title = `${business} | ${city}, ${state}`;
-const description = `Book ${business} in ${city}. Fast response, clear pricing, and local crews. Call or request a callback.`;
+const title = `${business} | Solar Panels, Battery Storage & Tax Credits in ${city}, ${state}`;
+const description = `${business} installs residential & commercial solar across Suffolk County. 30% federal tax credit + NY incentives. Free quote, no pressure, licensed and insured.`;
 
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'LocalBusiness',
+  '@id': `${siteUrl}/#business`,
   name: business,
   url: siteUrl,
   telephone: phoneTel,
-  areaServed: { '@type': 'City', name: city, containedInPlace: { '@type': 'State', name: state } },
+  priceRange: '$$$',
+  areaServed: areas.map((a) => ({
+    '@type': 'City',
+    name: a.title,
+    containedInPlace: { '@type': 'State', name: state },
+  })),
   description,
+  makesOffer: services.map((s) => ({
+    '@type': 'Offer',
+    itemOffered: { '@type': 'Service', name: s.title, description: s.description },
+  })),
 };
 ---
 
 <Layout title={title} description={description} canonicalPath="/" jsonLd={jsonLd}>
   <div class="wrap hero">
-    <h1>{city}&rsquo;s {business}</h1>
+    <p class="eyebrow">★ Long Island Solar · Licensed &amp; Insured · Free Quotes</p>
+    <h1>Cut your LIPA bill 30–70%<br /><span class="hero-accent">with solar that pays for itself.</span></h1>
     <p class="lead">
-      Emergency-friendly scheduling, licensed and insured teams, and a simple callback—tell us what
-      you need removed or repaired.
+      {business} installs residential and commercial solar across {city} and the surrounding
+      Suffolk County villages. <strong>30% federal tax credit</strong> + NY state incentives.
+      No-pressure quote — we send you the payback math first, then talk.
     </p>
-    <p>
-      <a class="phone-cta" href={`tel:${phoneTel}`}>Call now</a>
-    </p>
+    <div class="hero-ctas">
+      <a class="phone-cta" href={`tel:${phoneTel}`}>📞 Call {phoneDisplay}</a>
+      <a class="ghost-cta" href="#contact">Get a free quote →</a>
+    </div>
+    <ul class="trust-row" aria-label="Trust signals">
+      <li><strong>NYSERDA-approved</strong> · NY State Energy Research &amp; Development Authority</li>
+      <li><strong>30% federal tax credit</strong> · Inflation Reduction Act</li>
+      <li><strong>25-year</strong> panel performance warranty</li>
+    </ul>
   </div>
 
   <div class="wrap">
     <section aria-labelledby="svc-heading">
-      <h2 id="svc-heading">Services</h2>
+      <h2 id="svc-heading">What we install</h2>
       <div class="grid grid-2">
         {
           services.map((s) => (
@@ -47,7 +67,7 @@ const jsonLd = {
               <h2>{s.title}</h2>
               <p>{s.description}</p>
               <p>
-                <a href={`/services/${s.slug}/`}>Learn more</a>
+                <a href={`/services/${s.slug}/`}>Learn more →</a>
               </p>
             </article>
           ))
@@ -56,15 +76,16 @@ const jsonLd = {
     </section>
 
     <section aria-labelledby="area-heading">
-      <h2 id="area-heading">Areas we serve</h2>
+      <h2 id="area-heading">Suffolk County areas we serve</h2>
+      <p class="muted">Local crews based in Huntington. Same-day site visits across the north shore.</p>
       <div class="grid grid-2">
         {
           areas.map((a) => (
             <article class="card">
               <h2>{a.title}</h2>
-              <p class="muted">Local crews and routing in this zone.</p>
+              <p class="muted">Free in-home solar assessment + system design.</p>
               <p>
-                <a href={`/locations/${a.slug}/`}>View {a.title}</a>
+                <a href={`/locations/${a.slug}/`}>Solar in {a.title} →</a>
               </p>
             </article>
           ))
@@ -72,9 +93,34 @@ const jsonLd = {
       </div>
     </section>
 
+    <section aria-labelledby="why-heading" class="why">
+      <h2 id="why-heading">Why {city} homeowners go solar</h2>
+      <div class="grid grid-2">
+        <article class="card">
+          <h3>LIPA bills keep climbing</h3>
+          <p>Long Island electric rates are among the highest in the US — averaging $0.24/kWh. A typical 8 kW system cuts an $200/mo bill to ~$30/mo (the minimum delivery charge).</p>
+        </article>
+        <article class="card">
+          <h3>The tax credit won't last forever</h3>
+          <p>The federal 30% Investment Tax Credit is scheduled to step down in 2033. Most Huntington homeowners get $7,000–$15,000 back as a credit on the year of install.</p>
+        </article>
+        <article class="card">
+          <h3>NY state stacks on top</h3>
+          <p>NY State residential solar tax credit (25% up to $5,000) plus NYSERDA NY-Sun rebates. A typical system here is paid off in 5–7 years.</p>
+        </article>
+        <article class="card">
+          <h3>Battery backup, not just panels</h3>
+          <p>Pair panels with a Tesla Powerwall or Enphase IQ Battery and you'll ride through PSEG outages while still selling excess back to the grid during the day.</p>
+        </article>
+      </div>
+    </section>
+
     <section id="contact" aria-labelledby="contact-heading">
-      <h2 id="contact-heading">Request a callback</h2>
-      <p class="muted">We reply same business day. For urgent jobs, call.</p>
+      <h2 id="contact-heading">Get your free solar quote</h2>
+      <p class="muted">
+        Tell us your average LIPA bill and roof orientation — we'll send back system size, projected
+        savings, and payback period. Same business day, no salesperson visit required.
+      </p>
       <LeadForm />
     </section>
   </div>
