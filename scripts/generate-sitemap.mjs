@@ -7,10 +7,23 @@ import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const base = (process.env.PUBLIC_SITE_URL || 'https://example.com').replace(/\/$/, '');
+const base = (process.env.PUBLIC_SITE_URL || 'https://solarhuntington.com').replace(/\/$/, '');
 
-const serviceSlugs = ['junk-removal', 'furniture-removal'];
-const areaSlugs = ['north-austin', 'south-austin'];
+const serviceSlugs = [
+  'residential-solar-installation',
+  'commercial-solar',
+  'battery-storage',
+  'solar-repair-maintenance',
+  'free-solar-quote',
+];
+const areaSlugs = [
+  'huntington',
+  'huntington-station',
+  'greenlawn',
+  'northport',
+  'cold-spring-harbor',
+  'centerport',
+];
 
 const urls = [
   `${base}/`,
