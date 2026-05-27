@@ -195,16 +195,38 @@ button[type="submit"], .submit-btn { background: var(--accent); color: var(--dar
 button[type="submit"]:hover { background: var(--accent-dark); }
 
 /* === Footer === */
-footer { background: #0f0f0f; color: rgba(255, 255, 255, 0.7); padding: 3rem 0 2rem; border-top: 1px solid rgba(255, 255, 255, 0.06); }
-footer .wrap { display: grid; gap: 2rem; grid-template-columns: 1fr; }
-@media (min-width: 720px) { footer .wrap { grid-template-columns: 2fr 1fr 1fr; } }
-footer h4 { color: #ffffff; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 1rem; }
+footer { background: #0f0f0f; color: rgba(255, 255, 255, 0.7); padding: 3.5rem 0 2rem; border-top: 1px solid rgba(255, 255, 255, 0.06); }
+.foot-grid { display: grid; gap: 2.5rem; grid-template-columns: 1fr; margin-bottom: 2.5rem; }
+@media (min-width: 640px) { .foot-grid { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 960px) { .foot-grid { grid-template-columns: 2fr 1fr 1fr 1fr; } }
+.foot-col h4 { color: #ffffff; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 1rem; }
 footer a { color: rgba(255, 255, 255, 0.65); }
 footer a:hover { color: var(--accent); }
 footer p { color: rgba(255, 255, 255, 0.6); font-size: 0.875rem; }
 footer ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.9rem; }
-.foot-brand { font-weight: 800; font-size: 1.1rem; color: #ffffff; margin-bottom: 0.5rem; }
-.foot-legal { margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid rgba(255, 255, 255, 0.08); font-size: 0.8rem; color: rgba(255, 255, 255, 0.45); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; }
+.foot-brand { font-weight: 800; font-size: 1.15rem; color: #ffffff; margin-bottom: 0.5rem; }
+.foot-phone a { color: var(--accent); font-weight: 700; font-size: 1rem; }
+
+/* Credentials strip — sitewide trust band above the legal line */
+.foot-creds {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+.foot-cred {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: rgba(255, 255, 255, 0.78);
+  background: rgba(245, 166, 35, 0.10);
+  border: 1px solid rgba(245, 166, 35, 0.32);
+  padding: 0.4rem 0.85rem;
+  border-radius: 999px;
+}
+
+.foot-legal { margin-top: 1.5rem; padding-top: 1.25rem; border-top: 1px solid rgba(255, 255, 255, 0.06); font-size: 0.78rem; color: rgba(255, 255, 255, 0.45); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; }
 
 /* === Responsive === */
 @media (max-width: 720px) {
@@ -227,6 +249,21 @@ footer ul { list-style: none; padding: 0; margin: 0; display: flex; flex-directi
 
 /* svc-tag replaces emoji icons (kept consistent across the runtime) */
 .svc-tag { display: inline-block; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent-dark); background: var(--accent-soft); padding: 0.3rem 0.6rem; border-radius: 6px; margin-bottom: 0.6rem; align-self: flex-start; }
+
+/* === Trust block (homepage, between FAQ and contact) === */
+.trust { padding: 5rem 0; background: var(--bg); border-top: 1px solid var(--border); }
+.trust h2 { margin-bottom: 0.5rem; max-width: 28ch; }
+.trust-lead { font-size: 1.05rem; color: var(--text-2); margin-bottom: 2.5rem; max-width: 44ch; }
+.trust-grid { display: grid; grid-template-columns: 1fr; gap: 1.1rem; margin-bottom: 2rem; }
+@media (min-width: 640px) { .trust-grid { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 960px) { .trust-grid { grid-template-columns: repeat(3, 1fr); } }
+.trust-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem; transition: border-color 0.15s, box-shadow 0.15s; }
+.trust-card:hover { border-color: var(--accent-soft-strong); box-shadow: var(--shadow-md); }
+.trust-icon { width: 2.6rem; height: 2.6rem; border-radius: 50%; background: var(--accent-soft); color: var(--accent-dark); display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.1rem; margin-bottom: 0.85rem; }
+.trust-card h3 { font-size: 1rem; margin-bottom: 0.5rem; color: var(--text); }
+.trust-card p { font-size: 0.92rem; color: var(--text-2); line-height: 1.6; margin: 0; }
+.trust-foot { text-align: center; margin-top: 1.5rem; font-weight: 600; }
+.trust-foot a { color: var(--accent-dark); }
 
 /* === Sub-page hero (services + locations — solid dark, no bg image) === */
 .hero-inner > h1 { color: #ffffff; }

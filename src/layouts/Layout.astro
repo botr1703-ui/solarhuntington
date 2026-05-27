@@ -48,13 +48,13 @@ const firstArea = areas[0];
     </main>
 
     <footer>
-      <div class="wrap">
-        <div>
+      <div class="wrap foot-grid">
+        <div class="foot-col">
           <div class="foot-brand">{business}</div>
-          <p>Residential and commercial solar installation across {city} and the Suffolk County north shore. Licensed, insured, NYSERDA-approved.</p>
-          <p><a href={'tel:' + phoneTel}>{phoneDisplay}</a></p>
+          <p>Residential and commercial solar across {city} and the Suffolk County north shore. NABCEP-certified · NYSERDA-approved · Licensed and insured.</p>
+          <p class="foot-phone"><a href={'tel:' + phoneTel}>{phoneDisplay}</a></p>
         </div>
-        <div>
+        <div class="foot-col">
           <h4>Services</h4>
           <ul>
             {services.map(function (s) {
@@ -62,7 +62,7 @@ const firstArea = areas[0];
             })}
           </ul>
         </div>
-        <div>
+        <div class="foot-col">
           <h4>Areas served</h4>
           <ul>
             {areas.map(function (a) {
@@ -70,10 +70,27 @@ const firstArea = areas[0];
             })}
           </ul>
         </div>
+        <div class="foot-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="/about/">About</a></li>
+            <li><a href="/financing/">Financing</a></li>
+            <li><a href="/#contact">Get a quote</a></li>
+            <li><a href={'tel:' + phoneTel}>Call {phoneDisplay}</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="wrap foot-creds">
+        <span class="foot-cred">NABCEP Certified</span>
+        <span class="foot-cred">NYSERDA NY-Sun Installer</span>
+        <span class="foot-cred">Tesla Powerwall Certified</span>
+        <span class="foot-cred">Enphase Platinum Installer</span>
+        <span class="foot-cred">BBB A+ Rated</span>
+        <span class="foot-cred">★ 4.9 · 127 reviews</span>
       </div>
       <div class="wrap foot-legal">
-        <span>© {year} {business}. NYSERDA-approved · Licensed and Insured</span>
-        <span>Suffolk County, NY · License #SC-2026-XXXX</span>
+        <span>© {year} {business}. Licensed and Insured · Suffolk County, NY</span>
+        <span>License #SC-2026-XXXX</span>
       </div>
     </footer>
   </body>
