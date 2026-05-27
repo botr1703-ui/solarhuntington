@@ -9,9 +9,10 @@ interface Props {
   description: string;
   canonicalPath?: string;
   jsonLd?: Record<string, unknown>;
+  noindex?: boolean;
 }
 
-const { title, description, canonicalPath, jsonLd } = Astro.props;
+const { title, description, canonicalPath, jsonLd, noindex } = Astro.props;
 
 const business = import.meta.env.PUBLIC_BUSINESS_NAME || 'Huntington Solar Co';
 const phoneDisplay = import.meta.env.PUBLIC_PHONE_DISPLAY || '(631) 759-8716';
@@ -25,7 +26,7 @@ const firstArea = areas[0];
 <!doctype html>
 <html lang="en">
   <head>
-    <SEO title={title} description={description} canonicalPath={canonicalPath} jsonLd={jsonLd} />
+    <SEO title={title} description={description} canonicalPath={canonicalPath} jsonLd={jsonLd} noindex={noindex} />
     <Analytics />
   </head>
   <body>
@@ -112,7 +113,11 @@ const firstArea = areas[0];
       </div>
       <div class="wrap foot-legal">
         <span>© {year} {business}. Licensed and Insured · Suffolk County, NY</span>
-        <span>License #SC-2026-XXXX</span>
+        <span class="foot-legal-links">
+          <a href="/privacy/">Privacy</a>
+          <span aria-hidden="true">·</span>
+          <a href="/terms/">Terms</a>
+        </span>
       </div>
     </footer>
   </body>

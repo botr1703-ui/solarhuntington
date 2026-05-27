@@ -376,6 +376,10 @@ footer ul { list-style: none; padding: 0; margin: 0; display: flex; flex-directi
 .related-card h3 { font-size: 1rem; margin-bottom: 0.4rem; color: var(--text); }
 .related-card p { font-size: 0.88rem; color: var(--muted); margin: 0; line-height: 1.55; }
 
+.foot-legal-links { display: inline-flex; gap: 0.5rem; align-items: center; }
+.foot-legal-links a { color: var(--text-2); text-decoration: none; }
+.foot-legal-links a:hover { color: var(--accent-dark); }
+
 /* === Process page === */
 .process { padding: 4.5rem 0 5.5rem; background: var(--bg); }
 .process-list { list-style: none; padding: 0; margin: 0; counter-reset: process; }

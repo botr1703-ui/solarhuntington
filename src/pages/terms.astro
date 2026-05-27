@@ -1,0 +1,107 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+
+const business = import.meta.env.PUBLIC_BUSINESS_NAME || 'Huntington Solar Co';
+const phoneDisplay = import.meta.env.PUBLIC_PHONE_DISPLAY || '(631) 759-8716';
+const city = import.meta.env.PUBLIC_CITY || 'Huntington';
+const state = import.meta.env.PUBLIC_STATE || 'NY';
+
+const title = `Terms of Use | ${business}`;
+const description = `Terms of use for the ${business} website — how visitors may use this website and the limits of information presented here.`;
+const effective = '2026-05-27';
+---
+
+<Layout title={title} description={description} canonicalPath="/terms/" noindex={true}>
+  <Breadcrumb items={[
+    { label: 'Home', href: '/' },
+    { label: 'Terms of use' },
+  ]} />
+
+  <section class="hero">
+    <div class="wrap hero-inner">
+      <p class="eyebrow">Legal</p>
+      <h1>Terms of use</h1>
+      <p class="lead">Effective {effective}.</p>
+    </div>
+  </section>
+
+  <section class="prose-section">
+    <div class="wrap prose-wrap">
+      <div class="prose-block">
+        <h2>1. About this website</h2>
+        <p>
+          This website is operated by {business} ({city}, {state}). By visiting the site you agree
+          to these terms. If you do not agree, do not use the site.
+        </p>
+      </div>
+
+      <div class="prose-block">
+        <h2>2. Informational content</h2>
+        <p>
+          Content on this website — including pricing examples, payback estimates, permit timelines,
+          and incentive amounts — is provided for general information. Actual results depend on your
+          specific home, electrical usage, roof condition, NYSERDA block availability, and tax
+          situation. Nothing on this site is a quote, contract, tax advice, or legal advice.
+        </p>
+        <p>
+          Solar incentive amounts, tax credit percentages, and NYSERDA rebate rates can change.
+          Always confirm current figures with your tax preparer and during the formal proposal
+          process before signing a contract.
+        </p>
+      </div>
+
+      <div class="prose-block">
+        <h2>3. Quote requests</h2>
+        <p>
+          Submitting a quote request through this site does not create a contract. A contract for
+          installation only exists when both parties sign a written installation agreement specifying
+          system size, equipment, price, and timeline.
+        </p>
+      </div>
+
+      <div class="prose-block">
+        <h2>4. Third-party links</h2>
+        <p>
+          This site may link to third-party resources (NYSERDA, IRS forms, PSEG Long Island,
+          manufacturer warranty pages). We are not responsible for the content or accuracy of those
+          third-party sites.
+        </p>
+      </div>
+
+      <div class="prose-block">
+        <h2>5. Intellectual property</h2>
+        <p>
+          Content on this site, including text, layout, design, and original imagery, is copyright
+          {business}. You may quote brief excerpts with attribution; you may not reproduce material
+          portions without written permission.
+        </p>
+      </div>
+
+      <div class="prose-block">
+        <h2>6. Limitation of liability</h2>
+        <p>
+          {business} is not liable for actions taken based on information presented on this website.
+          For decisions involving financial commitment (signing an install contract, claiming tax
+          credits, electing a net metering tariff), rely on the formal numbered proposal and your
+          tax preparer's advice — not on the example numbers in marketing copy.
+        </p>
+      </div>
+
+      <div class="prose-block">
+        <h2>7. Governing law</h2>
+        <p>
+          These terms are governed by the laws of New York State. Any dispute arising from use of
+          this website is subject to the jurisdiction of Suffolk County, NY courts.
+        </p>
+      </div>
+
+      <div class="prose-block">
+        <h2>8. Contact</h2>
+        <p>
+          {business}, {city}, {state}. Phone: {phoneDisplay}.
+        </p>
+      </div>
+    </div>
+  </section>
+</Layout>

@@ -4,9 +4,11 @@ interface Props {
   description: string;
   canonicalPath?: string;
   jsonLd?: Record<string, unknown>;
+  /** Emit `noindex,follow` robots meta — used on legal pages, thank-you redirects, etc. */
+  noindex?: boolean;
 }
 
-const { title, description, canonicalPath = '', jsonLd } = Astro.props;
+const { title, description, canonicalPath = '', jsonLd, noindex = false } = Astro.props;
 const base = import.meta.env.PUBLIC_SITE_URL?.replace(/\/$/, '') || '';
 const canonical = `${base}${canonicalPath || '/'}`;
 const ogImage = `${base}/og-default.svg`;
@@ -15,6 +17,7 @@ const ogImage = `${base}/og-default.svg`;
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="description" content={description} />
+{noindex && <meta name="robots" content="noindex,follow" />}
 <link rel="canonical" href={canonical} />
 <title>{title}</title>
 <meta property="og:title" content={title} />
