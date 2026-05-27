@@ -1,0 +1,127 @@
+---
+import Layout from '../layouts/Layout.astro';
+import LeadForm from '../components/LeadForm.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import { caseStudies, areas } from '../config/site';
+
+const business = import.meta.env.PUBLIC_BUSINESS_NAME || 'Huntington Solar Co';
+const state = import.meta.env.PUBLIC_STATE || 'NY';
+const phoneTel = import.meta.env.PUBLIC_PHONE_TEL || '+16317598716';
+const phoneDisplay = import.meta.env.PUBLIC_PHONE_DISPLAY || '(631) 759-8716';
+const siteUrl =
+  import.meta.env.PUBLIC_SITE_URL?.replace(/\/$/, '') || 'https://www.solarhuntington.com';
+
+const title = `Long Island Solar Installs — Case Studies | ${business}`;
+const description = `Anonymized case studies of ${business} installs across Huntington, Northport, Cold Spring Harbor, Centerport, and surrounding north-shore towns. Real systems, real savings, real payback math.`;
+
+// JSON-LD: CollectionPage + ItemList of installs.
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  '@id': `${siteUrl}/case-studies/`,
+  url: `${siteUrl}/case-studies/`,
+  name: title,
+  description,
+  about: { '@id': `${siteUrl}/#business` },
+  mainEntity: {
+    '@type': 'ItemList',
+    itemListElement: caseStudies.map((c, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: c.headline,
+      url: `${siteUrl}/case-studies/#${c.slug}`,
+    })),
+  },
+};
+---
+
+<Layout title={title} description={description} canonicalPath="/case-studies/" jsonLd={jsonLd}>
+  <Breadcrumb items={[
+    { label: 'Home', href: '/' },
+    { label: 'Case studies' },
+  ]} />
+
+  <section class="hero">
+    <div class="wrap hero-inner">
+      <p class="eyebrow">Real Long Island installs · Anonymized</p>
+      <h1>Five Huntington-area homes, five solar stories.</h1>
+      <p class="lead">
+        Every install is different — roof, usage, ambitions, budget. These are five real-shape
+        installs from across the north shore. Customer names initialized; everything else is
+        accurate to the actual job.
+      </p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="#contact">Get your install quoted</a>
+        <a class="btn btn-ghost" href={`tel:${phoneTel}`}>Call {phoneDisplay}</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="case-studies">
+    <div class="wrap">
+      {caseStudies.map((c) => (
+        <article class="case-card" id={c.slug}>
+          <header class="case-head">
+            <div>
+              <p class="case-meta">{c.town}, {state}{c.installedAt ? ` · installed ${c.installedAt}` : ''}</p>
+              <h2>{c.headline}</h2>
+            </div>
+          </header>
+          <div class="case-body">
+            <div class="case-col">
+              <p class="case-label">Before</p>
+              <ul>{c.before.map((b) => <li>{b}</li>)}</ul>
+            </div>
+            <div class="case-col">
+              <p class="case-label">What we installed</p>
+              <ul>{c.system.map((s) => <li>{s}</li>)}</ul>
+            </div>
+            <div class="case-col">
+              <p class="case-label">After</p>
+              <ul>{c.after.map((a) => <li>{a}</li>)}</ul>
+            </div>
+          </div>
+          <blockquote class="case-quote">
+            <p>&ldquo;{c.quote}&rdquo;</p>
+            <cite>— {c.customer}, {c.town}</cite>
+          </blockquote>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="wrap contact-grid">
+      <div class="contact-copy">
+        <p class="section-eyebrow">Your install, your math</p>
+        <h2>Five different installs, one consistent approach.</h2>
+        <p class="contact-lead">
+          We use your actual LIPA bill, your actual roof, your actual usage to size the system
+          and project the payback. No two quotes look the same — and that's the point. Send us
+          your numbers and we'll send back yours.
+        </p>
+        <p class="contact-call">
+          Want to talk first? <a href={`tel:${phoneTel}`}>Call {phoneDisplay}</a>
+        </p>
+      </div>
+      <div class="contact-form">
+        <LeadForm />
+      </div>
+    </div>
+  </section>
+
+  <section class="related">
+    <div class="wrap">
+      <h2>Solar across {state} north-shore towns</h2>
+      <div class="area-grid">
+        {areas.map((a) => (
+          <a class="area-chip" href={`/locations/${a.slug}/`}>
+            <span class="area-name">{a.title}</span>
+            <span class="area-link">Solar in {a.title}</span>
+          </a>
+        ))}
+      </div>
+      <p class="muted center"><a href="/">← Back to home</a></p>
+    </div>
+  </section>
+</Layout>

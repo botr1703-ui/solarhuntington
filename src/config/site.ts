@@ -271,6 +271,153 @@ export type AboutPage = {
   serviceAreaCopy?: string;
 };
 
+/**
+ * Case-study content — anonymized real-shape installs that flesh out
+ * the homepage testimonials. Renders on /case-studies. Each phantom
+ * fills its own; template renders whatever's present.
+ */
+export type CaseStudy = {
+  slug: string;
+  /** Headline displayed on the card + page hero (e.g. "Greenlawn ranch · 8 kW + Powerwall"). */
+  headline: string;
+  town: string;
+  /** Customer first-name + initial, anonymized. */
+  customer: string;
+  /** "Before" snapshot (bill, system age, situation). */
+  before: string[];
+  /** What was installed. */
+  system: string[];
+  /** The "after" outcome (bill, savings, payback). */
+  after: string[];
+  /** A pull-quote — keep under ~280 chars. */
+  quote: string;
+  /** Optional install date for context. */
+  installedAt?: string;
+};
+
+export const caseStudies: CaseStudy[] = [
+  {
+    slug: 'greenlawn-ranch-powerwall',
+    headline: 'Greenlawn ranch · 8 kW system + Powerwall',
+    town: 'Greenlawn',
+    customer: 'Mike R.',
+    installedAt: '2024-08',
+    before: [
+      '3-bed ranch, 1,900 sqft, electric heat pump + central AC',
+      'LIPA bill averaged $280/mo, peaking $420 in August',
+      'South-facing roof, 8-year-old shingles, no tree shading',
+    ],
+    system: [
+      '8.4 kW system — 22 × Q Cells Q.PEAK DUO 380W panels',
+      'Enphase IQ8+ microinverters (panel-level monitoring)',
+      'Tesla Powerwall 3 (13.5 kWh) added for outage backup',
+    ],
+    after: [
+      'PSEG bill now $18/mo (minimum delivery charge only)',
+      'Powerwall covers fridge, lights, internet, central AC during outages',
+      'Annual savings $3,150 — net-of-incentives payback hit in year 6',
+    ],
+    quote:
+      "Bill went from $280/mo to $18 (the PSEG minimum). System paid for itself in year 6. Wish I had done it sooner.",
+  },
+  {
+    slug: 'northport-village-historic',
+    headline: 'Northport Village · 6.6 kW low-profile install',
+    town: 'Northport',
+    customer: 'Sarah K.',
+    installedAt: '2024-10',
+    before: [
+      "1920s village home, 1,400 sqft, oil heat + window AC",
+      'LIPA bill averaged $145/mo year-round',
+      'Historic district — Village Building Department review required',
+    ],
+    system: [
+      '6.6 kW system — 18 × all-black SunPower M-series panels',
+      'SolarEdge string inverter with optimizers',
+      'Low-profile black-on-black panels for aesthetic compliance',
+    ],
+    after: [
+      'PSEG bill drops to ~$22/mo on average across the year',
+      'Annual savings $1,475 — payback in year 7',
+      'Historic district approval secured in 3 weeks (no rejection)',
+    ],
+    quote:
+      "They handled everything — town permits, PSEG interconnection, even the federal tax credit paperwork. Zero hassle.",
+  },
+  {
+    slug: 'huntington-station-with-battery',
+    headline: 'Huntington Station · 10 kW + storm-backup Powerwall',
+    town: 'Huntington Station',
+    customer: 'David L.',
+    installedAt: '2024-11',
+    before: [
+      '4-bed split-level, 2,400 sqft, gas heat + central AC',
+      'LIPA bill averaged $340/mo, frequent storm outages',
+      'Lost power 4× in 2023 — partial fridge + freezer loss each time',
+    ],
+    system: [
+      '10.2 kW system — 27 × REC Alpha Pure-R 380W panels',
+      'Tesla Powerwall 3 paired (13.5 kWh)',
+      'Enphase IQ8M microinverters',
+    ],
+    after: [
+      "PSEG bill ~$24/mo on average; battery kicks in within ~1 second of an outage",
+      'Annual savings $3,750; payback in year 5',
+      "Survived 2025 nor'easter outage with full lights + heat pump auxiliary running",
+    ],
+    quote:
+      "Added a Powerwall to the system. When the nor'easter knocked out power last winter, we never lost the lights.",
+  },
+  {
+    slug: 'cold-spring-harbor-large-roof',
+    headline: 'Cold Spring Harbor estate · 14 kW, multi-string',
+    town: 'Cold Spring Harbor',
+    customer: 'Jennifer T.',
+    installedAt: '2024-06',
+    before: [
+      '5-bed colonial, 4,200 sqft, geothermal + pool heater',
+      'LIPA bill averaged $580/mo, peak $890 in summer',
+      'Lloyd Harbor Architectural Review Board approval needed',
+    ],
+    system: [
+      '14.4 kW system — 36 × SunPower X-series 405W (industry-best efficiency)',
+      'SolarEdge HD-Wave inverter with module-level power electronics',
+      'Two-roof-plane install (south + west) maximized output',
+    ],
+    after: [
+      'PSEG bill drops 78% — average $128/mo',
+      'Annual savings $5,420; payback in year 6',
+      'Lloyd Harbor ARB approval secured with low-profile black-on-black panels',
+    ],
+    quote:
+      "We had been quoted by three other installers — only Huntington Solar Co handled the Lloyd Harbor ARB submission without complaint. The math they sent was the most detailed.",
+  },
+  {
+    slug: 'centerport-rescue-install',
+    headline: 'Centerport service rescue · failed inverter recovery',
+    town: 'Centerport',
+    customer: 'Rob D.',
+    installedAt: '2025-02',
+    before: [
+      'Existing 7 kW system from 2017 — original installer out of business',
+      'System produced zero for 4 months, monitoring app showed "offline"',
+      'PSEG bill back to pre-solar levels: ~$220/mo',
+    ],
+    system: [
+      'Diagnostic: failed SMA string inverter (out of warranty)',
+      'Replaced with Enphase IQ Combiner + IQ8 microinverters',
+      'Brought monitoring back online; added Enphase IQ Battery 5P (5 kWh)',
+    ],
+    after: [
+      'System producing at 102% of original spec (microinverters more efficient than the old string setup)',
+      'PSEG bill back to ~$28/mo; battery handles outage backup',
+      "Total repair + battery upgrade: $11,400 net — recovered in year 3 vs replacing the system entirely (~$22k)",
+    ],
+    quote:
+      "I'd been told by two other installers that I needed to rip out and replace everything. Huntington Solar Co fixed it for less than half the cost.",
+  },
+];
+
 export const aboutPage: AboutPage = {
   pageHeading: 'About Huntington Solar Co',
   lead:

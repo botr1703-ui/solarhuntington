@@ -29,6 +29,7 @@ const topLevelPages = [
   '/',
   '/about/',
   '/financing/',
+  '/case-studies/',
 ];
 
 const urls = [

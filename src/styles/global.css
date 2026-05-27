@@ -376,6 +376,22 @@ footer ul { list-style: none; padding: 0; margin: 0; display: flex; flex-directi
 .related-card h3 { font-size: 1rem; margin-bottom: 0.4rem; color: var(--text); }
 .related-card p { font-size: 0.88rem; color: var(--muted); margin: 0; line-height: 1.55; }
 
+/* === Case studies (/case-studies) === */
+.case-studies { padding: 4.5rem 0 5.5rem; background: var(--bg); }
+.case-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 2rem; margin-bottom: 1.75rem; box-shadow: var(--shadow-sm); scroll-margin-top: 5rem; }
+.case-head { margin-bottom: 1.5rem; }
+.case-meta { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent-dark); margin: 0 0 0.35rem; }
+.case-head h2 { font-size: clamp(1.25rem, 2.2vw, 1.55rem); margin: 0; letter-spacing: -0.005em; }
+.case-body { display: grid; gap: 1.5rem; grid-template-columns: 1fr; padding-top: 0.5rem; border-top: 1px solid var(--border); margin-bottom: 1.5rem; padding-top: 1.5rem; }
+@media (min-width: 720px) { .case-body { grid-template-columns: repeat(3, 1fr); } }
+.case-col p.case-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin: 0 0 0.6rem; }
+.case-col ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.45rem; font-size: 0.93rem; color: var(--text-2); line-height: 1.55; }
+.case-col li { position: relative; padding-left: 1rem; }
+.case-col li::before { content: '·'; position: absolute; left: 0; color: var(--accent-dark); font-weight: 800; }
+.case-quote { border-left: 3px solid var(--accent); padding: 0.5rem 0 0.5rem 1.1rem; margin: 0; font-style: italic; color: var(--text-2); }
+.case-quote p { margin: 0 0 0.5rem; font-size: 1rem; line-height: 1.6; }
+.case-quote cite { font-style: normal; font-size: 0.85rem; color: var(--muted); font-weight: 600; }
+
 /* === Nearby-towns strip on location pages === */
 .nearby { padding: 3rem 0; background: var(--bg-soft); text-align: center; }
 .nearby-list { color: var(--text-2); font-size: 0.98rem; max-width: 60ch; margin: 0 auto; }
