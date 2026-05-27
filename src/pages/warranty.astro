@@ -1,0 +1,198 @@
+---
+import Layout from '../layouts/Layout.astro';
+import LeadForm from '../components/LeadForm.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+
+const business = import.meta.env.PUBLIC_BUSINESS_NAME || 'Huntington Solar Co';
+const phoneTel = import.meta.env.PUBLIC_PHONE_TEL || '+16317598716';
+const phoneDisplay = import.meta.env.PUBLIC_PHONE_DISPLAY || '(631) 759-8716';
+const siteUrl =
+  import.meta.env.PUBLIC_SITE_URL?.replace(/\/$/, '') || 'https://www.solarhuntington.com';
+
+const title = `Solar Warranties Explained — Long Island Coverage in 2026 | ${business}`;
+const description = `What is actually covered by a residential solar warranty in 2026 — 25-year panel performance, 12-year inverter, 10-year workmanship, and what happens if your installer goes out of business.`;
+
+const faqs = [
+  {
+    q: 'What does a solar panel warranty actually cover?',
+    a: 'A 25-year solar panel warranty has two layers: a product warranty (typically 12–25 years against defects) and a power-output warranty (panels will produce at least 85–92% of their rated wattage after 25 years). Tier-1 brands (Q Cells, REC, SunPower, LG, Panasonic) honor both layers; budget brands often skip the product warranty.',
+  },
+  {
+    q: 'What is a solar workmanship warranty?',
+    a: 'Workmanship warranty covers the installer’s labor — leaks, racking, electrical work — typically for 10 years. This is separate from manufacturer warranties on the equipment itself. If your installer is solid, the workmanship warranty is the most important one to read.',
+  },
+  {
+    q: 'What happens if my solar installer goes out of business?',
+    a: 'Manufacturer warranties on panels, inverters, and batteries are honored by the manufacturer directly — they do not depend on the installer. Your workmanship warranty is the part that can lapse. We recover and continue service on stranded installs from defunct installers across Suffolk County; the manufacturer warranties still pay for the equipment, we charge labor.',
+  },
+  {
+    q: 'Does the federal tax credit affect warranty coverage?',
+    a: 'No — the federal Investment Tax Credit is a tax filing, not a financing contract. It has zero impact on equipment or workmanship warranties.',
+  },
+  {
+    q: 'Are battery warranties different from solar warranties?',
+    a: 'Yes. Tesla Powerwall 3 carries a 10-year warranty (covers capacity retention to 70% of original kWh). Enphase IQ Battery 5P carries a 15-year warranty (covers throughput, typically equivalent to 6,000 cycles). Both are independent of panel + inverter warranties.',
+  },
+];
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  '@id': `${siteUrl}/warranty/#faq`,
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+---
+
+<Layout title={title} description={description} canonicalPath="/warranty/" jsonLd={jsonLd}>
+  <Breadcrumb items={[
+    { label: 'Home', href: '/' },
+    { label: 'Warranty' },
+  ]} />
+
+  <section class="hero">
+    <div class="wrap hero-inner">
+      <p class="eyebrow">Solar warranties · What is actually covered</p>
+      <h1>Three warranties, three different layers of protection.</h1>
+      <p class="lead">
+        Every residential solar install in Suffolk County comes with three overlapping warranties:
+        panel performance (25 years), inverter (12 years), and installer workmanship (10 years).
+        Here is what each one actually covers — and what happens if your installer disappears.
+      </p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="#contact">Have a question? Get in touch</a>
+        <a class="btn btn-ghost" href={`tel:${phoneTel}`}>Call {phoneDisplay}</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="prose-section">
+    <div class="wrap prose-wrap">
+      <div class="prose-block">
+        <h2>1. Panel performance warranty — 25 years</h2>
+        <p>
+          A Tier-1 monocrystalline solar panel from Q Cells, REC, SunPower, LG, or Panasonic comes
+          with a 25-year power-output warranty: the manufacturer guarantees the panel will produce
+          at least 85–92% of its rated wattage at year 25.
+        </p>
+        <p>
+          Translation: a 400 W panel covered at 92% will produce at least 368 W at year 25. In real
+          world Long Island sunlight, panels typically over-perform their warranty curves —
+          most installs see 90%+ retention at year 25 in practice.
+        </p>
+        <p>
+          On top of the performance warranty, Tier-1 brands also include a 12–25 year product
+          warranty against defects (delamination, hotspots, junction-box failure). Budget brands
+          often skip the product warranty.
+        </p>
+      </div>
+
+      <div class="prose-block">
+        <h2>2. Inverter warranty — 12 years (extendable)</h2>
+        <p>
+          Inverters work harder than panels — they handle every kWh the system produces, day in and
+          day out. Standard warranties: Enphase microinverters ship with a 25-year warranty,
+          SolarEdge and other string inverters with 12 years (extendable to 20–25 for an added fee).
+        </p>
+        <p>
+          The most likely failure mode in any solar system over 15 years is an inverter — Long
+          Island humidity + summer heat stresses electronics. The warranty includes a free
+          replacement; you typically pay for the labor to swap it. We do flat-rate inverter
+          replacements across Suffolk County (typical out-of-pocket: $400–$700 in labor; the
+          inverter itself comes free from the manufacturer).
+        </p>
+      </div>
+
+      <div class="prose-block">
+        <h2>3. Workmanship warranty — 10 years</h2>
+        <p>
+          The workmanship warranty covers our labor: roof penetrations + flashing, panel mounting,
+          electrical conduit, conduit-to-junction-box terminations, monitoring setup. Standard
+          across the Long Island residential solar industry is 10 years.
+        </p>
+        <p>
+          The most common workmanship claim is a roof leak. Properly flashed and sealed solar
+          mounts almost never leak — but if one does, the workmanship warranty covers full repair,
+          including any drywall or insulation damage caused by the leak.
+        </p>
+      </div>
+
+      <div class="prose-block">
+        <h2>What happens if your installer goes out of business?</h2>
+        <p>
+          Solar installers go under more than you'd think — especially residential-only shops that
+          ride the federal tax credit cycle. When that happens:
+        </p>
+        <p>
+          - <strong>Panel and inverter warranties are unaffected.</strong> The manufacturer
+            honors them directly — Q Cells, Enphase, Tesla, SolarEdge, etc. all have direct
+            warranty claim paths. You file with the manufacturer; they ship a replacement.
+        </p>
+        <p>
+          - <strong>Workmanship warranty lapses.</strong> If your installer is gone, the
+            workmanship warranty has no one to honor it. This is the real risk of going with a
+            shop that may not be around in 10 years.
+        </p>
+        <p>
+          We recover stranded installs from defunct installers across Suffolk County. The
+          manufacturer warranties still pay for the equipment; we charge labor at flat-rate
+          ($400–$700 inverter swap, $250 per panel re-seat). If you bought from a long-gone shop,
+          we can still help.
+        </p>
+      </div>
+
+      <div class="prose-block">
+        <h2>How we structure {business} warranties</h2>
+        <p>
+          - <strong>Panels:</strong> 25-year power-output + 25-year product warranty (Tier-1 only — Q Cells, REC, SunPower).<br />
+          - <strong>Inverters:</strong> 25 years on Enphase microinverters, 12 years on SolarEdge (extendable to 25).<br />
+          - <strong>Battery (if installed):</strong> 10 years Tesla Powerwall 3 / 15 years Enphase IQ Battery 5P.<br />
+          - <strong>Workmanship:</strong> 10 years on our labor including roof leaks, electrical, monitoring setup.<br />
+          - <strong>Monitoring:</strong> lifetime included via Enphase Enlighten or SolarEdge Monitoring (per-panel data, alerts, performance reports).
+        </p>
+        <p>
+          All of this is spelled out in the contract — no fine print, no exclusions buried in
+          appendix B. Ask for the warranty letter before you sign; if any installer cannot produce
+          it, walk away.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="faq-section">
+    <div class="wrap">
+      <h2 class="section-h">Frequently asked: solar warranties</h2>
+      <dl class="faq-grid">
+        {faqs.map((f) => (
+          <div class="faq-item">
+            <dt>{f.q}</dt>
+            <dd>{f.a}</dd>
+          </div>
+        ))}
+      </dl>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="wrap contact-grid">
+      <div class="contact-copy">
+        <p class="section-eyebrow">Have a system from another installer?</p>
+        <h2>We service systems we did not install.</h2>
+        <p class="contact-lead">
+          Inverter failures, panel re-seating, monitoring offline, storm damage — we do flat-rate
+          diagnostics on any residential solar system in Suffolk County, regardless of who put it
+          on your roof. Send a recent monitoring screenshot and we will quote the work.
+        </p>
+        <p class="contact-call">
+          Or call: <a href={`tel:${phoneTel}`}>{phoneDisplay}</a>
+        </p>
+      </div>
+      <div class="contact-form">
+        <LeadForm />
+      </div>
+    </div>
+  </section>
+</Layout>

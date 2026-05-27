@@ -32,6 +32,7 @@ const topLevelPages = [
   '/case-studies/',
   '/insights/',
   '/incentives/',
+  '/warranty/',
 ];
 
 const insightSlugs = [
