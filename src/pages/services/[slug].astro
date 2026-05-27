@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import { services } from '../../config/site';
+import LeadForm from '../../components/LeadForm.astro';
+import { services, areas } from '../../config/site';
 
 export function getStaticPaths() {
   return services.map((s) => ({ params: { slug: s.slug } }));
@@ -11,24 +12,54 @@ const service = services.find((s) => s.slug === slug);
 if (!service) throw new Error(`Unknown service: ${slug}`);
 
 const business =
-  import.meta.env.PUBLIC_BUSINESS_NAME || 'Your Local Service';
-const city = import.meta.env.PUBLIC_CITY || 'Your City';
-const state = import.meta.env.PUBLIC_STATE || 'ST';
+  import.meta.env.PUBLIC_BUSINESS_NAME || 'Huntington Solar Co';
+const city = import.meta.env.PUBLIC_CITY || 'Huntington';
+const state = import.meta.env.PUBLIC_STATE || 'NY';
 const phoneTel = import.meta.env.PUBLIC_PHONE_TEL || '+16317598716';
+const phoneDisplay = import.meta.env.PUBLIC_PHONE_DISPLAY || '(631) 759-8716';
 const siteUrl =
-  import.meta.env.PUBLIC_SITE_URL?.replace(/\/$/, '') || 'https://example.com';
+  import.meta.env.PUBLIC_SITE_URL?.replace(/\/$/, '') || 'https://www.solarhuntington.com';
 
+const pageHeading = service.pageHeading || `${service.title} in ${city}, ${state}`;
 const title = `${service.title} in ${city}, ${state} | ${business}`;
-const description = `${service.description} Serving ${city} and nearby areas.`;
+const description = `${service.description} Serving ${city} and Suffolk County's north shore.`;
 
-const jsonLd = {
+// Build JSON-LD: Service schema + optional FAQ schema if the service
+// page has its own FAQ entries.
+const baseJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Service',
   name: `${service.title} — ${business}`,
-  provider: { '@type': 'LocalBusiness', name: business, telephone: phoneTel, url: siteUrl },
-  areaServed: { '@type': 'City', name: city },
+  provider: {
+    '@type': 'LocalBusiness',
+    name: business,
+    telephone: phoneTel,
+    url: siteUrl,
+  },
+  areaServed: areas.map((a) => ({ '@type': 'City', name: a.title, containedInPlace: { '@type': 'State', name: state } })),
   description: service.description,
+  url: `${siteUrl}/services/${slug}/`,
 };
+const jsonLd: Record<string, unknown> = service.faq && service.faq.length > 0
+  ? {
+      '@context': 'https://schema.org',
+      '@graph': [
+        baseJsonLd,
+        {
+          '@type': 'FAQPage',
+          mainEntity: service.faq.map((f) => ({
+            '@type': 'Question',
+            name: f.q,
+            acceptedAnswer: { '@type': 'Answer', text: f.a },
+          })),
+        },
+      ],
+    }
+  : baseJsonLd;
+
+// Related services to link to from the footer of this page (everything
+// except the current service).
+const relatedServices = services.filter((s) => s.slug !== slug).slice(0, 4);
 ---
 
 <Layout
@@ -37,16 +68,90 @@ const jsonLd = {
   canonicalPath={`/services/${slug}/`}
   jsonLd={jsonLd}
 >
-  <div class="wrap hero">
-    <h1>{service.title} in {city}</h1>
-    <p class="lead">{service.description}</p>
-    <p>
-      <a class="phone-cta" href={`tel:${phoneTel}`}>Call {city}</a>
-    </p>
-  </div>
-  <div class="wrap">
-    <p class="muted">
-      <a href="/">← Back to home</a>
-    </p>
-  </div>
+  <section class="hero">
+    <div class="wrap hero-inner">
+      <p class="eyebrow">{business} · {city}, {state}</p>
+      <h1>{pageHeading}</h1>
+      <p class="lead">{service.description}</p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="#contact">Get a free quote</a>
+        <a class="btn btn-ghost" href={`tel:${phoneTel}`}>Call {phoneDisplay}</a>
+      </div>
+    </div>
+  </section>
+
+  {service.bodySections && service.bodySections.length > 0 && (
+    <section class="prose-section">
+      <div class="wrap">
+        {service.bodySections.map((sect) => (
+          <article class="prose-block">
+            <h2>{sect.heading}</h2>
+            {sect.paragraphs.map((p) => <p>{p}</p>)}
+          </article>
+        ))}
+      </div>
+    </section>
+  )}
+
+  {service.bullets && service.bullets.length > 0 && (
+    <section class="bullets-section">
+      <div class="wrap">
+        <h2>What's included</h2>
+        <ul class="check-list">
+          {service.bullets.map((b) => <li>{b}</li>)}
+        </ul>
+      </div>
+    </section>
+  )}
+
+  {service.faq && service.faq.length > 0 && (
+    <section class="faq">
+      <div class="wrap">
+        <p class="section-eyebrow">FAQ</p>
+        <h2>Common questions about {service.title.toLowerCase()}.</h2>
+        <div class="faq-list">
+          {service.faq.map((f, i) => (
+            <details class="faq-item" open={i === 0}>
+              <summary>{f.q}</summary>
+              <div class="faq-body">{f.a}</div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <section id="contact" class="contact">
+    <div class="wrap contact-grid">
+      <div class="contact-copy">
+        <p class="section-eyebrow">Get your free quote</p>
+        <h2>Tell us about your project — we'll send back the math.</h2>
+        <p class="contact-lead">
+          We use your actual usage to size the system, model the federal and NY state credits,
+          and project the payback period. Same business day. No salesperson visit required.
+        </p>
+        <p class="contact-call">
+          Want to talk first? <a href={`tel:${phoneTel}`}>Call {phoneDisplay}</a>
+        </p>
+      </div>
+      <div class="contact-form">
+        <LeadForm />
+      </div>
+    </div>
+  </section>
+
+  <section class="related">
+    <div class="wrap">
+      <h2>Other services we offer</h2>
+      <div class="related-grid">
+        {relatedServices.map((s) => (
+          <a class="related-card" href={`/services/${s.slug}/`}>
+            <h3>{s.title}</h3>
+            <p>{s.description}</p>
+          </a>
+        ))}
+      </div>
+      <p class="muted center"><a href="/">← Back to home</a></p>
+    </div>
+  </section>
 </Layout>

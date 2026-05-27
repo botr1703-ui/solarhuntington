@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import { areas } from '../../config/site';
+import LeadForm from '../../components/LeadForm.astro';
+import { areas, services } from '../../config/site';
 
 export function getStaticPaths() {
   return areas.map((a) => ({ params: { slug: a.slug } }));
@@ -11,28 +12,36 @@ const area = areas.find((a) => a.slug === slug);
 if (!area) throw new Error(`Unknown area: ${slug}`);
 
 const business =
-  import.meta.env.PUBLIC_BUSINESS_NAME || 'Your Local Service';
-const city = import.meta.env.PUBLIC_CITY || 'Your City';
-const state = import.meta.env.PUBLIC_STATE || 'ST';
+  import.meta.env.PUBLIC_BUSINESS_NAME || 'Huntington Solar Co';
+const city = import.meta.env.PUBLIC_CITY || 'Huntington';
+const state = import.meta.env.PUBLIC_STATE || 'NY';
 const phoneTel = import.meta.env.PUBLIC_PHONE_TEL || '+16317598716';
+const phoneDisplay = import.meta.env.PUBLIC_PHONE_DISPLAY || '(631) 759-8716';
 const siteUrl =
-  import.meta.env.PUBLIC_SITE_URL?.replace(/\/$/, '') || 'https://example.com';
+  import.meta.env.PUBLIC_SITE_URL?.replace(/\/$/, '') || 'https://www.solarhuntington.com';
 
-const title = `${business} in ${area.title}, ${city} ${state}`;
-const description = `${business} serves ${area.title} and surrounding neighborhoods. Same-day availability in many cases—call or book online.`;
+const pageHeading = `Solar in ${area.title}, ${state}`;
+const title = `Solar in ${area.title}, ${state} | ${business}`;
+const description = area.lead
+  ? area.lead
+  : `${business} installs residential and commercial solar across ${area.title} and surrounding Suffolk County north-shore neighborhoods.`;
 
 const jsonLd = {
   '@context': 'https://schema.org',
-  '@type': 'WebPage',
-  name: title,
-  url: `${siteUrl}/locations/${slug}/`,
-  about: {
-    '@type': 'LocalBusiness',
-    name: business,
-    telephone: phoneTel,
-    url: siteUrl,
-  },
+  '@type': 'LocalBusiness',
+  '@id': `${siteUrl}/#business`,
+  name: business,
+  url: siteUrl,
+  telephone: phoneTel,
+  areaServed: { '@type': 'City', name: area.title, containedInPlace: { '@type': 'State', name: state } },
+  description: `${business} provides solar installation, battery storage, and repair services in ${area.title}, NY.`,
 };
+
+// Related: surface 3 services on every location page so visitors who
+// landed via a town query can quickly see what we install.
+const featuredServices = services.slice(0, 3);
+// Cross-link to neighboring locations.
+const otherAreas = areas.filter((a) => a.slug !== slug).slice(0, 5);
 ---
 
 <Layout
@@ -41,19 +50,89 @@ const jsonLd = {
   canonicalPath={`/locations/${slug}/`}
   jsonLd={jsonLd}
 >
-  <div class="wrap hero">
-    <h1>{area.title}</h1>
-    <p class="lead">
-      Local routing and crews covering {area.title}. Based in {city}, {state}—fast response for
-      urgent jobs when capacity allows.
-    </p>
-    <p>
-      <a class="phone-cta" href={`tel:${phoneTel}`}>Call now</a>
-    </p>
-  </div>
-  <div class="wrap">
-    <p class="muted">
-      <a href="/">← Back to home</a>
-    </p>
-  </div>
+  <section class="hero">
+    <div class="wrap hero-inner">
+      <p class="eyebrow">{business} · Serving {area.title}, {state}</p>
+      <h1>{pageHeading}</h1>
+      <p class="lead">{description}</p>
+      {area.localStats && <p class="local-stats">{area.localStats}</p>}
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="#contact">Get a free quote</a>
+        <a class="btn btn-ghost" href={`tel:${phoneTel}`}>Call {phoneDisplay}</a>
+      </div>
+    </div>
+  </section>
+
+  {area.bodySections && area.bodySections.length > 0 && (
+    <section class="prose-section">
+      <div class="wrap">
+        {area.bodySections.map((sect) => (
+          <article class="prose-block">
+            <h2>{sect.heading}</h2>
+            {sect.paragraphs.map((p) => <p>{p}</p>)}
+          </article>
+        ))}
+      </div>
+    </section>
+  )}
+
+  <section class="services">
+    <div class="wrap">
+      <p class="section-eyebrow">What we install</p>
+      <h2>Residential, commercial, battery storage — across {area.title} and Suffolk County.</h2>
+      <div class="grid grid-services">
+        {featuredServices.map((s) => (
+          <article class="svc-card">
+            <h3>{s.title}</h3>
+            <p>{s.description}</p>
+            <a class="svc-link" href={`/services/${s.slug}/`}>Learn more</a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="wrap contact-grid">
+      <div class="contact-copy">
+        <p class="section-eyebrow">Get your free quote</p>
+        <h2>{area.title} solar — tell us your LIPA bill.</h2>
+        <p class="contact-lead">
+          We use your actual kWh usage to size a system, model the federal and NY state credits,
+          and project the payback period. Same business day. No salesperson visit required to
+          see the number.
+        </p>
+        <p class="contact-call">
+          Want to talk first? <a href={`tel:${phoneTel}`}>Call {phoneDisplay}</a>
+        </p>
+      </div>
+      <div class="contact-form">
+        <LeadForm />
+      </div>
+    </div>
+  </section>
+
+  {area.nearbyTowns && area.nearbyTowns.length > 0 && (
+    <section class="nearby">
+      <div class="wrap">
+        <p class="section-eyebrow">We also serve</p>
+        <p class="nearby-list">{area.nearbyTowns.join(' · ')}</p>
+      </div>
+    </section>
+  )}
+
+  <section class="related">
+    <div class="wrap">
+      <h2>Solar across Suffolk County</h2>
+      <div class="area-grid">
+        {otherAreas.map((a) => (
+          <a class="area-chip" href={`/locations/${a.slug}/`}>
+            <span class="area-name">{a.title}</span>
+            <span class="area-link">Solar in {a.title}</span>
+          </a>
+        ))}
+      </div>
+      <p class="muted center"><a href="/">← Back to home</a></p>
+    </div>
+  </section>
 </Layout>
