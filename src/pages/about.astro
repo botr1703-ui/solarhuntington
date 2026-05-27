@@ -1,0 +1,132 @@
+---
+import Layout from '../layouts/Layout.astro';
+import LeadForm from '../components/LeadForm.astro';
+import { aboutPage, areas, services } from '../config/site';
+
+const business = import.meta.env.PUBLIC_BUSINESS_NAME || 'Huntington Solar Co';
+const city = import.meta.env.PUBLIC_CITY || 'Huntington';
+const state = import.meta.env.PUBLIC_STATE || 'NY';
+const phoneTel = import.meta.env.PUBLIC_PHONE_TEL || '+16317598716';
+const phoneDisplay = import.meta.env.PUBLIC_PHONE_DISPLAY || '(631) 759-8716';
+const siteUrl =
+  import.meta.env.PUBLIC_SITE_URL?.replace(/\/$/, '') || 'https://www.solarhuntington.com';
+
+const title = `About ${business} | Long Island Solar Installer`;
+const description = aboutPage.lead;
+
+// AboutPage schema + Organization schema combined.
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'AboutPage',
+      '@id': `${siteUrl}/about/`,
+      url: `${siteUrl}/about/`,
+      name: title,
+      description: description,
+      about: { '@id': `${siteUrl}/#business` },
+    },
+    {
+      '@type': 'LocalBusiness',
+      '@id': `${siteUrl}/#business`,
+      name: business,
+      url: siteUrl,
+      telephone: phoneTel,
+      areaServed: areas.map((a) => ({
+        '@type': 'City',
+        name: a.title,
+        containedInPlace: { '@type': 'State', name: state },
+      })),
+      knowsAbout: services.map((s) => s.title),
+    },
+  ],
+};
+---
+
+<Layout
+  title={title}
+  description={description}
+  canonicalPath="/about/"
+  jsonLd={jsonLd}
+>
+  <section class="hero">
+    <div class="wrap hero-inner">
+      <p class="eyebrow">About · {business}</p>
+      <h1>{aboutPage.pageHeading}</h1>
+      <p class="lead">{aboutPage.lead}</p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="#contact">Get a free quote</a>
+        <a class="btn btn-ghost" href={`tel:${phoneTel}`}>Call {phoneDisplay}</a>
+      </div>
+    </div>
+  </section>
+
+  {aboutPage.bodySections && aboutPage.bodySections.length > 0 && (
+    <section class="prose-section">
+      <div class="wrap">
+        {aboutPage.bodySections.map((sect) => (
+          <article class="prose-block">
+            <h2>{sect.heading}</h2>
+            {sect.paragraphs.map((p) => <p>{p}</p>)}
+          </article>
+        ))}
+      </div>
+    </section>
+  )}
+
+  {aboutPage.certifications && aboutPage.certifications.length > 0 && (
+    <section class="bullets-section">
+      <div class="wrap">
+        <h2>Credentials &amp; certifications</h2>
+        <ul class="check-list">
+          {aboutPage.certifications.map((c) => <li>{c}</li>)}
+        </ul>
+      </div>
+    </section>
+  )}
+
+  {aboutPage.serviceAreaCopy && (
+    <section class="prose-section" style="padding-top:2rem;">
+      <div class="wrap">
+        <article class="prose-block">
+          <h2>Where we work</h2>
+          <p>{aboutPage.serviceAreaCopy}</p>
+        </article>
+      </div>
+    </section>
+  )}
+
+  <section id="contact" class="contact">
+    <div class="wrap contact-grid">
+      <div class="contact-copy">
+        <p class="section-eyebrow">Get your free quote</p>
+        <h2>Ready to see the math?</h2>
+        <p class="contact-lead">
+          Tell us your LIPA bill and roof orientation — we'll send back a system size, projected
+          savings, and payback period within one business day. No salesperson visit required.
+        </p>
+        <p class="contact-call">
+          Want to talk first? <a href={`tel:${phoneTel}`}>Call {phoneDisplay}</a>
+        </p>
+      </div>
+      <div class="contact-form">
+        <LeadForm />
+      </div>
+    </div>
+  </section>
+
+  <section class="related">
+    <div class="wrap">
+      <h2>What we install</h2>
+      <div class="related-grid">
+        {services.slice(0, 4).map((s) => (
+          <a class="related-card" href={`/services/${s.slug}/`}>
+            <h3>{s.title}</h3>
+            <p>{s.description}</p>
+          </a>
+        ))}
+      </div>
+      <p class="muted center"><a href="/">← Back to home</a></p>
+    </div>
+  </section>
+</Layout>

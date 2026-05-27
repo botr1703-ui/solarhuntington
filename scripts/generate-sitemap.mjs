@@ -25,8 +25,13 @@ const areaSlugs = [
   'centerport',
 ];
 
+const topLevelPages = [
+  '/',
+  '/about/',
+];
+
 const urls = [
-  `${base}/`,
+  ...topLevelPages.map((p) => `${base}${p}`),
   ...serviceSlugs.map((s) => `${base}/services/${s}/`),
   ...areaSlugs.map((a) => `${base}/locations/${a}/`),
 ];

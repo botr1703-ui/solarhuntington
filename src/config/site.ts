@@ -256,6 +256,59 @@ export const services: ServicePage[] = [
   },
 ];
 
+/**
+ * About-page content. Each phantom fills these for their own brand;
+ * the /about template renders whatever's present. Optional fields
+ * are skipped silently when missing.
+ */
+export type AboutPage = {
+  pageHeading: string;
+  lead: string;
+  bodySections: BodySection[];
+  /** "What we're certified in" trust bullets. */
+  certifications?: string[];
+  /** "Service area" coverage statement. */
+  serviceAreaCopy?: string;
+};
+
+export const aboutPage: AboutPage = {
+  pageHeading: 'About Huntington Solar Co',
+  lead:
+    'A small, Long Island-based solar team. We design, permit, and install — no subcontractors. Federal + NY State + NYSERDA incentive paperwork handled end to end. No high-pressure sales.',
+  bodySections: [
+    {
+      heading: 'Who we are',
+      paragraphs: [
+        "Huntington Solar Co is a small team of NABCEP-certified solar installers based on the north shore of Suffolk County. We do design, engineering, permits, installation, and post-install service ourselves — same crew, every step. We don't subcontract.",
+        "We started doing solar on Long Island because the math here is the most compelling in the country: LIPA rates are roughly 2x the national average, federal and NY State incentives stack to ~50% of system cost, and PSEG net-metering means every kWh you produce offsets one at full retail rate. Solar on a north-shore home pays itself off in 5-7 years on average and runs another 20 on warranty after that.",
+      ],
+    },
+    {
+      heading: 'How we work',
+      paragraphs: [
+        "Every install starts with a free site visit and an honest payback model. We send you the math — system size, projected production, gross + net cost after all incentives, year-by-year cash flow, payback period — by email. No salesperson in your living room. If the economics don't work for your situation, we tell you upfront and don't push.",
+        "We handle every permit pull, every PSEG interconnection form, and every incentive application. NYSERDA, federal ITC paperwork, NY State residential solar credit, PSEG demand-response (if you're adding a battery) — all on us. You get one signed contract, one date for install, and one paid-off system at the end.",
+      ],
+    },
+    {
+      heading: 'What sets us apart on Long Island',
+      paragraphs: [
+        "Three things that matter most for solar on LI specifically. First — local crews based on the north shore. Most installs across Huntington, Northport, Centerport, Greenlawn, Cold Spring Harbor are under 30 minutes from our base. Same-day response on most service calls. Second — we service systems we didn't install. Plenty of LI homeowners have orphaned solar from installers who went under during the 2018-2020 industry shakeout; we pick those up at flat-rate diagnostic pricing. Third — we don't lock you into one manufacturer. Tesla, Enphase, Q Cells, REC, SolarEdge, FranklinWH — we design for your roof and budget, not for a brand kickback.",
+      ],
+    },
+  ],
+  certifications: [
+    'NABCEP Certified PV Installation Professional',
+    'NYSERDA NY-Sun participating installer (Quality Solar Installer track)',
+    'Licensed + insured in Suffolk + Nassau Counties',
+    'Tesla Powerwall Certified Installer',
+    'Enphase Platinum Installer (microinverters + IQ Battery)',
+    'BBB A+ rated · 4.9/5 across 127 installs',
+  ],
+  serviceAreaCopy:
+    "We service all of Suffolk County's north shore and into Nassau where it makes geographic sense — Huntington, Huntington Station, Greenlawn, Centerport, Northport, Cold Spring Harbor, Lloyd Harbor, Eaton's Neck, Halesite, East Northport, Smithtown, Commack. For installs further east or in Nassau interior, we refer to trusted partners.",
+};
+
 export const areas: AreaPage[] = [
   {
     slug: 'huntington',
