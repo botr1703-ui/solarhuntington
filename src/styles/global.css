@@ -302,7 +302,7 @@ header .wrap { display: flex; align-items: center; justify-content: space-betwee
 /* === FAQ === */
 .faq { padding: 5rem 0; background: var(--bg-soft); }
 .faq h2 { margin-bottom: 2.25rem; max-width: 28ch; }
-.faq-list { display: flex; flex-direction: column; gap: 0.75rem; max-width: 800px; }
+.faq-list { display: flex; flex-direction: column; gap: 0.75rem; }
 .faq-item { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; transition: border-color 0.15s; }
 .faq-item[open] { border-color: var(--accent-soft-strong); }
 .faq-item summary { padding: 1.2rem 1.4rem; font-weight: 600; font-size: 1.02rem; color: var(--text); cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
@@ -511,9 +511,6 @@ footer ul { list-style: none; padding: 0; margin: 0; display: flex; flex-directi
 /* === Nearby-towns strip on location pages === */
 .nearby { padding: 3rem 0; background: var(--bg-soft); text-align: center; }
 .nearby-list { color: var(--text-2); font-size: 0.98rem; max-width: 60ch; margin: 0 auto; }
-
-/* Homepage FAQ spans the full section width (other pages keep the 800px cap) */
-.home-faq { max-width: none; }
 
 /* === Homepage even grids (no orphan card on a new row) === */
 /* 5 service cards: 1 col mobile -> 3 col tablet -> 5 col (single row) desktop */

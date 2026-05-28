@@ -1,7 +1,7 @@
 import { defineConfig } from 'astro/config';
 
 const site =
-  process.env.PUBLIC_SITE_URL?.replace(/\/$/, '') || 'https://example.com';
+  process.env.PUBLIC_SITE_URL?.replace(/\/$/, '') || 'https://www.solarhuntington.com';
 
 export default defineConfig({
   site,
