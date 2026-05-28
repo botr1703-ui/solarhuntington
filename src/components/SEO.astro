@@ -16,12 +16,16 @@ const site = Astro.site?.href?.replace(/\/$/, '') || 'https://www.solarhuntingto
 const canonical = `${site}${canonicalPath || '/'}`;
 const ogImage = `${site}/og-default.jpg`;
 const siteName = import.meta.env.PUBLIC_BUSINESS_NAME || 'Huntington Solar Co';
+// Google Search Console site-verification token (URL-prefix property method).
+// Leave unset once verified via DNS or GA4. Per-phantom value.
+const gscVerification = import.meta.env.PUBLIC_GSC_VERIFICATION;
 ---
 
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="description" content={description} />
 <meta name="theme-color" content="#F5A623" />
+{gscVerification && <meta name="google-site-verification" content={gscVerification} />}
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
 <!-- Speed up Google Fonts fetch (font CSS is imported in global.css) -->

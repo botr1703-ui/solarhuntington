@@ -1,0 +1,56 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const business = import.meta.env.PUBLIC_BUSINESS_NAME || 'Huntington Solar Co';
+const phoneTel = import.meta.env.PUBLIC_PHONE_TEL || '+16317598716';
+const phoneDisplay = import.meta.env.PUBLIC_PHONE_DISPLAY || '(631) 759-8716';
+
+const title = `Thank you — we got your request | ${business}`;
+const description = 'Your solar quote request was received. We will reply within one business day.';
+---
+
+<Layout title={title} description={description} canonicalPath="/thank-you/" noindex={true}>
+  <section class="hero">
+    <div class="wrap hero-inner">
+      <p class="eyebrow">Request received</p>
+      <h1>Thanks — we've got it.</h1>
+      <p class="lead">
+        Your request just landed with the {business} team. We'll review your details and reply
+        within <strong>one business day</strong> — usually much sooner.
+      </p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="/">Back to home</a>
+        <a class="btn btn-ghost" href={'tel:' + phoneTel}>Or call {phoneDisplay}</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="prose-section">
+    <div class="wrap prose-wrap">
+      <div class="prose-block">
+        <h2>What happens next</h2>
+        <p>
+          A real person (not a call center) reviews your message, your town, and any details you
+          shared. If you sent a recent LIPA bill, we'll start sizing a system and modeling your
+          incentives so the first reply already has numbers in it.
+        </p>
+        <p>
+          In the meantime, two things worth a read: <a href="/incentives/">the 2026 incentive stack</a>
+          (what you actually qualify for) and <a href="/process/">our process</a> (what the next few
+          weeks look like, step by step).
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- GA4 conversion signal: reaching this page = a completed lead submission.
+       No-ops gracefully if GA4 isn't configured. -->
+  <script is:inline>
+    if (typeof gtag === 'function') {
+      gtag('event', 'generate_lead', {
+        event_category: 'lead',
+        event_label: 'solar_callback_form',
+      });
+    }
+  </script>
+</Layout>
