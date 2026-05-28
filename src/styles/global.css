@@ -512,6 +512,9 @@ footer ul { list-style: none; padding: 0; margin: 0; display: flex; flex-directi
 .nearby { padding: 3rem 0; background: var(--bg-soft); text-align: center; }
 .nearby-list { color: var(--text-2); font-size: 0.98rem; max-width: 60ch; margin: 0 auto; }
 
+/* Homepage FAQ spans the full section width (other pages keep the 800px cap) */
+.home-faq { max-width: none; }
+
 /* === Homepage even grids (no orphan card on a new row) === */
 /* 5 service cards: 1 col mobile -> 3 col tablet -> 5 col (single row) desktop */
 .home-services { grid-template-columns: 1fr; }
