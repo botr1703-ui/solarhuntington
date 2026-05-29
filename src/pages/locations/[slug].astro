@@ -27,8 +27,7 @@ const description = area.lead
   ? area.lead
   : `${business} installs residential and commercial solar across ${area.title} and surrounding Suffolk County north-shore neighborhoods.`;
 
-const jsonLd = {
-  '@context': 'https://schema.org',
+const localBusinessLd = {
   '@type': 'LocalBusiness',
   '@id': `${siteUrl}/#business`,
   name: business,
@@ -37,6 +36,31 @@ const jsonLd = {
   areaServed: { '@type': 'City', name: area.title, containedInPlace: { '@type': 'State', name: state } },
   description: `${business} provides solar installation, battery storage, and repair services in ${area.title}, NY.`,
 };
+
+const huntingtonFaqLd = slug === 'huntington' ? {
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'How much does solar cost in Huntington NY?',
+      acceptedAnswer: { '@type': 'Answer', text: `A typical 6-10 kW residential solar system in Huntington, NY costs $22,000-$32,000 before incentives. After the 30% federal Investment Tax Credit and NY State's 25% residential solar credit (capped at $5,000), most homeowners net $11,000-$18,000 out-of-pocket for an 8 kW system.` },
+    },
+    {
+      '@type': 'Question',
+      name: 'How long does a Town of Huntington solar permit take?',
+      acceptedAnswer: { '@type': 'Answer', text: `Town of Huntington Building Department solar permits typically take 2-3 weeks for a standard residential roof-mount. The full timeline including Suffolk County Electrical permit and PSEG Long Island interconnection approval is 6-10 weeks.` },
+    },
+    {
+      '@type': 'Question',
+      name: 'Does PSEG Long Island net metering apply in Huntington?',
+      acceptedAnswer: { '@type': 'Answer', text: `Yes. Huntington is in the PSEG Long Island service territory, which offers full retail net metering for residential solar systems up to 25 kW. Every kWh your panels export credits a kWh you draw from the grid at the full retail rate on your monthly PSEG bill.` },
+    },
+  ],
+} : null;
+
+const jsonLd: Record<string, unknown> = huntingtonFaqLd
+  ? { '@context': 'https://schema.org', '@graph': [localBusinessLd, huntingtonFaqLd] }
+  : { '@context': 'https://schema.org', ...localBusinessLd };
 
 // Related: surface 3 services on every location page so visitors who
 // landed via a town query can quickly see what we install.
