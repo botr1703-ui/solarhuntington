@@ -34,3 +34,19 @@ const action = import.meta.env.PUBLIC_FORM_ACTION
   </label>
   <button type="submit">Request a call back</button>
 </form>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('form.form').forEach(function (form) {
+      form.addEventListener('submit', function () {
+        if (typeof gtag === 'function') {
+          gtag('event', 'form_submit', {
+            event_category: 'lead',
+            event_label: 'solar_callback_form',
+            transport_type: 'beacon',
+          });
+        }
+      });
+    });
+  });
+</script>
