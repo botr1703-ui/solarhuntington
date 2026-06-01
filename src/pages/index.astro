@@ -81,6 +81,19 @@ const faqs = [
   { q: 'What happens during a power outage?', a: 'By default, grid-tied solar systems shut down during outages (PSEG safety requirement). Pair it with a Tesla Powerwall or Enphase IQ Battery and the system islands itself — your essential circuits keep running on the battery plus sun.' },
   { q: 'Will solar work on my roof?', a: 'Most Long Island roofs work. South-facing is best, but west and east still produce about 85% of optimal. Heavy shade is the main blocker. We do a free site visit before any contract — if your roof would not make economic sense, we tell you upfront.' },
 ];
+
+
+const faqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map(function (f) {
+    return {
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a },
+    };
+  }),
+};
 ---
 
 <Layout title={title} description={description} canonicalPath="/" jsonLd={jsonLd} jsonLdExtra={faqJsonLd}>
