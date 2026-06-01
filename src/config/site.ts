@@ -58,6 +58,7 @@ export const services: ServicePage[] = [
     description:
       'Roof-mounted panel systems sized to your usage. Federal 30% tax credit plus NY state incentives. Free in-home assessment with payback math before you sign.',
     pageHeading: 'Residential Solar Installation in Huntington, NY',
+    photo: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1400&q=80&auto=format&fit=crop',
     bodySections: [
       {
         heading: 'What residential solar costs on Long Island in 2026',

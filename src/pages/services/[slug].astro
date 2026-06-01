@@ -87,6 +87,19 @@ const relatedServices = services.filter((s) => s.slug !== slug).slice(0, 4);
     </div>
   </section>
 
+  {service.photo && (
+    <section class="prose-section">
+      <div class="wrap">
+        <img
+          src={service.photo}
+          alt={service.title + " — " + city + ", " + state}
+          loading="lazy"
+          style="width:100%;height:auto;display:block;border-radius:8px;"
+        />
+      </div>
+    </section>
+  )}
+
   {service.bodySections && service.bodySections.length > 0 && (
     <section class="prose-section">
       <div class="wrap">
