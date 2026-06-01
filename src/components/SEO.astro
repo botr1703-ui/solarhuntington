@@ -9,7 +9,7 @@ interface Props {
   noindex?: boolean;
 }
 
-const { title, description, canonicalPath = '', jsonLd, noindex = false } = Astro.props;
+const { title, description, canonicalPath = '', jsonLd, jsonLdExtra, noindex = false } = Astro.props;
 
 // Canonical base derives from the configured Astro `site` (set in astro.config),
 // which is robust even if PUBLIC_SITE_URL isn't present at render time.
