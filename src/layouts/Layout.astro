@@ -15,7 +15,7 @@ interface Props {
   noindex?: boolean;
 }
 
-const { title, description, canonicalPath, jsonLd, noindex } = Astro.props;
+const { title, description, canonicalPath, jsonLd, jsonLdExtra, noindex } = Astro.props;
 
 const business = import.meta.env.PUBLIC_BUSINESS_NAME || 'Huntington Solar Co';
 const phoneDisplay = import.meta.env.PUBLIC_PHONE_DISPLAY || '(631) 759-8716';
