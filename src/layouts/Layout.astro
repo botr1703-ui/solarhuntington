@@ -142,7 +142,7 @@ const firstArea = areas[0];
       document.addEventListener('click', function (e) {
         var a = e.target.closest && e.target.closest('a[href^="tel:"]');
         if (a && typeof gtag === 'function') {
-          gtag('event', 'phone_click', { event_category: 'lead', transport_type: 'beacon' });
+          gtag('event', 'phone_click', { event_category: 'lead', page_path: window.location.pathname, transport_type: 'beacon' });
         }
       });
     </script>
