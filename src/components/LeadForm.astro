@@ -39,12 +39,18 @@ const action = import.meta.env.PUBLIC_FORM_ACTION
 <script is:inline>
   document.addEventListener('DOMContentLoaded', function () {
     document.querySelectorAll('form.form').forEach(function (form) {
-      form.addEventListener('submit', function () {
+      form.addEventListener('submit', function (e) {
         if (typeof gtag === 'function') {
           gtag('event', 'form_submit', {
             event_category: 'lead',
             event_label: 'solar_callback_form',
             page_path: window.location.pathname,
+            transport_type: 'beacon',
+          });
+          // Also fire GA4 recommended conversion event
+          gtag('event', 'generate_lead', {
+            event_category: 'lead',
+            event_label: 'solar_callback_form',
             transport_type: 'beacon',
           });
         }
