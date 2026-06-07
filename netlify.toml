@@ -1,5 +1,5 @@
 [[redirects]]
   from = "https://solarhuntington.com/*"
-  to = "https://www.solarhuntington.com/:splat"
+  to   = "https://www.solarhuntington.com/:splat"
   status = 301
-  force = true
+  force  = true
