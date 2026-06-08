@@ -47,11 +47,12 @@ const action = import.meta.env.PUBLIC_FORM_ACTION
             page_path: window.location.pathname,
             transport_type: 'beacon',
           });
-          // Also fire GA4 recommended conversion event
           gtag('event', 'generate_lead', {
             event_category: 'lead',
             event_label: 'solar_callback_form',
             transport_type: 'beacon',
+            value: 1,
+            currency: 'USD',
           });
         }
       });

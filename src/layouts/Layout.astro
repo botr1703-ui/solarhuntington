@@ -143,17 +143,18 @@ const firstArea = areas[0];
       document.addEventListener('click', function (e) {
         var a = e.target.closest && e.target.closest('a[href^="tel:"]');
         if (a && typeof gtag === 'function') {
-          gtag('event', 'phone_click', {
+          gtag('event', 'phone_call', {
             event_category: 'lead',
             event_label: a.href,
             page_path: window.location.pathname,
             transport_type: 'beacon',
           });
-          // Also fire GA4 recommended conversion event
           gtag('event', 'generate_lead', {
             event_category: 'lead',
-            event_label: 'phone_click',
+            event_label: 'phone_call',
             transport_type: 'beacon',
+            value: 1,
+            currency: 'USD',
           });
         }
       });
