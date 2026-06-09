@@ -1,6 +1,17 @@
 {
   "redirects": [
     {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "solarhuntington.com"
+        }
+      ],
+      "destination": "https://www.solarhuntington.com/",
+      "permanent": true
+    },
+    {
       "source": "/:path*",
       "has": [
         {
