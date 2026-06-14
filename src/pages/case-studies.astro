@@ -33,6 +33,29 @@ const jsonLd = {
     })),
   },
 };
+
+
+const jsonLdReviews = {
+  '@context': 'https://schema.org',
+  '@graph': caseStudies.map((c) => ({
+    '@type': 'Review',
+    author: {
+      '@type': 'Person',
+      name: c.customer,
+    },
+    reviewBody: c.quote,
+    reviewRating: {
+      '@type': 'Rating',
+      ratingValue: '5',
+      bestRating: '5',
+    },
+    itemReviewed: { '@id': `${siteUrl}/#business` },
+    locationCreated: {
+      '@type': 'Place',
+      name: `${c.town}, ${state}`,
+    },
+  })),
+};
 ---
 
 <Layout title={title} description={description} canonicalPath="/case-studies/" jsonLd={jsonLd} jsonLdExtra={jsonLdReviews}>
