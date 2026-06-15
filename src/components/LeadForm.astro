@@ -60,29 +60,3 @@ const action = import.meta.env.PUBLIC_FORM_ACTION
     });
   });
 </script>
-
-
-<script is:inline>
-  document.addEventListener('DOMContentLoaded', function () {
-    document.querySelectorAll('form.form').forEach(function (form) {
-      form.addEventListener('submit', function (e) {
-        if (typeof gtag === 'function') {
-          gtag('event', 'form_submit', {
-            event_category: 'lead',
-            event_label: 'solar_callback_form',
-            page_path: window.location.pathname,
-            transport_type: 'beacon',
-          });
-          gtag('event', 'generate_lead', {
-            event_category: 'lead',
-            event_label: 'solar_callback_form',
-            form_location: window.location.pathname,
-            transport_type: 'beacon',
-            value: 1,
-            currency: 'USD',
-          });
-        }
-      });
-    });
-  });
-</script>
