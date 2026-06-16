@@ -3,9 +3,3 @@
   to = "https://www.solarhuntington.com/:splat"
   status = 301
   force = true
-
-[[redirects]]
-  from = "http://solarhuntington.com/*"
-  to = "https://www.solarhuntington.com/:splat"
-  status = 301
-  force = true
