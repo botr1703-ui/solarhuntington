@@ -21,11 +21,11 @@ const phoneDisplay = import.meta.env.PUBLIC_PHONE_DISPLAY || '(631) 759-8716';
 const siteUrl =
   import.meta.env.PUBLIC_SITE_URL?.replace(/\/$/, '') || 'https://www.solarhuntington.com';
 
-const pageHeading = `Solar in ${area.title}, ${state}`;
-const title = `Solar in ${area.title}, ${state} | ${business}`;
+const pageHeading = `Solar installation in ${area.title}, ${state}`;
+const title = `Solar installation in ${area.title}, ${state} | ${business}`;
 const description = area.lead
   ? area.lead
-  : `${business} installs residential and commercial solar across ${area.title} and surrounding Suffolk County north-shore neighborhoods.`;
+  : `Solar installation in ${area.title}, ${state}: 30% federal tax credit + NY incentives, 25-year warranty, free quote. ${business} serves Suffolk County's north shore.`;
 
 const localBusinessLd = {
   '@type': 'LocalBusiness',
