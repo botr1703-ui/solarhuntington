@@ -146,7 +146,7 @@ const firstArea = areas[0];
       document.addEventListener('click', function (e) {
         var a = e.target.closest && e.target.closest('a[href^="tel:"]');
         if (a && typeof gtag === 'function') {
-          gtag('event', 'phone_call', {
+          gtag('event', 'phone_click', {
             event_category: 'lead',
             event_label: a.href,
             page_path: window.location.pathname,
@@ -154,31 +154,7 @@ const firstArea = areas[0];
           });
           gtag('event', 'generate_lead', {
             event_category: 'lead',
-            event_label: 'phone_call',
-            transport_type: 'beacon',
-            value: 1,
-            currency: 'USD',
-          });
-        }
-      });
-    </script>
-
-
-
-    <!-- GA4 phone-click conversion. No-ops if GA4 isn't configured. -->
-    <script is:inline>
-      document.addEventListener('click', function (e) {
-        var a = e.target.closest && e.target.closest('a[href^="tel:"]');
-        if (a && typeof gtag === 'function') {
-          gtag('event', 'phone_call', {
-            event_category: 'lead',
-            event_label: a.href,
-            page_path: window.location.pathname,
-            transport_type: 'beacon',
-          });
-          gtag('event', 'generate_lead', {
-            event_category: 'lead',
-            event_label: 'phone_call',
+            event_label: 'phone_click',
             transport_type: 'beacon',
             value: 1,
             currency: 'USD',

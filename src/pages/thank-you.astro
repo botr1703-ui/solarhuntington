@@ -51,17 +51,8 @@ const description = 'Your solar quote request was received. We will reply within
       gtag('event', 'generate_lead', {
         event_category: 'lead',
         event_label: 'solar_callback_form',
-      });
-    }
-  </script>
-
-  <!-- GA4 conversion signal: reaching this page = a completed lead submission.
-       No-ops gracefully if GA4 isn't configured. -->
-  <script is:inline>
-    if (typeof gtag === 'function') {
-      gtag('event', 'generate_lead', {
-        event_category: 'lead',
-        event_label: 'solar_callback_form',
+        value: 1,
+        currency: 'USD',
       });
     }
   </script>
