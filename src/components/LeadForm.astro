@@ -37,25 +37,48 @@ const action = import.meta.env.PUBLIC_FORM_ACTION
 
 
 <script is:inline>
+  /* GA4 form-submit reliability pattern.
+     2026-06-23 fix: previous handler fired gtag in the submit listener
+     without preventing default. The form would navigate to the worker
+     before gtag.js had time to flush the beacons, so events never
+     reached GA4 (Director dispatch verified zero conversions). New
+     flow: capture submit, fire events with event_callback, then submit
+     the form once GA confirms (or after a 500ms timeout fallback).
+     Avoids dependence on `transport_type: 'beacon'` actually winning
+     the race against navigation. */
   document.addEventListener('DOMContentLoaded', function () {
     document.querySelectorAll('form.form').forEach(function (form) {
+      var submitted = false;
       form.addEventListener('submit', function (e) {
-        if (typeof gtag === 'function') {
-          gtag('event', 'form_submit', {
-            event_category: 'lead',
-            event_label: 'solar_callback_form',
-            page_path: window.location.pathname,
-            transport_type: 'beacon',
-          });
-          gtag('event', 'generate_lead', {
-            event_category: 'lead',
-            event_label: 'solar_callback_form',
-            form_location: window.location.pathname,
-            transport_type: 'beacon',
-            value: 1,
-            currency: 'USD',
-          });
+        if (submitted) return; /* already in flight from our own form.submit() */
+        if (typeof gtag !== 'function') return; /* let form submit normally */
+
+        e.preventDefault();
+        function resubmit() {
+          if (submitted) return;
+          submitted = true;
+          form.submit();
         }
+
+        gtag('event', 'form_submit', {
+          event_category: 'lead',
+          event_label: 'solar_callback_form',
+          page_path: window.location.pathname,
+          transport_type: 'beacon',
+          event_callback: resubmit,
+          event_timeout: 400,
+        });
+        gtag('event', 'generate_lead', {
+          event_category: 'lead',
+          event_label: 'solar_callback_form',
+          form_location: window.location.pathname,
+          transport_type: 'beacon',
+          value: 1,
+          currency: 'USD',
+        });
+
+        /* Belt-and-suspenders: never let the user wait more than 500ms. */
+        setTimeout(resubmit, 500);
       });
     });
   });
