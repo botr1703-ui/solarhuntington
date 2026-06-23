@@ -1,0 +1,117 @@
+[
+  {
+    "claim": "population 5500",
+    "source_file": "geo-facts/solar/centerport.yaml",
+    "source_field": "population"
+  },
+  {
+    "claim": "peak sun hours 4.2",
+    "source_file": "geo-facts/solar/centerport.yaml",
+    "source_field": "peak_sun_hours_per_day"
+  },
+  {
+    "claim": "utility rate 24.5¢/kWh",
+    "source_file": "geo-facts/solar/centerport.yaml",
+    "source_field": "utility.residential_rate_cents_kwh"
+  },
+  {
+    "claim": "typical system 10 kW",
+    "source_file": "geo-facts/solar/centerport.yaml",
+    "source_field": "typical_residential_system_kw"
+  },
+  {
+    "claim": "character",
+    "source_file": "geo-facts/solar/centerport.yaml",
+    "source_field": "character"
+  },
+  {
+    "claim": "landmarks",
+    "source_file": "geo-facts/solar/centerport.yaml",
+    "source_field": "landmarks"
+  },
+  {
+    "claim": "school districts",
+    "source_file": "geo-facts/solar/centerport.yaml",
+    "source_field": "school_districts"
+  },
+  {
+    "claim": "roads",
+    "source_file": "geo-facts/solar/centerport.yaml",
+    "source_field": "main_roads"
+  },
+  {
+    "claim": "panel REC Alpha Pure-R 430",
+    "source_file": "service-facts/solar/residential-solar-installation.yaml",
+    "source_field": "products[0].name"
+  },
+  {
+    "claim": "panel wattage 430 W",
+    "source_file": "service-facts/solar/residential-solar-installation.yaml",
+    "source_field": "products[0].wattage_w"
+  },
+  {
+    "claim": "inverter Enphase IQ8M Microinverter",
+    "source_file": "service-facts/solar/residential-solar-installation.yaml",
+    "source_field": "products[1].name"
+  },
+  {
+    "claim": "sizing small/typical/large 4/8/12 kW",
+    "source_file": "service-facts/solar/residential-solar-installation.yaml",
+    "source_field": "sizing"
+  },
+  {
+    "claim": "Huntington Department of Engineering Services 100 Main Street, Huntington, NY 11743",
+    "source_file": "geo-facts/solar/centerport.yaml",
+    "source_field": "permit_office"
+  },
+  {
+    "claim": "PSEG-LI interconnection",
+    "source_file": "service-facts/solar/residential-solar-installation.yaml",
+    "source_field": "permitting.utility_interconnection"
+  },
+  {
+    "claim": "NEC 690",
+    "source_file": "service-facts/solar/residential-solar-installation.yaml",
+    "source_field": "nec_code_references[0]"
+  },
+  {
+    "claim": "flood zone considerations",
+    "source_file": "geo-facts/solar/centerport.yaml",
+    "source_field": "flood_zone"
+  },
+  {
+    "claim": "typical system cost 28000",
+    "source_file": "service-facts/solar/residential-solar-installation.yaml",
+    "source_field": "cost.typical_install_avg_usd"
+  },
+  {
+    "claim": "incentive NYSERDA NY-Sun Residential Block $130/kW (Long Island region, 2025 block)",
+    "source_file": "geo-facts/solar/centerport.yaml",
+    "source_field": "local_incentives"
+  },
+  {
+    "claim": "incentive Federal Solar Investment Tax Credit (ITC) 30% of total system cost",
+    "source_file": "geo-facts/solar/centerport.yaml",
+    "source_field": "local_incentives"
+  },
+  {
+    "claim": "incentive NY State Residential Solar Credit 25% of system cost, capped at $5,000",
+    "source_file": "geo-facts/solar/centerport.yaml",
+    "source_field": "local_incentives"
+  },
+  {
+    "claim": "incentive NY State Real Property Tax Exemption (RPTL §487) 100% property-tax exemption on solar value-add for 15 years",
+    "source_file": "geo-facts/solar/centerport.yaml",
+    "source_field": "local_incentives"
+  },
+  {
+    "claim": "panel warranty 25 years",
+    "source_file": "service-facts/solar/residential-solar-installation.yaml",
+    "source_field": "products[0].warranty.years"
+  },
+  {
+    "claim": "install timeline 7 weeks",
+    "source_file": "service-facts/solar/residential-solar-installation.yaml",
+    "source_field": "timeline.contract_to_energization_weeks"
+  }
+]

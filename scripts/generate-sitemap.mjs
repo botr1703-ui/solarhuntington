@@ -53,6 +53,12 @@ const crossProductPages = [
   ['battery-storage', 'huntington-station'],
   ['battery-storage', 'greenlawn'],
   ['battery-storage', 'centerport'],
+  ['residential-solar-installation', 'huntington'],
+  ['residential-solar-installation', 'northport'],
+  ['residential-solar-installation', 'cold-spring-harbor'],
+  ['residential-solar-installation', 'huntington-station'],
+  ['residential-solar-installation', 'greenlawn'],
+  ['residential-solar-installation', 'centerport'],
 ];
 
 const urls = [
