@@ -50,6 +50,9 @@ const crossProductPages = [
   ['battery-storage', 'huntington'],
   ['battery-storage', 'northport'],
   ['battery-storage', 'cold-spring-harbor'],
+  ['battery-storage', 'huntington-station'],
+  ['battery-storage', 'greenlawn'],
+  ['battery-storage', 'centerport'],
 ];
 
 const urls = [

@@ -80,6 +80,11 @@
     "source_field": "flood_zone"
   },
   {
+    "claim": "Powerwall 3 installed cost 14500",
+    "source_file": "service-facts/solar/battery-storage.yaml",
+    "source_field": "cost.single_powerwall_3_installed_avg_usd"
+  },
+  {
     "claim": "incentive NYSERDA NY-Sun Residential Block $130/kW (Long Island region, 2025 block)",
     "source_file": "geo-facts/solar/huntington.yaml",
     "source_field": "local_incentives"
@@ -98,11 +103,6 @@
     "claim": "incentive NY State Real Property Tax Exemption (RPTL §487) 100% property-tax exemption on solar value-add for 15 years",
     "source_file": "geo-facts/solar/huntington.yaml",
     "source_field": "local_incentives"
-  },
-  {
-    "claim": "Powerwall 3 installed cost 14500",
-    "source_file": "service-facts/solar/battery-storage.yaml",
-    "source_field": "cost.single_powerwall_3_installed_avg_usd"
   },
   {
     "claim": "outage profile",
