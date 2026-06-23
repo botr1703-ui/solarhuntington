@@ -44,7 +44,7 @@ const firstArea = areas[0];
 
         <nav class="nav" aria-label="Primary">
           <div class="nav-item nav-has-menu">
-            <a href={firstService ? '/services/' + firstService.slug + '/' : '/#services'} class="nav-trigger">Services <span class="nav-caret" aria-hidden="true">▾</span></a>
+            <a href={firstService ? '/services/' + firstService.slug + '/' : '/services/residential-solar-installation/'} class="nav-trigger">Services <span class="nav-caret" aria-hidden="true">▾</span></a>
             <div class="nav-menu" role="menu">
               {services.map(function (s) {
                 return <a class="nav-menu-link" href={'/services/' + s.slug + '/'} role="menuitem">{s.title}</a>;

@@ -60,6 +60,10 @@ const action = import.meta.env.PUBLIC_FORM_ACTION
           form.submit();
         }
 
+        /* Only fire form_submit here. generate_lead is fired ONCE on
+           /thank-you/ load — firing it here AND there double-counted
+           the conversion in GA4 (caught by dashboard analyzer
+           proposal cmqlyemlz, 2026-06-23). */
         gtag('event', 'form_submit', {
           event_category: 'lead',
           event_label: 'solar_callback_form',
@@ -67,14 +71,6 @@ const action = import.meta.env.PUBLIC_FORM_ACTION
           transport_type: 'beacon',
           event_callback: resubmit,
           event_timeout: 400,
-        });
-        gtag('event', 'generate_lead', {
-          event_category: 'lead',
-          event_label: 'solar_callback_form',
-          form_location: window.location.pathname,
-          transport_type: 'beacon',
-          value: 1,
-          currency: 'USD',
         });
 
         /* Belt-and-suspenders: never let the user wait more than 500ms. */
