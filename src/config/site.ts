@@ -233,6 +233,28 @@ export const services: ServicePage[] = [
       'Post-storm + thermal imaging inspections',
       'Critter guards + roof-leak warranty repairs',
     ],
+    faq: [
+      {
+        q: 'My solar system shows no production — what should I check first?',
+        a: 'Start at the inverter — is the status light green? Red or off usually means a fault code worth photographing for the diagnostic. Next, check your monitoring app: a "no data" reading often points to a CT clamp or comms board issue (not the panels themselves). Production drops on a sunny day with the inverter showing green typically mean panel-level issues — a dead bypass diode, soiling, or partial shade we can pinpoint with thermal imaging.',
+      },
+      {
+        q: 'Do you service solar systems you did not install?',
+        a: 'Yes — that is most of what we do. Most LI solar installers will not touch a system they did not put up; they refer you back to your original installer (who may be out of business after the 2018–2020 industry shakeout). We do flat-rate $185 site visits on any residential solar system in Suffolk County, full report on root cause + repair path, fee credited toward the repair if you proceed.',
+      },
+      {
+        q: 'How long do residential solar inverters typically last?',
+        a: 'String inverters average 10–15 years before needing replacement; microinverters (Enphase) carry 25-year warranties and we see them last that long in the field. If your system is 10+ years old and underperforming, plan for an inverter replacement — typically $2,500–$4,500 installed for a residential string inverter, less per-unit for microinverter swaps.',
+      },
+      {
+        q: 'After a hurricane or nor\'easter, what should I inspect on my solar?',
+        a: 'Walk the perimeter and look for any visibly cracked or shifted panels, then check your monitoring app — a sudden drop in production after a storm is the clearest tell. Wind events can loosen panel clamps or rooftop standoffs; if your monitoring shows uneven production across the array, schedule a thermal-imaging inspection. We re-flash any compromised roof penetrations as part of the post-storm service.',
+      },
+      {
+        q: 'What is your warranty on repair work?',
+        a: 'Workmanship: 5 years on any panel re-seating, wiring, or mounting work we touch. Parts: pass-through manufacturer warranty (inverters 12–25 years depending on model; panels 25 years on most). Roof-leak repairs around standoffs we install carry a 5-year leak warranty.',
+      },
+    ],
   },
   {
     slug: 'free-solar-quote',
