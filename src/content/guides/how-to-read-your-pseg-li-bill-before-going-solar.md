@@ -89,3 +89,11 @@ You don't need a full year of paper bills. Log into pseg.com or the MyPSEG app a
 - **Green Button Data** — 15-minute-interval usage in a machine-readable format; many installers use design software (Aurora Solar, Solargraf, EagleView) that ingests it directly
 
 For our sizing conversations, we ask for either a Green Button download or two representative bills: your highest summer month and a typical spring month. Real [Long Island install case studies](/case-studies/) show how those actual usage numbers translate into a specific array size, payback timeline, and monthly savings figure.
+
+## Common bill items to flag for your installer
+
+Two line items get missed often enough that they're worth calling out before the design conversation:
+
+**Time-of-Use enrollment.** If you've opted into PSEG-LI's TOU (SC1-VS) rate, your supply charge varies by hour of day — peak summer afternoon hours run roughly $0.34/kWh while overnight winter hours run closer to $0.10/kWh. TOU changes the net metering math because credits are valued at the rate when they were exported, not the rate when they're consumed. If you're on TOU, mention it on the first call. Most Long Island residential homeowners are on flat-rate SC1, where this complication doesn't apply.
+
+**Outstanding balances and budget billing.** If you're enrolled in Budget Billing (a smoothed monthly average rather than actual usage), the "balance" line on your bill reflects an averaging position, not real consumption. We size from actual kWh, not from budget-billed monthly dollars, so the 12-month kWh totals are what matter. Your peak summer month under Budget Billing might show as $280 while the actual underlying consumption was 1,900 kWh — those numbers diverge enough to matter for sizing accuracy.
