@@ -1,0 +1,53 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import { getCollection } from 'astro:content';
+
+const allGuides = await getCollection('guides');
+allGuides.sort((a, b) => b.data.published.localeCompare(a.data.published));
+
+const business = import.meta.env.PUBLIC_BUSINESS_NAME || 'Huntington Solar Co';
+
+function fmt(iso: string): string {
+  const d = new Date(iso + 'T00:00:00Z');
+  return d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' });
+}
+---
+
+<Layout
+  title={`Solar Guides — Long Island Homeowner Resources | ${business}`}
+  description="Plain-language guides on solar costs, incentives, equipment, and the install process for Long Island homeowners. Real numbers, no fluff."
+  canonicalPath="/guides/"
+>
+  <Breadcrumb items={[{ label: 'Home', href: '/' }, { label: 'Guides' }]} />
+
+  <section class="insights-index">
+    <div class="wrap">
+      <h1>Solar guides for Long Island homeowners</h1>
+      <p class="section-lead">
+        Real numbers, PSEG-LI specifics, and honest tradeoffs — written for homeowners doing their
+        homework before going solar.
+      </p>
+
+      {allGuides.length > 0 ? (
+        <ul class="insights-grid" style="margin-top: 2.5rem;">
+          {allGuides.map((guide) => (
+            <li class="insight-card">
+              <a class="insight-link" href={`/guides/${guide.slug}/`}>
+                <div class="insight-meta">
+                  <span class="insight-tag">{guide.data.pillar_label}</span>
+                  <time datetime={guide.data.published}>{fmt(guide.data.published)}</time>
+                </div>
+                <h2>{guide.data.title}</h2>
+                <p>{guide.data.description}</p>
+                <span class="insight-cta">Read guide →</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p>No guides published yet.</p>
+      )}
+    </div>
+  </section>
+</Layout>

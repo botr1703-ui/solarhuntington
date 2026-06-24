@@ -1,0 +1,172 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import LeadForm from '../../components/LeadForm.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const guides = await getCollection('guides');
+  return guides.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+const { title, description, published, updated, pillar_url, pillar_label, faqs } = entry.data;
+
+const business = import.meta.env.PUBLIC_BUSINESS_NAME || 'Huntington Solar Co';
+const phoneTel = import.meta.env.PUBLIC_PHONE_TEL || '+16317598716';
+const phoneDisplay = import.meta.env.PUBLIC_PHONE_DISPLAY || '(631) 759-8716';
+const siteUrl =
+  import.meta.env.PUBLIC_SITE_URL?.replace(/\/$/, '') || 'https://www.solarhuntington.com';
+
+const canonicalPath = `/guides/${entry.slug}/`;
+
+function fmt(iso: string): string {
+  const d = new Date(iso + 'T00:00:00Z');
+  return d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' });
+}
+
+const articleLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  '@id': `${siteUrl}${canonicalPath}`,
+  url: `${siteUrl}${canonicalPath}`,
+  headline: title,
+  description,
+  datePublished: published,
+  dateModified: updated,
+  author: { '@type': 'Organization', name: business, url: siteUrl },
+  publisher: { '@type': 'Organization', name: business, url: siteUrl },
+  mainEntityOfPage: { '@type': 'WebPage', '@id': `${siteUrl}${canonicalPath}` },
+};
+
+const faqLd = faqs && faqs.length > 0
+  ? {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: faqs.map((f) => ({
+        '@type': 'Question',
+        name: f.q,
+        acceptedAnswer: { '@type': 'Answer', text: f.a },
+      })),
+    }
+  : null;
+---
+
+<Layout title={`${title} | ${business}`} description={description} canonicalPath={canonicalPath} jsonLd={articleLd}>
+  {faqLd && <script type="application/ld+json" set:html={JSON.stringify(faqLd)} />}
+
+  <Breadcrumb items={[
+    { label: 'Home', href: '/' },
+    { label: pillar_label, href: pillar_url },
+    { label: title },
+  ]} />
+
+  <article class="insight-article">
+    <header class="insight-header">
+      <div class="wrap">
+        <p class="eyebrow">{pillar_label}</p>
+        <h1>{title}</h1>
+        <p class="insight-byline">
+          <span>{business}</span>
+          <span aria-hidden="true">·</span>
+          <time datetime={published}>Published {fmt(published)}</time>
+          {updated && updated !== published ? (
+            <>
+              <span aria-hidden="true">·</span>
+              <time datetime={updated}>Updated {fmt(updated)}</time>
+            </>
+          ) : null}
+        </p>
+      </div>
+    </header>
+
+    <section class="prose-section">
+      <div class="wrap prose-wrap guide-prose">
+        <Content />
+
+        {faqs && faqs.length > 0 ? (
+          <div class="guide-faqs">
+            <h2>Frequently asked</h2>
+            <dl class="faq-list">
+              {faqs.map((f) => (
+                <>
+                  <dt>{f.q}</dt>
+                  <dd>{f.a}</dd>
+                </>
+              ))}
+            </dl>
+          </div>
+        ) : null}
+      </div>
+    </section>
+  </article>
+
+  <section id="contact" class="contact">
+    <div class="wrap contact-grid">
+      <div class="contact-copy">
+        <p class="section-eyebrow">Ready for your own numbers?</p>
+        <h2>Get a quote with the math behind it.</h2>
+        <p class="contact-lead">
+          We use your actual PSEG-LI bill, your actual roof, and your actual usage to size the
+          system and project the payback — same framework covered in this guide, applied to your home.
+        </p>
+        <p class="contact-call">
+          Or call us: <a href={`tel:${phoneTel}`}>{phoneDisplay}</a>
+        </p>
+      </div>
+      <div class="contact-form">
+        <LeadForm />
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .guide-prose :global(h2) {
+    font-size: 1.4rem;
+    margin: 2.5rem 0 1rem;
+    letter-spacing: -0.005em;
+    color: var(--text);
+  }
+  .guide-prose :global(h3) {
+    font-size: 1.1rem;
+    margin: 1.75rem 0 0.6rem;
+    color: var(--text);
+  }
+  .guide-prose :global(p) {
+    color: var(--text-2);
+    font-size: 1rem;
+    line-height: 1.7;
+    margin: 0 0 1rem;
+  }
+  .guide-prose :global(strong) {
+    color: var(--text);
+    font-weight: 700;
+  }
+  .guide-prose :global(a) {
+    color: var(--accent-dark);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .guide-prose :global(ul),
+  .guide-prose :global(ol) {
+    padding-left: 1.5rem;
+    margin: 0 0 1rem;
+    color: var(--text-2);
+    line-height: 1.7;
+  }
+  .guide-prose :global(li) {
+    margin-bottom: 0.4rem;
+  }
+  .guide-faqs { margin-top: 3rem; }
+  .guide-faqs h2 {
+    font-size: 1.4rem;
+    margin: 0 0 1.5rem;
+    letter-spacing: -0.005em;
+    color: var(--text);
+  }
+</style>
