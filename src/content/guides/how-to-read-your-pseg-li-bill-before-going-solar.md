@@ -12,15 +12,20 @@ updated: "2026-06-24"
 hero_image: ""
 faqs:
   - q: What number on my PSEG-LI bill does a solar installer actually need?
-    a: The most important figure is your 12-month total kWh usage — shown on the back of your bill as a monthly usage bar chart or in the "Usage History" tab in MyPSEG. Installers use this annual total to size the array so annual production matches annual consumption. The swing between your highest month (summer) and lowest month (spring) also informs battery storage recommendations.
+    a: >-
+      The most important figure is your 12-month total kWh usage — shown on the back of your bill as a monthly usage bar chart or in the "Usage History" tab in MyPSEG. Installers use this annual total to size the array so annual production matches annual consumption. The swing between your highest month (summer) and lowest month (spring) also informs battery storage recommendations.
   - q: Does going solar eliminate my PSEG-LI bill entirely?
-    a: No. PSEG-LI charges a fixed customer charge (currently $11.85/month for SC1 residential) plus per-kWh delivery and distribution charges that apply even to net-metered customers. Most Long Island solar homeowners see their PSEG-LI bill drop to $15–30/month rather than zero — the floor is set by the fixed fees, not by solar production.
+    a: >-
+      No. PSEG-LI charges a fixed customer charge (currently $11.85/month for SC1 residential) plus per-kWh delivery and distribution charges that apply even to net-metered customers. Most Long Island solar homeowners see their PSEG-LI bill drop to $15–30/month rather than zero — the floor is set by the fixed fees, not by solar production.
   - q: What is net metering and how does it appear on my bill?
-    a: Under net metering, excess solar power you export to the grid earns a credit at the full retail supply rate — currently approximately $0.27–$0.31/kWh on PSEG-LI SC1 rates. Those credits appear as a negative "Net Metering Credit" line in the supply charges section and carry forward month to month. PSEG-LI does an annual true-up (typically April) and pays out any remaining credit at the avoided-cost rate — roughly $0.08–$0.10/kWh. Proper system sizing minimizes the credits that fall into the low-rate true-up.
+    a: >-
+      Under net metering, excess solar power you export to the grid earns a credit at the full retail supply rate — currently approximately $0.27–$0.31/kWh on PSEG-LI SC1 rates. Those credits appear as a negative "Net Metering Credit" line in the supply charges section and carry forward month to month. PSEG-LI does an annual true-up (typically April) and pays out any remaining credit at the avoided-cost rate — roughly $0.08–$0.10/kWh. Proper system sizing minimizes the credits that fall into the low-rate true-up.
   - q: What is the difference between supply charges and delivery charges on my PSEG-LI bill?
-    a: Supply charges cover the electricity commodity — the electrons you consume, priced at the PSEG-LI rate or your ESCO rate. Delivery charges cover the poles, wires, transformers, and metering infrastructure that physically gets power to your house. Solar dramatically reduces supply charges and partially reduces delivery charges. The fixed customer charge and a portion of the delivery charge remain regardless of how much solar you produce.
+    a: >-
+      Supply charges cover the electricity commodity — the electrons you consume, priced at the PSEG-LI rate or your ESCO rate. Delivery charges cover the poles, wires, transformers, and metering infrastructure that physically gets power to your house. Solar dramatically reduces supply charges and partially reduces delivery charges. The fixed customer charge and a portion of the delivery charge remain regardless of how much solar you produce.
   - q: If I'm on an ESCO supply contract, does that affect my solar savings calculation?
-    a: Yes. Net metering credits are calculated at the default PSEG-LI commodity rate, not your ESCO rate. If your ESCO rate differs significantly from PSEG-LI's default, your effective solar savings per kWh may vary during the contract period. Check your ESCO contract end date before signing a solar agreement — many homeowners switch back to PSEG-LI default supply before going solar to simplify billing.
+    a: >-
+      Yes. Net metering credits are calculated at the default PSEG-LI commodity rate, not your ESCO rate. If your ESCO rate differs significantly from PSEG-LI's default, your effective solar savings per kWh may vary during the contract period. Check your ESCO contract end date before signing a solar agreement — many homeowners switch back to PSEG-LI default supply before going solar to simplify billing.
 ---
 
 Before a solar installer pulls out a shading tool or quotes panel brands, they need one document from you: your PSEG Long Island electric bill — ideally 12 months of it. Everything else, from system size in kilowatts to projected annual savings to whether battery storage pencils out, gets calculated from your actual usage data.
