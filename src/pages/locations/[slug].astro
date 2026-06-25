@@ -22,7 +22,9 @@ const siteUrl =
   import.meta.env.PUBLIC_SITE_URL?.replace(/\/$/, '') || 'https://www.solarhuntington.com';
 
 const pageHeading = `Solar installation in ${area.title}, ${state}`;
-const title = `Solar installation in ${area.title}, ${state} | ${business}`;
+const title = slug === 'huntington'
+  ? `Solar Panels & Installation in ${area.title}, ${state} | ${business}`
+  : `Solar installation in ${area.title}, ${state} | ${business}`;
 const description = area.lead
   ? area.lead
   : `Solar installation in ${area.title}, ${state}: 30% federal tax credit + NY incentives, 25-year warranty, free quote. ${business} serves Suffolk County's north shore.`;
