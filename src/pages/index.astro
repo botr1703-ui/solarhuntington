@@ -94,6 +94,18 @@ const faqJsonLd = {
     };
   }),
 };
+
+// WebSite JSON-LD — signals sitelinks searchbox eligibility per
+// Google's structured-data spec. Added by auto-ship 8a24e13 2026-06-25
+// but the const was missing — caused websiteJsonLd-not-defined build
+// failure on CF Pages. Restored 2026-06-25.
+const websiteJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: business,
+  url: siteUrl,
+  publisher: { '@type': 'Organization', name: business, url: siteUrl },
+};
 ---
 
 <Layout title={title} description={description} canonicalPath="/" jsonLd={jsonLd} jsonLdExtra={faqJsonLd}>
