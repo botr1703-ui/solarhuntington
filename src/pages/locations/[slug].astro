@@ -69,6 +69,12 @@ const jsonLd: Record<string, unknown> = huntingtonFaqLd
 const featuredServices = services.slice(0, 3);
 // Cross-link to neighboring locations.
 const otherAreas = areas.filter((a) => a.slug !== slug).slice(0, 5);
+
+// Services that have a matrix page for this specific area — surface them
+// as town-specific deep links so visitors can pivot from "what we install
+// in your town" to the long-form town+service variant.
+const HAS_MATRIX = new Set(['battery-storage', 'residential-solar-installation']);
+const matrixServices = services.filter((s) => HAS_MATRIX.has(s.slug));
 ---
 
 <Layout
@@ -133,6 +139,22 @@ const otherAreas = areas.filter((a) => a.slug !== slug).slice(0, 5);
           </article>
         ))}
       </div>
+
+      {matrixServices.length > 0 && (
+        <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(0,0,0,.08);">
+          <p class="section-eyebrow">{area.title}-specific guides</p>
+          <h3>Detailed install info for {area.title}, NY</h3>
+          <div class="grid grid-services" style="margin-top: 1.5rem;">
+            {matrixServices.map((s) => (
+              <article class="svc-card">
+                <h4 style="margin: 0 0 .5rem;">{s.title} in {area.title}</h4>
+                <p style="opacity: .8;">Local permit office, install timeline, and {area.title}-specific incentive math.</p>
+                <a class="svc-link" href={`/services/${s.slug}/${area.slug}/`}>View {area.title} details</a>
+              </article>
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   </section>
 
