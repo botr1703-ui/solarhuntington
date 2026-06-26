@@ -5,7 +5,7 @@
       "has": [
         {
           "type": "host",
-          "value": "solarhuntington.com"
+          "value": "^solarhuntington\.com$"
         }
       ],
       "destination": "https://www.solarhuntington.com/:path*",
