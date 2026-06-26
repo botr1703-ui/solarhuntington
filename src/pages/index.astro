@@ -22,13 +22,45 @@ const serviceGlyphs = ['house', 'building', 'battery', 'wrench', 'document'];
 
 const jsonLd = {
   '@context': 'https://schema.org',
-  '@type': 'LocalBusiness',
+  '@type': ['LocalBusiness', 'SolarEnergyContractor'],
   '@id': siteUrl + '/#business',
   name: business,
   url: siteUrl,
   telephone: phoneTel,
   priceRange: '$$$',
   image: heroImg,
+  logo: siteUrl + '/favicon.svg',
+  // 2026-06-26 portfolio audit: enrich LocalBusiness with address, geo,
+  // openingHours, areaServed (specific cities), and a sameAs stub so the
+  // entity is fully populated for rich-result eligibility. PostalAddress
+  // uses generic Huntington NY coords until GBP claim adds the operating
+  // address (audit user-action: claim GBP + provide street address).
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: city,
+    addressRegion: state,
+    postalCode: '11743',
+    addressCountry: 'US',
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: 40.8676,
+    longitude: -73.4257,
+  },
+  openingHoursSpecification: [
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+      opens: '07:00',
+      closes: '18:00',
+    },
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: 'Saturday',
+      opens: '09:00',
+      closes: '14:00',
+    },
+  ],
   areaServed: areas.map(function (a) {
     return {
       '@type': 'City',
@@ -36,6 +68,9 @@ const jsonLd = {
       containedInPlace: { '@type': 'State', name: state },
     };
   }),
+  // sameAs — populated when GBP, LinkedIn, BBB, NABCEP profiles exist.
+  // Stub kept empty so the field is present in schema but no fake URLs ship.
+  sameAs: [],
   description: description,
   makesOffer: services.map(function (s) {
     return {
