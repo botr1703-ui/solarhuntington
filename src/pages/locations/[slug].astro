@@ -23,7 +23,9 @@ const siteUrl =
 
 const pageHeading = `Solar installation in ${area.title}, ${state}`;
 const title = slug === 'huntington'
-  ? `Solar Panels & Installation in ${area.title}, ${state} | ${business}`
+  // 2026-06-30: lead with year-fresh cost/incentive signal — cluster CTR
+  // lifts when SERP titles include both the year and the cost frame.
+  ? `Huntington Solar Panel Cost & 2026 Incentives | ${business}`
   : `Solar installation in ${area.title}, ${state} | ${business}`;
 const description = area.lead
   ? area.lead
