@@ -144,11 +144,11 @@ const websiteJsonLd = {
   name: business,
   url: siteUrl,
   publisher: { '@type': 'Organization', name: business, url: siteUrl },
-  potentialAction: {
-    '@type': 'SearchAction',
-    target: { '@type': 'EntryPoint', urlTemplate: siteUrl + '/search/?q={search_term_string}' },
-    'query-input': 'required name=search_term_string',
-  },
+  // 2026-06-30: removed potentialAction.SearchAction — it pointed at
+  // /search/?q={query} which doesn't exist on this site, and Google's
+  // SearchAction requirements explicitly require a working search results
+  // page. Declaring it without one is worse than not declaring at all
+  // (invalid schema). Add back if/when a real /search/ ships.
 };
 ---
 
