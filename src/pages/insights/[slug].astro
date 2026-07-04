@@ -103,6 +103,26 @@ const otherPosts = insights.filter((p) => p.slug !== post.slug).slice(0, 3);
           </div>
         ))}
 
+        {post.specTable ? (
+          <div class="prose-block">
+            <h2>{post.specTable.heading}</h2>
+            <table class="spec-table">
+              <thead>
+                <tr>
+                  {post.specTable.columns.map((c) => <th scope="col">{c}</th>)}
+                </tr>
+              </thead>
+              <tbody>
+                {post.specTable.rows.map((row) => (
+                  <tr>
+                    {row.map((cell, i) => (i === 0 ? <th scope="row">{cell}</th> : <td>{cell}</td>))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        ) : null}
+
         {post.faq && post.faq.length > 0 ? (
           <div class="prose-block">
             <h2>Frequently asked</h2>
@@ -131,6 +151,9 @@ const otherPosts = insights.filter((p) => p.slug !== post.slug).slice(0, 3);
         </p>
         <p class="contact-call">
           Or call us: <a href={`tel:${phoneTel}`}>{phoneDisplay}</a>
+        </p>
+        <p class="contact-call">
+          Prefer to see the deliverable first? <a href="/services/free-solar-quote/">What's in our free solar panel quote</a>
         </p>
       </div>
       <div class="contact-form">

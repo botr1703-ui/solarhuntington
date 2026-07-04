@@ -224,6 +224,7 @@ header .wrap { display: flex; align-items: center; justify-content: space-betwee
 .hero h1 .hero-num { color: var(--accent); display: inline-block; }
 .hero .lead { font-size: 1.15rem; color: rgba(255, 255, 255, 0.85); max-width: 64ch; margin-bottom: 1.75rem; }
 .hero .lead strong { color: #ffffff; }
+.hero .lead a { color: var(--accent); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
 .hero-ctas { display: flex; flex-wrap: wrap; gap: 0.85rem; align-items: center; }
 
 /* === Buttons === */
@@ -418,6 +419,13 @@ footer ul { list-style: none; padding: 0; margin: 0; display: flex; flex-directi
 .prose-block h2 { font-size: clamp(1.4rem, 2.4vw, 1.85rem); margin-bottom: 1rem; letter-spacing: -0.005em; }
 .prose-block p { font-size: 1.04rem; line-height: 1.72; color: var(--text-2); margin-bottom: 1.1rem; }
 .prose-block p:last-child { margin-bottom: 0; }
+
+/* === Spec comparison table (insights) === */
+.spec-table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+.spec-table th, .spec-table td { padding: 0.7rem 0.85rem; border: 1px solid var(--border); text-align: left; vertical-align: top; color: var(--text-2); line-height: 1.5; }
+.spec-table thead th { background: var(--bg-soft); color: var(--text); font-weight: 700; }
+.spec-table tbody th { font-weight: 600; color: var(--text); background: var(--surface); }
+@media (max-width: 639px) { .spec-table { display: block; overflow-x: auto; } }
 
 /* === Bulleted "What's included" callout === */
 .bullets-section { padding: 1.5rem 0 4.5rem; background: var(--bg); }

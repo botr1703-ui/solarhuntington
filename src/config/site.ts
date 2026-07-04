@@ -28,6 +28,14 @@ export type ServicePage = {
   slug: string;
   title: string;
   description: string;
+  /** Optional short title for internal-link anchors (e.g. "Battery Storage"
+   *  without the "(Powerwall)" qualifier). Defaults to `title`. */
+  shortTitle?: string;
+  /** Optional SERP title override — rendered as `${metaTitle} | ${business}`.
+   *  Defaults to `${title} in ${city}, ${state} | ${business}`. */
+  metaTitle?: string;
+  /** Optional meta-description override. Defaults to `description` + serving line. */
+  metaDescription?: string;
   /** Optional H2 used on the sub-page; defaults to `title`. */
   pageHeading?: string;
   /** Optional richer body content — rendered after the hero. */
@@ -157,6 +165,7 @@ export const services: ServicePage[] = [
   {
     slug: 'battery-storage',
     title: 'Battery Storage (Powerwall)',
+    shortTitle: 'Battery Storage',
     description:
       'Tesla Powerwall and Enphase IQ Battery systems. Keep the lights on during PSEG outages, store excess solar for evening use, eligible for additional NY rebates.',
     pageHeading: 'Tesla Powerwall & Enphase Battery Storage on Long Island',
@@ -259,6 +268,11 @@ export const services: ServicePage[] = [
   {
     slug: 'free-solar-quote',
     title: 'Free Solar Quote',
+    // 2026-07-04 SEO wave: /services/free-solar-quote/ shows 18 imp @ ~#50
+    // in GSC — target the "solar panel quote near me" intent explicitly.
+    metaTitle: 'Free Solar Panel Quote — Huntington & Long Island',
+    metaDescription:
+      'Get a free solar panel quote near Huntington and across Long Island — send a recent LIPA bill and we return system size, itemized incentives, projected savings, and payback within 1 business day. No sales visit.',
     description:
       "Tell us your average LIPA bill and roof orientation — we'll send back a system size, projected savings, and payback period. No salesperson visit required to get the number.",
     pageHeading: 'Free Long Island Solar Quote (No Pressure)',
@@ -645,6 +659,13 @@ export type InsightPost = {
   /** ~250-character lead shown on the index card + hero. */
   excerpt: string;
   bodySections: BodySection[];
+  /** Optional side-by-side spec table — rendered after the body sections.
+   *  Phantom-repeatable: templates skip it when absent. */
+  specTable?: {
+    heading: string;
+    columns: string[];
+    rows: string[][];
+  };
   /** Optional FAQ for FAQPage JSON-LD. */
   faq?: FaqEntry[];
   /** Optional tag list for category badges. */
@@ -807,7 +828,7 @@ export const insights: InsightPost[] = [
     description:
       'A 2026 side-by-side of Tesla Powerwall 3 and Enphase IQ Battery 5P for Long Island solar — capacity, output, install cost, outage performance, and which one we recommend for which homes.',
     publishedAt: '2026-05-02',
-    updatedAt: '2026-05-20',
+    updatedAt: '2026-07-04',
     author: 'Huntington Solar Co',
     excerpt:
       'Tesla Powerwall 3 wins on raw capacity (13.5 kWh) and price-per-kWh; Enphase IQ Battery 5P wins on modularity and microinverter compatibility. The right pick depends on your existing solar hardware and how much of the home you want to back up.',
@@ -863,6 +884,21 @@ export const insights: InsightPost[] = [
         ],
       },
     ],
+    specTable: {
+      heading: 'Tesla Powerwall 3 vs Enphase IQ Battery 5P — spec sheet',
+      columns: ['Spec', 'Tesla Powerwall 3', 'Enphase IQ Battery 5P'],
+      rows: [
+        ['Usable capacity per unit', '13.5 kWh', '5.0 kWh'],
+        ['Continuous output per unit', '11.5 kW', '3.84 kW'],
+        ['Chemistry', 'LFP (lithium iron phosphate)', 'LFP (lithium iron phosphate)'],
+        ['Warranty', '10 years / 70% retained capacity', '15 years / 60% retained capacity'],
+        ['Unit weight', '287 lb', '174.6 lb'],
+        ['Typical LI installed cost', '~$14,000 (single unit)', '$18,000–$21,000 (3 units)'],
+        ['Effective $/kWh', '~$1,037', '~$1,200–$1,400'],
+        ['Modularity', 'Single 13.5 kWh slab; stack whole units', '5 kWh increments — start small, expand'],
+        ['Best fit', 'Whole-home backup, lowest $/kWh', 'Enphase microinverter arrays, modular sizing'],
+      ],
+    },
     faq: [
       {
         q: 'Is Tesla Powerwall 3 better than Enphase IQ Battery 5P?',

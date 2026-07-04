@@ -22,8 +22,11 @@ const siteUrl =
   import.meta.env.PUBLIC_SITE_URL?.replace(/\/$/, '') || 'https://www.solarhuntington.com';
 
 const pageHeading = service.pageHeading || `${service.title} in ${city}, ${state}`;
-const title = `${service.title} in ${city}, ${state} | ${business}`;
-const description = `${service.description} Serving ${city} and Suffolk County's north shore.`;
+const title = service.metaTitle
+  ? `${service.metaTitle} | ${business}`
+  : `${service.title} in ${city}, ${state} | ${business}`;
+const description =
+  service.metaDescription || `${service.description} Serving ${city} and Suffolk County's north shore.`;
 
 // Build JSON-LD: Service schema + optional FAQ schema if the service
 // page has its own FAQ entries.
@@ -69,6 +72,11 @@ const relatedServices = services.filter((s) => s.slug !== slug).slice(0, 4);
 // surface the location pages instead so visitors can still reach their town.
 const HAS_MATRIX = new Set(['battery-storage', 'residential-solar-installation']);
 const matrixAreas = HAS_MATRIX.has(slug ?? '') ? areas : [];
+
+// 2026-07-04 SEO wave: point extra internal-link equity at
+// /locations/huntington/ ("solar huntington" ranks #63) from the two
+// most relevant service pages.
+const linkHuntingtonLocation = slug === 'residential-solar-installation' || slug === 'free-solar-quote';
 ---
 
 <Layout
@@ -175,7 +183,7 @@ const matrixAreas = HAS_MATRIX.has(slug ?? '') ? areas : [];
         <div class="related-grid">
           {matrixAreas.map((a) => (
             <a class="related-card" href={`/services/${slug}/${a.slug}/`}>
-              <h3>{service.title} in {a.title}</h3>
+              <h3>{service.shortTitle || service.title} in {a.title}</h3>
               <p>{a.title}, NY — local permit office, typical install timeline, area-specific incentive math.</p>
             </a>
           ))}
@@ -198,8 +206,14 @@ const matrixAreas = HAS_MATRIX.has(slug ?? '') ? areas : [];
 
       <h2 style="margin-top: 3.5rem;">Pricing, permits, warranties — explained</h2>
       <div class="related-grid">
+        {linkHuntingtonLocation && (
+          <a class="related-card" href="/locations/huntington/">
+            <h3>Solar installation in Huntington, NY</h3>
+            <p>Town permit timeline, PSEG net metering, and what we typically install in Huntington.</p>
+          </a>
+        )}
         <a class="related-card" href="/incentives/">
-          <h3>Stack of incentives</h3>
+          <h3>2026 Long Island solar incentives</h3>
           <p>30% federal ITC + 25% NY State + NYSERDA rebate — what each one is and what we file.</p>
         </a>
         <a class="related-card" href="/process/">
