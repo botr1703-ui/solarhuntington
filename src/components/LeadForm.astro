@@ -60,13 +60,6 @@ const action = import.meta.env.PUBLIC_FORM_ACTION
           form.submit();
         }
 
-        gtag('event', 'generate_lead', {
-          event_category: 'lead',
-          event_label: 'solar_callback_form',
-          transport_type: 'beacon',
-          value: 1,
-          currency: 'USD',
-        });
         gtag('event', 'form_submit', {
           event_category: 'lead',
           event_label: 'solar_callback_form',
