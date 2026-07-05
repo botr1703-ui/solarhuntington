@@ -167,8 +167,12 @@ export const services: ServicePage[] = [
     title: 'Battery Storage (Powerwall)',
     shortTitle: 'Battery Storage',
     description:
-      'Tesla Powerwall and Enphase IQ Battery systems. Keep the lights on during PSEG outages, store excess solar for evening use, eligible for additional NY rebates.',
-    pageHeading: 'Tesla Powerwall & Enphase Battery Storage on Long Island',
+      'Tesla Powerwall installation across Long Island — plus Enphase IQ Battery and FranklinWH systems. Keep the lights on during PSEG outages, store excess solar for evening use, eligible for additional NY rebates.',
+    // 2026-07-04 SEO queue: this parent page is the Powerwall landing page.
+    // Do NOT spin up /services/battery-storage-powerwall/ or
+    // /services/battery-backup/ — near-duplicate cannibalization.
+    metaTitle: 'Tesla Powerwall Installation Long Island',
+    pageHeading: 'Tesla Powerwall Installation on Long Island',
     bodySections: [
       {
         heading: 'Why pair a battery with solar',

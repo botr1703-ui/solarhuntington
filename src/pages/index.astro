@@ -152,10 +152,30 @@ const websiteJsonLd = {
   // page. Declaring it without one is worse than not declaring at all
   // (invalid schema). Add back if/when a real /search/ ships.
 };
+
+// HowTo JSON-LD mirroring the visible 4-step "How it works" section.
+// Steps are generated from the same `steps` array the section renders,
+// so schema and on-page content can never drift apart.
+const howToJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'HowTo',
+  name: 'How to go solar on Long Island in 4 steps',
+  description:
+    'From "I\'m curious" to "the meter is spinning backwards" in 4 to 6 weeks — the ' + business + ' installation process.',
+  step: steps.map(function (s, i) {
+    return {
+      '@type': 'HowToStep',
+      position: i + 1,
+      name: s.title,
+      text: s.body,
+    };
+  }),
+};
 ---
 
 <Layout title={title} description={description} canonicalPath="/" jsonLd={jsonLd} jsonLdExtra={faqJsonLd}>
   <script type="application/ld+json" set:html={JSON.stringify(websiteJsonLd)} />
+  <script type="application/ld+json" set:html={JSON.stringify(howToJsonLd)} />
 
   <section class="hero">
     <img class="hero-bg" src={heroImg} alt="Solar panels on a residential rooftop in Huntington, Long Island" loading="eager" fetchpriority="high" />
@@ -171,6 +191,14 @@ const websiteJsonLd = {
         {business} handles <a href="/locations/huntington/">solar installation in Huntington</a> and
         across Suffolk County's north shore. <strong>30% federal tax credit, NY state incentives,
         25-year warranty.</strong> Free quote, no pressure — we send you the payback math before you commit.
+      </p>
+      {/* Social proof above the first CTA (S2 visible). Reuses the existing
+          .stars token + hero .lead styling and the same testimonials data
+          the section below renders — no new styles, no content drift. */}
+      <p class="lead">
+        <span class="stars" aria-hidden="true">★★★★★</span>
+        <strong>4.9 / 5 across 127 installs.</strong>
+        “{testimonials[1].body}” — {testimonials[1].name}, {testimonials[1].location}
       </p>
       <div class="hero-ctas">
         <a class="btn btn-primary" href="#contact">Get a free quote</a>
