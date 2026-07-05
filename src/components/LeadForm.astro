@@ -69,6 +69,14 @@ const action = import.meta.env.PUBLIC_FORM_ACTION
           event_timeout: 400,
         });
 
+        gtag('event', 'generate_lead', {
+          event_category: 'lead',
+          event_label: 'solar_callback_form',
+          transport_type: 'beacon',
+          value: 1,
+          currency: 'USD',
+        });
+
         /* Belt-and-suspenders: never let the user wait more than 500ms. */
         setTimeout(resubmit, 500);
       });
