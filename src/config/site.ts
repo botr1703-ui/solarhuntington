@@ -526,6 +526,14 @@ export const areas: AreaPage[] = [
           "Heritage homes and Victorians around Old Huntington and Huntington Harbor often need extra attention on aesthetic + mount style — we use low-profile black-on-black panels and ballasted (no roof penetration) configurations where appropriate.",
         ],
       },
+      {
+        heading: 'Solar panels in Huntington: permits, ZIPs, and timeline',
+        paragraphs: [
+          "If you're pricing solar panels in Huntington, the local details matter as much as the hardware. Every residential system in the Town of Huntington is permitted through the Town of Huntington Building Department at 100 Main Street. Standard roof-mount photovoltaic permits run 2-3 weeks; the electrical side is inspected under a Suffolk County electrical permit, and grid connection is approved by PSEG Long Island. Start to turn-on is usually 6-10 weeks, and we handle the entire paperwork chain for you.",
+          "We install solar panels across every Huntington ZIP: 11743 (Huntington and Huntington Bay), 11746 (the Huntington Station / Dix Hills side), 11724 (Cold Spring Harbor), and 11721 (Centerport). Roof stock and shading vary by ZIP — the older Huntington-village blocks in 11743 skew toward smaller south-and-west roofs and heritage aesthetics, while newer 11746 construction tends to offer larger, cleaner planes that fit a full 8-10 kW array without compromise.",
+          "Because Huntington sits in PSEG Long Island territory, solar panels here earn full retail net metering up to 25 kW — every kWh you export is credited against a kWh you later draw. Combined with the 30% federal Investment Tax Credit and New York's 25% state residential solar credit (capped at $5,000), a typical Huntington homeowner nets $11,000-$18,000 out of pocket on an 8 kW system and reaches payback in 5-7 years.",
+        ],
+      },
     ],
     nearbyTowns: ['Huntington Station', 'Greenlawn', 'Centerport', 'Cold Spring Harbor', 'Lloyd Harbor'],
     localStats: 'Suffolk County, NY · ~204,000 population · ZIP codes 11743, 11724, 11721',

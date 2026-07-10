@@ -282,7 +282,8 @@ header .wrap { display: flex; align-items: center; justify-content: space-betwee
 
 /* === Areas === */
 .areas { padding: 5rem 0; background: var(--bg-soft); }
-.areas h2 { max-width: 28ch; margin-bottom: 2.25rem; }
+.areas h2 { max-width: 28ch; margin-bottom: 1rem; }
+.areas-lead { font-size: 1.05rem; color: var(--text-2); margin-bottom: 2.25rem; max-width: 60ch; }
 .area-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0.85rem; }
 .area-chip { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.1rem 1.25rem; display: flex; flex-direction: column; gap: 0.3rem; text-decoration: none !important; transition: all 0.15s; }
 .area-chip:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: var(--shadow-sm); }
