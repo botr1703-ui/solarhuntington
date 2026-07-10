@@ -77,6 +77,18 @@ const matrixAreas = HAS_MATRIX.has(slug ?? '') ? areas : [];
 // /locations/huntington/ ("solar huntington" ranks #63) from the two
 // most relevant service pages.
 const linkHuntingtonLocation = slug === 'residential-solar-installation' || slug === 'free-solar-quote';
+
+// The default contact copy talks about sizing a new system and modeling
+// incentives — right for new-install pages, misleading on the repair /
+// maintenance page (a homeowner with a dead inverter isn't shopping for
+// a new system or tax credits). Swap in repair-appropriate copy there.
+const isRepairService = slug === 'solar-repair-maintenance';
+const contactHeading = isRepairService
+  ? "Tell us what's wrong — we'll get it working again."
+  : "Tell us about your project — we'll send back the math.";
+const contactLead = isRepairService
+  ? "Tell us what your system is doing (or not doing) — panel offline, inverter fault, monitoring gone dark, a leak around a standoff. We service any residential solar system in Suffolk County, even one we didn't install. Same business day. $185 flat-rate diagnostic, credited toward the repair."
+  : "We use your actual usage to size the system, model the federal and NY state credits, and project the payback period. Same business day. No salesperson visit required.";
 ---
 
 <Layout
@@ -159,12 +171,9 @@ const linkHuntingtonLocation = slug === 'residential-solar-installation' || slug
   <section id="contact" class="contact">
     <div class="wrap contact-grid">
       <div class="contact-copy">
-        <p class="section-eyebrow">Get your free quote</p>
-        <h2>Tell us about your project — we'll send back the math.</h2>
-        <p class="contact-lead">
-          We use your actual usage to size the system, model the federal and NY state credits,
-          and project the payback period. Same business day. No salesperson visit required.
-        </p>
+        <p class="section-eyebrow">{isRepairService ? 'Book a diagnostic' : 'Get your free quote'}</p>
+        <h2>{contactHeading}</h2>
+        <p class="contact-lead">{contactLead}</p>
         <p class="contact-call">
           Want to talk first? <a href={`tel:${phoneTel}`}>Call {phoneDisplay}</a>
         </p>
