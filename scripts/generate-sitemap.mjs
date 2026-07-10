@@ -31,6 +31,7 @@ const areaSlugs = [
 const topLevelPages = [
   '/',
   '/about/',
+  '/why-huntington-solar/',
   '/financing/',
   '/case-studies/',
   '/insights/',

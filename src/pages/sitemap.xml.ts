@@ -13,6 +13,7 @@ export const GET: APIRoute = ({ site }) => {
     { loc: '/process/',     priority: '0.6', changefreq: 'monthly' },
     { loc: '/warranty/',    priority: '0.6', changefreq: 'monthly' },
     { loc: '/case-studies/', priority: '0.7', changefreq: 'monthly' },
+    { loc: '/why-huntington-solar/', priority: '0.8', changefreq: 'monthly' },
     { loc: '/insights/',    priority: '0.7', changefreq: 'weekly'  },
   ];
 

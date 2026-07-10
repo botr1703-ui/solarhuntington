@@ -1,0 +1,240 @@
+---
+import Layout from '../layouts/Layout.astro';
+import LeadForm from '../components/LeadForm.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import Icon from '../components/Icon.astro';
+import { caseStudies, services } from '../config/site';
+
+const business = import.meta.env.PUBLIC_BUSINESS_NAME || 'Huntington Solar Co';
+const city = import.meta.env.PUBLIC_CITY || 'Huntington';
+const state = import.meta.env.PUBLIC_STATE || 'NY';
+const phoneTel = import.meta.env.PUBLIC_PHONE_TEL || '+16317598716';
+const phoneDisplay = import.meta.env.PUBLIC_PHONE_DISPLAY || '(631) 759-8716';
+const siteUrl =
+  import.meta.env.PUBLIC_SITE_URL?.replace(/\/$/, '') || 'https://www.solarhuntington.com';
+
+// Targets high-commercial-intent "best solar company Long Island" queries
+// (impressions at pos 83-93, no clicks as of the 2026-07 GSC pull). Anchored
+// on the real 4.9/127 aggregateRating and the five committed case studies.
+const title = `The Best Solar Company on Long Island? How to Choose | ${business}`;
+const description =
+  'How to pick the best solar company on Long Island — the questions that actually matter, and how Huntington Solar Co answers them. 4.9/5 across 127 installs, no subcontractors, licensed in Suffolk + Nassau.';
+
+// Why-us differentiators. Mirrors the homepage trust cards but framed as a
+// buyer's comparison checklist for the "best solar company" query intent.
+const reasons = [
+  {
+    glyph: 'users',
+    title: 'No subcontractors — one accountable crew',
+    body: 'The crew that quotes your install is the crew on your roof. Many Long Island solar companies subcontract the actual installation to rotating third-party crews, which is where warranty finger-pointing starts. One team, one warranty, one phone number for the next 25 years.',
+  },
+  {
+    glyph: 'award',
+    title: 'NABCEP-certified, NYSERDA NY-Sun installer',
+    body: "Every install is supervised by a NABCEP Certified PV Installation Professional — the industry's gold-standard credential — and we're on the NYSERDA NY-Sun Quality Solar Installer track, so the per-watt state rebate is baked into your quote automatically.",
+  },
+  {
+    glyph: 'shield',
+    title: 'We service what we sell — and what we didn\'t',
+    body: "A lot of Long Island installers from the 2018-2020 boom are gone, leaving homeowners with orphaned systems no one will touch. We do flat-rate diagnostics on any residential solar system in Suffolk County, so you're picking a company that will still answer the phone in year 12.",
+  },
+  {
+    glyph: 'star',
+    title: '4.9 / 5 across 127 installs',
+    body: 'BBB A+ rated, licensed and insured in Suffolk and Nassau counties, with the license number printed on every contract. The rating below isn\'t a stock photo — it\'s 127 real north-shore installs.',
+  },
+];
+
+// Buyer checklist — the questions to ask any LI solar company before signing.
+const checklist = [
+  'Are you NABCEP-certified, and who specifically supervises my install?',
+  'Do you subcontract the installation, or is it your own W-2 crew?',
+  'Will you service my system if the original hardware fails in year 8?',
+  'Is the NY-Sun rebate already applied in this quote, or added later?',
+  'What does your workmanship + roof-penetration warranty actually cover?',
+  'Can I see recent installs in my town, with real payback numbers?',
+];
+
+// AggregateRating anchored on the same 4.9/127 the homepage LocalBusiness
+// schema ships. Review schema references the case-study quotes so the
+// structured data maps to real, on-page testimonials.
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': ['LocalBusiness', 'SolarEnergyContractor'],
+      '@id': `${siteUrl}/#business`,
+      name: business,
+      url: siteUrl,
+      telephone: phoneTel,
+      priceRange: '$$$',
+      aggregateRating: {
+        '@type': 'AggregateRating',
+        ratingValue: '4.9',
+        reviewCount: '127',
+      },
+      review: caseStudies.map((c) => ({
+        '@type': 'Review',
+        reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' },
+        author: { '@type': 'Person', name: c.customer },
+        reviewBody: c.quote,
+        itemReviewed: { '@id': `${siteUrl}/#business` },
+      })),
+    },
+    {
+      '@type': 'WebPage',
+      '@id': `${siteUrl}/why-huntington-solar/`,
+      url: `${siteUrl}/why-huntington-solar/`,
+      name: title,
+      description: description,
+      about: { '@id': `${siteUrl}/#business` },
+    },
+  ],
+};
+---
+
+<Layout
+  title={title}
+  description={description}
+  canonicalPath="/why-huntington-solar/"
+  jsonLd={jsonLd}
+>
+  <Breadcrumb items={[
+    { label: 'Home', href: '/' },
+    { label: 'Why choose us' },
+  ]} />
+
+  <section class="hero">
+    <div class="wrap hero-inner">
+      <p class="eyebrow">Why {business}</p>
+      <h1>What makes the best solar company on Long Island?</h1>
+      <p class="lead">
+        There are dozens of solar companies on Long Island. The one worth signing with is the one
+        that's still answering the phone in year 20 — with its own crew, its own warranty, and a
+        track record you can actually check. Here's how we stack up, and the questions to ask before
+        you sign with anyone.
+      </p>
+      <p class="lead">
+        <span class="stars" aria-hidden="true">★★★★★</span>
+        <strong>4.9 / 5 across 127 Long Island installs.</strong> BBB A+ · licensed &amp; insured in
+        Suffolk + Nassau.
+      </p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="#contact">Get a free quote</a>
+        <a class="btn btn-ghost" href={`tel:${phoneTel}`}>Call {phoneDisplay}</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="stat-bar">
+    <div class="wrap stat-grid">
+      <div class="stat"><strong>4.9/5</strong><span>Across 127 installs</span></div>
+      <div class="stat"><strong>A+</strong><span>BBB rated</span></div>
+      <div class="stat"><strong>0</strong><span>Subcontractors</span></div>
+      <div class="stat"><strong>25yr</strong><span>Warranty accountability</span></div>
+    </div>
+  </section>
+
+  <section class="why">
+    <div class="wrap">
+      <p class="section-eyebrow">Why homeowners pick us</p>
+      <h2>Four differences that matter over a 25-year decision.</h2>
+      <div class="grid grid-3">
+        {reasons.map((r) => (
+          <article class="why-card">
+            <div class="why-icon"><Icon name={r.glyph} size={26} /></div>
+            <h3>{r.title}</h3>
+            <p>{r.body}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="prose-section">
+    <div class="wrap">
+      <article class="prose-block">
+        <h2>How to compare solar companies on Long Island</h2>
+        <p>
+          The difference between the best solar company on Long Island and a merely cheap one usually
+          shows up years after the install — when an inverter faults, a squirrel chews a wire, or you
+          go to claim a warranty. Price is easy to compare on day one; accountability is what you're
+          actually buying. Before you sign with any Long Island installer, ask these:
+        </p>
+        <ul class="check-list">
+          {checklist.map((q) => <li>{q}</li>)}
+        </ul>
+        <p>
+          If an installer can't give you a straight answer on subcontracting, warranty scope, or
+          servicing older systems, that's your answer. Below are five real installs across the
+          north shore — with the before, the system we specced, and the actual result.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <section class="services">
+    <div class="wrap">
+      <p class="section-eyebrow">Proof, not promises</p>
+      <h2>Five real north-shore installs.</h2>
+      <div class="grid grid-3">
+        {caseStudies.map((c) => (
+          <article class="svc-card">
+            <h3>{c.headline}</h3>
+            <p style="opacity:.85;">{c.town}, {state} · installed {c.installedAt}</p>
+            <p>“{c.quote}”</p>
+            <p style="opacity:.75;">— {c.customer}</p>
+          </article>
+        ))}
+      </div>
+      <p class="trust-foot">
+        <a href="/case-studies/">Read the full case studies with system specs and payback math →</a>
+      </p>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="wrap contact-grid">
+      <div class="contact-copy">
+        <p class="section-eyebrow">Get your free quote</p>
+        <h2>See how we'd handle your roof.</h2>
+        <p class="contact-lead">
+          Tell us your LIPA bill and roof orientation — we'll send back a system size, projected
+          savings, and payback period within one business day. No salesperson visit required to see
+          the number.
+        </p>
+        <p class="contact-call">
+          Want to talk first? <a href={`tel:${phoneTel}`}>Call {phoneDisplay}</a>
+        </p>
+      </div>
+      <div class="contact-form">
+        <LeadForm />
+      </div>
+    </div>
+  </section>
+
+  <section class="related">
+    <div class="wrap">
+      <h2>Keep reading</h2>
+      <div class="related-grid">
+        <a class="related-card" href="/about/">
+          <h3>About {business}</h3>
+          <p>Who we are, our credentials, and where we work across Suffolk County.</p>
+        </a>
+        <a class="related-card" href="/case-studies/">
+          <h3>Case studies</h3>
+          <p>Five real installs with full system specs, incentive math, and payback timelines.</p>
+        </a>
+        <a class="related-card" href="/warranty/">
+          <h3>Our warranty</h3>
+          <p>Exactly what our workmanship and roof-penetration warranty covers, in plain English.</p>
+        </a>
+        <a class="related-card" href="/locations/huntington/">
+          <h3>Solar panels in Huntington</h3>
+          <p>Town-specific permit, ZIP, and incentive details for Huntington, NY.</p>
+        </a>
+      </div>
+      <p class="muted center"><a href="/">← Back to home</a></p>
+    </div>
+  </section>
+</Layout>
