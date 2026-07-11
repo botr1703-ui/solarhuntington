@@ -1,7 +1,8 @@
 import type { APIRoute } from 'astro';
-import { services, areas } from '../config/site';
+import { getCollection } from 'astro:content';
+import { services, areas, insights } from '../config/site';
 
-export const GET: APIRoute = ({ site }) => {
+export const GET: APIRoute = async ({ site }) => {
   const base = (site?.href ?? 'https://www.solarhuntington.com').replace(/\/$/, '');
   const today = new Date().toISOString().split('T')[0];
 
@@ -25,7 +26,21 @@ export const GET: APIRoute = ({ site }) => {
     loc: `/locations/${a.slug}/`, priority: '0.9', changefreq: 'monthly',
   }));
 
-  const all = [...staticPages, ...servicePages, ...areaPages];
+  // Long-form content — individual insight + guide posts. These target the
+  // real search intent (incentives, permits, buyback rates, battery comparison)
+  // and belong in the sitemap alongside the index pages.
+  const insightPages = insights.map(p => ({
+    loc: `/insights/${p.slug}/`, priority: '0.7', changefreq: 'monthly',
+  }));
+
+  const guidesCollection = await getCollection('guides');
+  const guidePages = guidesCollection.map(g => ({
+    loc: `/guides/${g.slug}/`, priority: '0.7', changefreq: 'monthly',
+  }));
+
+  const guidesIndex = [{ loc: '/guides/', priority: '0.7', changefreq: 'weekly' }];
+
+  const all = [...staticPages, ...guidesIndex, ...servicePages, ...areaPages, ...insightPages, ...guidePages];
 
   const xml = [
     '<?xml version="1.0" encoding="UTF-8"?>',

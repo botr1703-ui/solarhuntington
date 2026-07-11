@@ -527,9 +527,11 @@ export const areas: AreaPage[] = [
         ],
       },
       {
-        heading: 'Solar panels in Huntington: permits, ZIPs, and timeline',
+        heading: 'Solar permits in the Town of Huntington: process, timeline, and inspection',
         paragraphs: [
           "If you're pricing solar panels in Huntington, the local details matter as much as the hardware. Every residential system in the Town of Huntington is permitted through the Town of Huntington Building Department at 100 Main Street. Standard roof-mount photovoltaic permits run 2-3 weeks; the electrical side is inspected under a Suffolk County electrical permit, and grid connection is approved by PSEG Long Island. Start to turn-on is usually 6-10 weeks, and we handle the entire paperwork chain for you.",
+          "The Town of Huntington solar permit process runs in three parallel tracks. First, the Building Department reviews the structural and zoning side — signed-and-sealed engineering drawings showing the roof rafters can carry the panel and snow load, the panel layout, and the electrical single-line diagram; residential permit fees typically run $300-$400 and first review comes back in 1-2 weeks. Second, a Suffolk County electrical permit covers the DC and AC disconnects, grounding, and conductor sizing, and clears in about a week. Third, PSEG Long Island reviews the interconnection application and issues Permission to Operate (PTO) — usually 1-2 weeks for systems under 25 kW. Homes inside an incorporated village (Northport Village, Lloyd Harbor, Asharoken) or a historic district add 2-3 weeks of Architectural Review Board review on top.",
+          "Inspection happens after the install, not before. Once the array is up, a Suffolk County electrical inspector visits on-site to confirm the wiring, disconnects, and labeling meet code, then issues the green tag. PSEG swaps in a bidirectional net meter (at no charge) and grants PTO — the final gate before the system can legally export to the grid and start earning net-metering credit. For a step-by-step walkthrough of each approval, see our full Town of Huntington solar permits guide linked below.",
           "We install solar panels across every Huntington ZIP: 11743 (Huntington and Huntington Bay), 11746 (the Huntington Station / Dix Hills side), 11724 (Cold Spring Harbor), and 11721 (Centerport). Roof stock and shading vary by ZIP — the older Huntington-village blocks in 11743 skew toward smaller south-and-west roofs and heritage aesthetics, while newer 11746 construction tends to offer larger, cleaner planes that fit a full 8-10 kW array without compromise.",
           "Because Huntington sits in PSEG Long Island territory, solar panels here earn full retail net metering up to 25 kW — every kWh you export is credited against a kWh you later draw. Combined with the 30% federal Investment Tax Credit and New York's 25% state residential solar credit (capped at $5,000), a typical Huntington homeowner nets $11,000-$18,000 out of pocket on an 8 kW system and reaches payback in 5-7 years.",
         ],
@@ -850,7 +852,7 @@ export const insights: InsightPost[] = [
         heading: 'The two batteries Long Island installs the most',
         paragraphs: [
           "Roughly 90% of battery-pair installs we do across Suffolk County in 2026 use one of two systems: Tesla Powerwall 3 (the big slab on the side of the house) or Enphase IQ Battery 5P (modular, often two or three units stacked in the garage).",
-          "Both are LFP chemistry (lithium iron phosphate — safer thermal profile than older NMC cells), both come with a 10-year warranty, both back up your home during outages, both qualify for the federal 30% ITC and NYSERDA's RBI incentive. The differences are in capacity, output power, modularity, and how they integrate with your inverter.",
+          "Both are LFP chemistry (lithium iron phosphate — safer thermal profile than older NMC cells), both back up your home during outages, and both qualify for the federal 30% ITC and NYSERDA's RBI incentive. Warranties differ: Tesla Powerwall 3 carries a 10-year warranty (70% capacity retention), while the Enphase IQ Battery 5P carries a 15-year warranty (rated to 6,000 cycles). The remaining differences are in capacity, output power, modularity, and how they integrate with your inverter.",
         ],
       },
       {
@@ -867,6 +869,13 @@ export const insights: InsightPost[] = [
           "Tesla Powerwall 3 delivers 11.5 kW continuous output (the highest of any home battery on the market). That is enough to run a central AC compressor + electric oven simultaneously without any load-management config.",
           "Enphase IQ Battery 5P delivers 3.84 kW continuous per unit. A 3-unit install gets you ~11.5 kW continuous — comparable to a single Powerwall — but you have to install three units to get there.",
           "Translation: if you want to back up the whole home (including central AC) during outages, Powerwall 3 single-unit gets you there. With Enphase you need 2–3 units, AND you may need to configure load-controlled circuits to keep the central AC from tripping the system.",
+        ],
+      },
+      {
+        heading: 'AC vs DC coupling — how each battery ties into your solar',
+        paragraphs: [
+          "This is the architectural difference that drives most of the install decisions below. The Enphase IQ Battery 5P is AC-coupled: it has its own embedded grid-forming microinverters and connects on the AC side of your system, so it pairs with essentially any existing solar array regardless of what inverter made the power. The tradeoff is a small double-conversion loss (DC panels to AC, then AC back to DC to charge the battery, then DC to AC on discharge).",
+          "The Tesla Powerwall 3 is a DC-coupled hybrid: it contains its own solar inverter, so on a new install the panels wire straight into the Powerwall on the DC side and charge the battery without an extra conversion. On an existing system with a working inverter, the Powerwall 3 can also AC-couple — you keep your current inverter and add the battery alongside it. DC-coupling is marginally more efficient for new solar-plus-storage; AC-coupling is the more flexible retrofit path. For most Long Island homes the real-world efficiency gap is small enough that existing hardware, not coupling type, should drive the pick.",
         ],
       },
       {
@@ -902,6 +911,7 @@ export const insights: InsightPost[] = [
       rows: [
         ['Usable capacity per unit', '13.5 kWh', '5.0 kWh'],
         ['Continuous output per unit', '11.5 kW', '3.84 kW'],
+        ['Coupling', 'DC-coupled hybrid inverter (integrated solar inverter; AC-couples to existing arrays too)', 'AC-coupled (embedded grid-forming microinverters)'],
         ['Chemistry', 'LFP (lithium iron phosphate)', 'LFP (lithium iron phosphate)'],
         ['Warranty', '10 years / 70% retained capacity', '15 years / 60% retained capacity'],
         ['Unit weight', '287 lb', '174.6 lb'],

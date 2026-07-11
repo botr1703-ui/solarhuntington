@@ -78,6 +78,11 @@ const matrixAreas = HAS_MATRIX.has(slug ?? '') ? areas : [];
 // most relevant service pages.
 const linkHuntingtonLocation = slug === 'residential-solar-installation' || slug === 'free-solar-quote';
 
+// On the battery-storage (Powerwall) page, surface the in-depth
+// Powerwall 3 vs Enphase IQ Battery 5P comparison so shoppers comparing
+// batteries land on the long-form spec breakdown.
+const linkBatteryComparison = slug === 'battery-storage';
+
 // The default contact copy talks about sizing a new system and modeling
 // incentives — right for new-install pages, misleading on the repair /
 // maintenance page (a homeowner with a dead inverter isn't shopping for
@@ -219,6 +224,12 @@ const contactLead = isRepairService
           <a class="related-card" href="/locations/huntington/">
             <h3>Solar installation in Huntington, NY</h3>
             <p>Town permit timeline, PSEG net metering, and what we typically install in Huntington.</p>
+          </a>
+        )}
+        {linkBatteryComparison && (
+          <a class="related-card" href="/insights/tesla-powerwall-vs-enphase-iq-battery-2026/">
+            <h3>Powerwall 3 vs Enphase IQ Battery 5P</h3>
+            <p>Capacity, output, AC vs DC coupling, warranty, and cost — the full side-by-side spec breakdown.</p>
           </a>
         )}
         <a class="related-card" href="/incentives/">
