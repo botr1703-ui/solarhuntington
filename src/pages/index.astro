@@ -14,13 +14,27 @@ const siteUrl =
   'https://solarhuntington.com';
 
 // Title ≤60 chars + description ≤160 chars per Google's SERP truncation
-// (portfolio audit 2026-06-26). 2026-07-04: title leads with the primary
-// service phrase at Long Island scope — the homepage was cannibalizing
-// /locations/huntington/ on "solar huntington"; that page owns the
-// Huntington geo phrase now. Description leads with the LIPA savings
-// outcome since that's the strongest commercial-intent signal.
-const title = 'Long Island Solar Installation · ' + business;
-const description = 'Cut your LIPA bill 60-90% with solar on Long Island. Federal 30% + NY 25% tax credits, free site visit, NABCEP-certified. Suffolk + Nassau.';
+// (portfolio audit 2026-06-26).
+//
+// 2026-07-04: title moved off the Huntington geo phrase — the homepage was
+// cannibalizing /locations/huntington/ on "solar huntington" (#63). That
+// page owns "solar huntington" / "solar panels huntington"; do NOT put
+// those phrases back in this title.
+//
+// 2026-07-27: the remaining problem was that "Long Island Solar
+// Installation" overlapped /services/residential-solar-installation/, so
+// the homepage owned no head term of its own. Title now leads with the
+// commercial provider noun ("solar company") — the one high-intent cluster
+// no page claimed. /why-huntington-solar/ sits in the *informational*
+// slot for that cluster ("The Best Solar Company on Long Island? How to
+// Choose"), so the entity page taking the plain commercial query is a
+// split of intent, not a duplicate. Page ownership is now:
+//   /                            → "long island solar company/companies"
+//   /locations/huntington/       → "solar huntington", "solar panels huntington"
+//   /services/residential-solar-installation/ → "solar installation"
+//   /why-huntington-solar/       → "best solar company long island"
+const title = 'Long Island Solar Company · ' + business;
+const description = 'A Long Island solar company that installs and services what it sells. Cut your LIPA bill 60-90% with 30% federal + 25% NY tax credits. Suffolk + Nassau.';
 
 const heroImg = 'https://images.unsplash.com/photo-1509391366360-2e959784a276?w=2000&q=85&auto=format&fit=crop';
 
@@ -181,14 +195,15 @@ const howToJsonLd = {
     <img class="hero-bg" src={heroImg} alt="Solar panels on a residential rooftop in Huntington, Long Island" loading="eager" fetchpriority="high" />
     <div class="hero-overlay"></div>
     <div class="wrap hero-inner">
-      <p class="eyebrow">Long Island Solar Specialists · Licensed and Insured</p>
+      <p class="eyebrow">Long Island Solar Company · Licensed and Insured</p>
       <h1>
         Solar installation across Long Island.<br />
         Cut your LIPA bill <span class="hero-num">60–90%</span>.
         Pays back in <span class="hero-num">5–7 years</span>.
       </h1>
       <p class="lead">
-        {business} handles <a href="/locations/huntington/">solar installation in Huntington</a> and
+        {business} is a Long Island solar company handling
+        <a href="/locations/huntington/">solar installation in Huntington</a> and
         across Suffolk County's north shore. <strong>30% federal tax credit, NY state incentives,
         25-year warranty.</strong> Free quote, no pressure — we send you the payback math before you commit.
       </p>
