@@ -291,15 +291,10 @@ header .wrap { display: flex; align-items: center; justify-content: space-betwee
 .area-name { font-weight: 700; color: var(--text); font-size: 1.05rem; }
 .area-link { font-size: 0.825rem; color: var(--accent-dark); font-weight: 600; }
 
-/* === Testimonials === */
-.testimonials { padding: 5rem 0; background: var(--bg); }
-.testimonials h2 { margin-bottom: 2.25rem; }
-.t-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.85rem; box-shadow: var(--shadow-sm); }
-.stars { color: var(--accent); font-size: 1.1rem; letter-spacing: 0.08em; margin-bottom: 0.75rem; }
-.t-body { font-size: 1.02rem; color: var(--text); line-height: 1.6; margin-bottom: 1.1rem; }
-.t-author { display: flex; flex-direction: column; gap: 0.1rem; }
-.t-author strong { color: var(--text); font-size: 0.95rem; }
-.t-author span { color: var(--muted); font-size: 0.85rem; }
+/* === Testimonials ===
+   2026-08-01: testimonial card + star-rating styles removed along with the
+   invented reviews they rendered. Nothing on this site is entitled to a star
+   rating or a customer quote until real, attributable reviews exist. */
 
 /* === FAQ === */
 .faq { padding: 5rem 0; background: var(--bg-soft); }
@@ -513,9 +508,12 @@ footer ul { list-style: none; padding: 0; margin: 0; display: flex; flex-directi
 .case-col ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.45rem; font-size: 0.93rem; color: var(--text-2); line-height: 1.55; }
 .case-col li { position: relative; padding-left: 1rem; }
 .case-col li::before { content: '·'; position: absolute; left: 0; color: var(--accent-dark); font-weight: 800; }
-.case-quote { border-left: 3px solid var(--accent); padding: 0.5rem 0 0.5rem 1.1rem; margin: 0; font-style: italic; color: var(--text-2); }
-.case-quote p { margin: 0 0 0.5rem; font-size: 1rem; line-height: 1.6; }
-.case-quote cite { font-style: normal; font-size: 0.85rem; color: var(--muted); font-weight: 600; }
+/* Plain-language disclaimer callout — used on /case-studies/ to make clear
+   the builds shown are illustrative examples, not completed projects. */
+.disclaimer { border: 1px solid var(--border); border-left: 4px solid var(--accent); border-radius: var(--radius); background: var(--bg-soft); padding: 1.5rem 1.6rem; }
+.disclaimer h2 { font-size: 1.05rem; margin-bottom: 0.75rem; }
+.disclaimer p { font-size: 0.97rem; margin-bottom: 0.85rem; }
+.disclaimer p:last-child { margin-bottom: 0; }
 
 /* === Nearby-towns strip on location pages === */
 .nearby { padding: 3rem 0; background: var(--bg-soft); text-align: center; }

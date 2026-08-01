@@ -11,10 +11,17 @@ const phoneDisplay = import.meta.env.PUBLIC_PHONE_DISPLAY || '(631) 759-8716';
 const siteUrl =
   import.meta.env.PUBLIC_SITE_URL?.replace(/\/$/, '') || 'https://www.solarhuntington.com';
 
-const title = `Long Island Solar Installs — Case Studies | ${business}`;
-const description = `Anonymized case studies of ${business} installs across Huntington, Northport, Cold Spring Harbor, Centerport, and surrounding north-shore towns. Real systems, real savings, real payback math.`;
+// 2026-08-01 liability fix: this page previously presented five invented
+// customer stories — named customers, pull-quotes, install dates — and
+// published them as Review schema with 5-star ratings. All of that is gone.
+// What remains is the system-sizing and payback math, framed for what it is:
+// illustrative examples. Do NOT add customer names, quotes, install dates,
+// Review/AggregateRating schema, or "real install" framing back to this page.
+const title = `Example Long Island Solar System Builds | ${business}`;
+const description = `Five illustrative Long Island solar builds — system sizing, panel and inverter specs, and projected payback math for typical Huntington, Northport, Cold Spring Harbor, and Centerport homes. Example scenarios, not completed projects.`;
 
-// JSON-LD: CollectionPage + ItemList of installs.
+// JSON-LD: CollectionPage + ItemList of example builds. Deliberately carries
+// no Review, Rating, or AggregateRating nodes.
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'CollectionPage',
@@ -33,50 +40,46 @@ const jsonLd = {
     })),
   },
 };
-
-
-const jsonLdReviews = {
-  '@context': 'https://schema.org',
-  '@graph': caseStudies.map((c) => ({
-    '@type': 'Review',
-    author: {
-      '@type': 'Person',
-      name: c.customer,
-    },
-    reviewBody: c.quote,
-    reviewRating: {
-      '@type': 'Rating',
-      ratingValue: '5',
-      bestRating: '5',
-    },
-    itemReviewed: { '@id': `${siteUrl}/#business` },
-    locationCreated: {
-      '@type': 'Place',
-      name: `${c.town}, ${state}`,
-    },
-  })),
-};
 ---
 
-<Layout title={title} description={description} canonicalPath="/case-studies/" jsonLd={jsonLd} jsonLdExtra={jsonLdReviews}>
+<Layout title={title} description={description} canonicalPath="/case-studies/" jsonLd={jsonLd}>
   <Breadcrumb items={[
     { label: 'Home', href: '/' },
-    { label: 'Case studies' },
+    { label: 'Example builds' },
   ]} />
 
   <section class="hero">
     <div class="wrap hero-inner">
-      <p class="eyebrow">Real Long Island installs · Anonymized</p>
-      <h1>Five Huntington-area homes, five solar stories.</h1>
+      <p class="eyebrow">Example builds · Illustrative scenarios</p>
+      <h1>What a typical Long Island solar build looks like.</h1>
       <p class="lead">
-        Every install is different — roof, usage, ambitions, budget. These are five real-shape
-        installs from across the north shore. Customer names initialized; everything else is
-        accurate to the actual job.
+        Every roof is different — orientation, usage, shade, budget. Below are five worked
+        examples showing how a north-shore home gets sized, what hardware goes on it, and how
+        the payback math comes out.
       </p>
       <div class="hero-ctas">
-        <a class="btn btn-primary" href="#contact">Get your install quoted</a>
+        <a class="btn btn-primary" href="#contact">Get your own numbers</a>
         <a class="btn btn-ghost" href={`tel:${phoneTel}`}>Call {phoneDisplay}</a>
       </div>
+    </div>
+  </section>
+
+  <section class="prose-section" style="padding-bottom:0;">
+    <div class="wrap">
+      <article class="prose-block disclaimer">
+        <h2>Please read this first</h2>
+        <p>
+          These are illustrative examples, not records of specific completed projects. Each one
+          is modelled on typical Long Island home types, system sizes, PSEG Long Island rates,
+          and the federal and New York State incentives available in 2026. The numbers are
+          projections built from that math — they are not measured results from a particular
+          customer's home, and no customer is being quoted or identified anywhere on this page.
+        </p>
+        <p>
+          Your own numbers will differ. Send us your actual LIPA bill and we will model your
+          roof specifically.
+        </p>
+      </article>
     </div>
   </section>
 
@@ -93,34 +96,30 @@ const jsonLdReviews = {
               'https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?w=900&q=80&auto=format&fit=crop',
               'https://images.unsplash.com/photo-1509391366360-2e959784a276?w=900&q=80&auto=format&fit=crop',
             ][i % 5]}
-            alt={"Completed solar install — " + c.town + ", " + state}
+            alt={"Rooftop solar array of the kind described in this " + c.town + ", " + state + " example"}
             loading="lazy"
             style="width:100%;height:auto;display:block;border-radius:8px 8px 0 0;"
           />
           <header class="case-head">
             <div>
-              <p class="case-meta">{c.town}, {state}{c.installedAt ? ` · installed ${c.installedAt}` : ''}</p>
+              <p class="case-meta">{c.town}, {state} · example scenario</p>
               <h2>{c.headline}</h2>
             </div>
           </header>
           <div class="case-body">
             <div class="case-col">
-              <p class="case-label">Before</p>
+              <p class="case-label">Starting point</p>
               <ul>{c.before.map((b) => <li>{b}</li>)}</ul>
             </div>
             <div class="case-col">
-              <p class="case-label">What we installed</p>
+              <p class="case-label">System spec</p>
               <ul>{c.system.map((s) => <li>{s}</li>)}</ul>
             </div>
             <div class="case-col">
-              <p class="case-label">After</p>
+              <p class="case-label">Projected result</p>
               <ul>{c.after.map((a) => <li>{a}</li>)}</ul>
             </div>
           </div>
-          <blockquote class="case-quote">
-            <p>&ldquo;{c.quote}&rdquo;</p>
-            <cite>— {c.customer}, {c.town}</cite>
-          </blockquote>
         </article>
       ))}
     </div>
@@ -129,8 +128,8 @@ const jsonLdReviews = {
   <section id="contact" class="contact">
     <div class="wrap contact-grid">
       <div class="contact-copy">
-        <p class="section-eyebrow">Your install, your math</p>
-        <h2>Five different installs, one consistent approach.</h2>
+        <p class="section-eyebrow">Your roof, your math</p>
+        <h2>The examples above are generic. Your quote won't be.</h2>
         <p class="contact-lead">
           We use your actual LIPA bill, your actual roof, your actual usage to size the system
           and project the payback. No two quotes look the same — and that's the point. Send us

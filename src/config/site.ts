@@ -105,7 +105,7 @@ export const services: ServicePage[] = [
       },
       {
         q: 'Do I need HOA approval?',
-        a: 'NY Real Property Law § 335-a explicitly protects homeowners\' right to install solar — HOAs and co-ops cannot prohibit it. They can request reasonable aesthetic adjustments (panel color, mounting style), but they cannot block the system. We have handled HOA submissions across Northport, Centerport, and Cold Spring Harbor.',
+        a: 'NY Real Property Law § 335-a explicitly protects homeowners\' right to install solar — HOAs and co-ops cannot prohibit it. They can request reasonable aesthetic adjustments (panel color, mounting style), but they cannot block the system.',
       },
       {
         q: 'What happens during a power outage?',
@@ -130,7 +130,7 @@ export const services: ServicePage[] = [
       {
         heading: 'Financing structures we work with',
         paragraphs: [
-          "Direct purchase remains the highest-return option for businesses that can use the depreciation. Our typical commercial customer pays back the net-of-incentives cost in 3–5 years and owns the system outright.",
+          "Direct purchase remains the highest-return option for businesses that can use the depreciation. A commercial system bought outright typically pays back the net-of-incentives cost in 3–5 years, and the business owns the system at the end of it.",
           "For businesses that cannot use depreciation (non-profits, churches, low-tax-burden LLCs), Power Purchase Agreements (PPAs) work better. A third-party finances + owns the system; you sign a 15-to-25-year contract to buy the solar electricity at a fixed rate below your current PSEG rate. Zero upfront, immediate bill reduction.",
           "Operating leases sit in between — flat monthly payment, system reverts to your ownership after the term.",
         ],
@@ -154,7 +154,7 @@ export const services: ServicePage[] = [
     faq: [
       {
         q: 'What size buildings make sense for commercial solar?',
-        a: 'We have installed systems from 20kW (small office / restaurant) to 800kW (mid-size warehouse). The economics tighten below 20kW because soft-costs (permits, design, interconnection studies) become a higher percentage of total cost. Above ~250kW, PSEG triggers a more involved interconnection study — adds 2-3 months to the timeline but doesn\'t change project viability.',
+        a: 'Commercial systems on Long Island typically run from 20kW (small office / restaurant) to 800kW (mid-size warehouse). The economics tighten below 20kW because soft-costs (permits, design, interconnection studies) become a higher percentage of total cost. Above ~250kW, PSEG triggers a more involved interconnection study — adds 2-3 months to the timeline but doesn\'t change project viability.',
       },
       {
         q: 'How long is the install for a commercial system?',
@@ -322,27 +322,29 @@ export type AboutPage = {
 };
 
 /**
- * Case-study content — anonymized real-shape installs that flesh out
- * the homepage testimonials. Renders on /case-studies. Each phantom
- * fills its own; template renders whatever's present.
+ * Example system builds — illustrative, modelled scenarios showing how a
+ * typical Long Island home is sized, specced, and paid back. Renders on
+ * /case-studies.
+ *
+ * IMPORTANT (2026-08-01 liability fix): these are NOT records of completed
+ * jobs and must never be presented as such. Do not add customer names,
+ * quotes, testimonials, install dates, ratings, or Review/AggregateRating
+ * schema to this data or to any template that renders it. Scenario inputs
+ * (home type, usage, roof) and outputs (system size, savings, payback) are
+ * modelled from published PSEG Long Island rates and standard incentive
+ * math — keep them framed as projections.
  */
 export type CaseStudy = {
   slug: string;
   /** Headline displayed on the card + page hero (e.g. "Greenlawn ranch · 8 kW + Powerwall"). */
   headline: string;
   town: string;
-  /** Customer first-name + initial, anonymized. */
-  customer: string;
-  /** "Before" snapshot (bill, system age, situation). */
+  /** Starting-point snapshot (bill, system age, situation). */
   before: string[];
-  /** What was installed. */
+  /** The system spec for the scenario. */
   system: string[];
-  /** The "after" outcome (bill, savings, payback). */
+  /** Projected outcome (bill, savings, payback). */
   after: string[];
-  /** A pull-quote — keep under ~280 chars. */
-  quote: string;
-  /** Optional install date for context. */
-  installedAt?: string;
 };
 
 export const caseStudies: CaseStudy[] = [
@@ -350,11 +352,9 @@ export const caseStudies: CaseStudy[] = [
     slug: 'greenlawn-ranch-powerwall',
     headline: 'Greenlawn ranch · 8 kW system + Powerwall',
     town: 'Greenlawn',
-    customer: 'Mike R.',
-    installedAt: '2024-08',
     before: [
       '3-bed ranch, 1,900 sqft, electric heat pump + central AC',
-      'LIPA bill averaged $280/mo, peaking $420 in August',
+      'LIPA bill averages $280/mo, peaking $420 in August',
       'South-facing roof, 8-year-old shingles, no tree shading',
     ],
     system: [
@@ -363,22 +363,18 @@ export const caseStudies: CaseStudy[] = [
       'Tesla Powerwall 3 (13.5 kWh) added for outage backup',
     ],
     after: [
-      'PSEG bill now $18/mo (minimum delivery charge only)',
+      'PSEG bill projects to $18/mo (minimum delivery charge only)',
       'Powerwall covers fridge, lights, internet, central AC during outages',
-      'Annual savings $3,150 — net-of-incentives payback hit in year 6',
+      'Annual savings $3,150 — net-of-incentives payback in year 6',
     ],
-    quote:
-      "Bill went from $280/mo to $18 (the PSEG minimum). System paid for itself in year 6. Wish I had done it sooner.",
   },
   {
     slug: 'northport-village-historic',
     headline: 'Northport Village · 6.6 kW low-profile install',
     town: 'Northport',
-    customer: 'Sarah K.',
-    installedAt: '2024-10',
     before: [
       "1920s village home, 1,400 sqft, oil heat + window AC",
-      'LIPA bill averaged $145/mo year-round',
+      'LIPA bill averages $145/mo year-round',
       'Historic district — Village Building Department review required',
     ],
     system: [
@@ -387,23 +383,19 @@ export const caseStudies: CaseStudy[] = [
       'Low-profile black-on-black panels for aesthetic compliance',
     ],
     after: [
-      'PSEG bill drops to ~$22/mo on average across the year',
+      'PSEG bill projects to ~$22/mo on average across the year',
       'Annual savings $1,475 — payback in year 7',
-      'Historic district approval secured in 3 weeks (no rejection)',
+      'Historic-district review adds roughly 3 weeks to the permit timeline',
     ],
-    quote:
-      "They handled everything — town permits, PSEG interconnection, even the federal tax credit paperwork. Zero hassle.",
   },
   {
     slug: 'huntington-station-with-battery',
     headline: 'Huntington Station · 10 kW + storm-backup Powerwall',
     town: 'Huntington Station',
-    customer: 'David L.',
-    installedAt: '2024-11',
     before: [
       '4-bed split-level, 2,400 sqft, gas heat + central AC',
-      'LIPA bill averaged $340/mo, frequent storm outages',
-      'Lost power 4× in 2023 — partial fridge + freezer loss each time',
+      'LIPA bill averages $340/mo, frequent storm outages',
+      'Repeat multi-hour outages — fridge + freezer loss each time',
     ],
     system: [
       '10.2 kW system — 27 × REC Alpha Pure-R 380W panels',
@@ -411,22 +403,18 @@ export const caseStudies: CaseStudy[] = [
       'Enphase IQ8M microinverters',
     ],
     after: [
-      "PSEG bill ~$24/mo on average; battery kicks in within ~1 second of an outage",
+      "PSEG bill projects to ~$24/mo on average; battery picks up the load within ~1 second of an outage",
       'Annual savings $3,750; payback in year 5',
-      "Survived 2025 nor'easter outage with full lights + heat pump auxiliary running",
+      "Battery sized to carry lights plus heat-pump auxiliary through a multi-hour nor'easter outage",
     ],
-    quote:
-      "Added a Powerwall to the system. When the nor'easter knocked out power last winter, we never lost the lights.",
   },
   {
     slug: 'cold-spring-harbor-large-roof',
     headline: 'Cold Spring Harbor estate · 14 kW, multi-string',
     town: 'Cold Spring Harbor',
-    customer: 'Jennifer T.',
-    installedAt: '2024-06',
     before: [
       '5-bed colonial, 4,200 sqft, geothermal + pool heater',
-      'LIPA bill averaged $580/mo, peak $890 in summer',
+      'LIPA bill averages $580/mo, peak $890 in summer',
       'Lloyd Harbor Architectural Review Board approval needed',
     ],
     system: [
@@ -435,22 +423,18 @@ export const caseStudies: CaseStudy[] = [
       'Two-roof-plane install (south + west) maximized output',
     ],
     after: [
-      'PSEG bill drops 78% — average $128/mo',
+      'PSEG bill projects to drop 78% — average $128/mo',
       'Annual savings $5,420; payback in year 6',
-      'Lloyd Harbor ARB approval secured with low-profile black-on-black panels',
+      'Low-profile black-on-black panels specified for Lloyd Harbor ARB review',
     ],
-    quote:
-      "We had been quoted by three other installers — only Huntington Solar Co handled the Lloyd Harbor ARB submission without complaint. The math they sent was the most detailed.",
   },
   {
     slug: 'centerport-rescue-install',
     headline: 'Centerport service rescue · failed inverter recovery',
     town: 'Centerport',
-    customer: 'Rob D.',
-    installedAt: '2025-02',
     before: [
       'Existing 7 kW system from 2017 — original installer out of business',
-      'System produced zero for 4 months, monitoring app showed "offline"',
+      'System producing zero for 4 months, monitoring app showing "offline"',
       'PSEG bill back to pre-solar levels: ~$220/mo',
     ],
     system: [
@@ -459,12 +443,10 @@ export const caseStudies: CaseStudy[] = [
       'Brought monitoring back online; added Enphase IQ Battery 5P (5 kWh)',
     ],
     after: [
-      'System producing at 102% of original spec (microinverters more efficient than the old string setup)',
-      'PSEG bill back to ~$28/mo; battery handles outage backup',
+      'System projects to produce at 102% of original spec (microinverters more efficient than the old string setup)',
+      'PSEG bill projects back to ~$28/mo; battery handles outage backup',
       "Total repair + battery upgrade: $11,400 net — recovered in year 3 vs replacing the system entirely (~$22k)",
     ],
-    quote:
-      "I'd been told by two other installers that I needed to rip out and replace everything. Huntington Solar Co fixed it for less than half the cost.",
   },
 ];
 
@@ -476,7 +458,7 @@ export const aboutPage: AboutPage = {
     {
       heading: 'Who we are',
       paragraphs: [
-        "Huntington Solar Co is a small team of NABCEP-certified solar installers based on the north shore of Suffolk County. We do design, engineering, permits, installation, and post-install service ourselves — same crew, every step. We don't subcontract.",
+        "Huntington Solar Co is a small solar team based on the north shore of Suffolk County. We do design, engineering, permits, installation, and post-install service ourselves — same crew, every step. We don't subcontract.",
         "We started doing solar on Long Island because the math here is the most compelling in the country: LIPA rates are roughly 2x the national average, federal and NY State incentives stack to ~50% of system cost, and PSEG net-metering means every kWh you produce offsets one at full retail rate. Solar on a north-shore home pays itself off in 5-7 years on average and runs another 20 on warranty after that.",
       ],
     },
@@ -490,18 +472,15 @@ export const aboutPage: AboutPage = {
     {
       heading: 'What sets us apart on Long Island',
       paragraphs: [
-        "Three things that matter most for solar on LI specifically. First — local crews based on the north shore. Most installs across Huntington, Northport, Centerport, Greenlawn, Cold Spring Harbor are under 30 minutes from our base. Same-day response on most service calls. Second — we service systems we didn't install. Plenty of LI homeowners have orphaned solar from installers who went under during the 2018-2020 industry shakeout; we pick those up at flat-rate diagnostic pricing. Third — we don't lock you into one manufacturer. Tesla, Enphase, Q Cells, REC, SolarEdge, FranklinWH — we design for your roof and budget, not for a brand kickback.",
+        "Three things that matter most for solar on LI specifically. First — local crews based on the north shore. Huntington, Northport, Centerport, Greenlawn, and Cold Spring Harbor are all under 30 minutes from our base. Second — we service systems we didn't install. Plenty of LI homeowners have orphaned solar from installers who went under during the 2018-2020 industry shakeout; we pick those up at flat-rate diagnostic pricing. Third — we don't lock you into one manufacturer. Tesla, Enphase, Q Cells, REC, SolarEdge, FranklinWH — we design for your roof and budget, not for a brand kickback.",
       ],
     },
   ],
-  certifications: [
-    'NABCEP Certified PV Installation Professional',
-    'NYSERDA NY-Sun participating installer (Quality Solar Installer track)',
-    'Licensed + insured in Suffolk + Nassau Counties',
-    'Tesla Powerwall Certified Installer',
-    'Enphase Platinum Installer (microinverters + IQ Battery)',
-    'BBB A+ rated · 4.9/5 across 127 installs',
-  ],
+  // 2026-08-01 liability fix: the credentials list previously published
+  // NABCEP / NYSERDA / Tesla / Enphase / BBB claims and a 4.9-of-127 rating
+  // that could not be substantiated. Left empty deliberately. Do NOT
+  // repopulate without a verifiable certificate or profile URL for each
+  // line, and never restate a rating or review count here.
   serviceAreaCopy:
     "We service all of Suffolk County's north shore and into Nassau where it makes geographic sense — Huntington, Huntington Station, Greenlawn, Centerport, Northport, Cold Spring Harbor, Lloyd Harbor, Eaton's Neck, Halesite, East Northport, Smithtown, Commack. For installs further east or in Nassau interior, we refer to trusted partners.",
 };
@@ -577,7 +556,7 @@ export const areas: AreaPage[] = [
       {
         heading: 'Common Greenlawn installs',
         paragraphs: [
-          "Typical Greenlawn install: 7-9 kW residential system, $14k-$17k net after stacked incentives, payback in 6 years. Battery pairing is rising — Larkfield Road area customers cite PSEG storm-outage frequency as the trigger.",
+          "Typical Greenlawn install: 7-9 kW residential system, $14k-$17k net after stacked incentives, payback in 6 years. Battery pairing comes up often around the Larkfield Road area, where PSEG storm-outage frequency is the usual trigger.",
         ],
       },
     ],
@@ -593,13 +572,13 @@ export const areas: AreaPage[] = [
         heading: 'Solar in Northport, NY',
         paragraphs: [
           "Northport's a mix of village core (smaller historic homes, often with detached garages), Asharoken (waterfront, special wind-load and corrosion considerations), and the more standard suburban housing inland. Each has its own install playbook.",
-          "Village historic-district homes sometimes require additional review by the Northport Village Building Department — we have submitted across the district successfully. Asharoken waterfront installs need marine-grade mounts and tilt panels away from prevailing salt-spray; we spec hardware accordingly.",
+          "Village historic-district homes sometimes require additional review by the Northport Village Building Department. Asharoken waterfront installs need marine-grade mounts and tilt panels away from prevailing salt-spray; we spec hardware accordingly.",
         ],
       },
       {
         heading: "What's different about Northport solar",
         paragraphs: [
-          "Power outages along Asharoken Avenue + Eaton's Neck happen more often than the LI average — single-feed lines and storm-surge proximity. Battery storage is much more commonly specced here than in Huntington proper; ~60% of our Northport installs include a Tesla Powerwall or equivalent.",
+          "Power outages along Asharoken Avenue + Eaton's Neck happen more often than the LI average — single-feed lines and storm-surge proximity. That makes battery storage a more common part of the conversation here than in Huntington proper.",
         ],
       },
     ],
@@ -615,7 +594,7 @@ export const areas: AreaPage[] = [
         heading: 'Solar in Cold Spring Harbor, NY',
         paragraphs: [
           "Cold Spring Harbor sits at the western edge of Suffolk County, straddling the Nassau line. Housing stock is heavily weighted toward larger homes on larger lots — typical CSH install is 9-14 kW (about 24-36 panels). Roofs are commonly slate, architectural shingle, or premium metal — all install-friendly with the right mount.",
-          "We have completed multiple installs in the historic Lloyd Harbor / CSH overlap area; the Lloyd Harbor Architectural Review Board has a clear approval process for solar that we navigate routinely. Allow an extra 4-6 weeks of permit timeline for ARB-reviewed installs.",
+          "The Lloyd Harbor Architectural Review Board has a defined approval process for solar in the historic Lloyd Harbor / CSH overlap area. Allow an extra 4-6 weeks of permit timeline for ARB-reviewed installs.",
         ],
       },
       {
@@ -851,7 +830,7 @@ export const insights: InsightPost[] = [
       {
         heading: 'The two batteries Long Island installs the most',
         paragraphs: [
-          "Roughly 90% of battery-pair installs we do across Suffolk County in 2026 use one of two systems: Tesla Powerwall 3 (the big slab on the side of the house) or Enphase IQ Battery 5P (modular, often two or three units stacked in the garage).",
+          "Two systems dominate the battery-pair conversation across Suffolk County in 2026: Tesla Powerwall 3 (the big slab on the side of the house) and Enphase IQ Battery 5P (modular, often two or three units stacked in the garage).",
           "Both are LFP chemistry (lithium iron phosphate — safer thermal profile than older NMC cells), both back up your home during outages, and both qualify for the federal 30% ITC and NYSERDA's RBI incentive. Warranties differ: Tesla Powerwall 3 carries a 10-year warranty (70% capacity retention), while the Enphase IQ Battery 5P carries a 15-year warranty (rated to 6,000 cycles). The remaining differences are in capacity, output power, modularity, and how they integrate with your inverter.",
         ],
       },

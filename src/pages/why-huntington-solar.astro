@@ -14,14 +14,21 @@ const siteUrl =
   import.meta.env.PUBLIC_SITE_URL?.replace(/\/$/, '') || 'https://www.solarhuntington.com';
 
 // Targets high-commercial-intent "best solar company Long Island" queries
-// (impressions at pos 83-93, no clicks as of the 2026-07 GSC pull). Anchored
-// on the real 4.9/127 aggregateRating and the five committed case studies.
-const title = `The Best Solar Company on Long Island? How to Choose | ${business}`;
+// (impressions at pos 83-93, no clicks as of the 2026-07 GSC pull).
+//
+// 2026-08-01 liability fix: this page was originally anchored on a 4.9-of-127
+// aggregateRating and five invented customer testimonials rendered as Review
+// schema. Both are gone. The page now stands on the buyer's checklist — how
+// to evaluate ANY Long Island installer — plus how we answer those questions
+// about our own process. Do NOT re-add ratings, review counts, install
+// counts, BBB claims, certifications, or customer quotes to this page.
+const title = `How to Choose a Solar Company on Long Island | ${business}`;
 const description =
-  'How to pick the best solar company on Long Island — the questions that actually matter, and how Huntington Solar Co answers them. 4.9/5 across 127 installs, no subcontractors, licensed in Suffolk + Nassau.';
+  'How to pick a solar company on Long Island — the questions that actually matter about subcontracting, warranty scope, and long-term service, and how Huntington Solar Co answers them.';
 
-// Why-us differentiators. Mirrors the homepage trust cards but framed as a
-// buyer's comparison checklist for the "best solar company" query intent.
+// Why-us differentiators — framed as a buyer's comparison checklist for the
+// "best solar company" query intent. Every item here describes how we work,
+// not a credential or a track record.
 const reasons = [
   {
     glyph: 'users',
@@ -29,19 +36,14 @@ const reasons = [
     body: 'The crew that quotes your install is the crew on your roof. Many Long Island solar companies subcontract the actual installation to rotating third-party crews, which is where warranty finger-pointing starts. One team, one warranty, one phone number for the next 25 years.',
   },
   {
-    glyph: 'award',
-    title: 'NABCEP-certified, NYSERDA NY-Sun installer',
-    body: "Every install is supervised by a NABCEP Certified PV Installation Professional — the industry's gold-standard credential — and we're on the NYSERDA NY-Sun Quality Solar Installer track, so the per-watt state rebate is baked into your quote automatically.",
+    glyph: 'document',
+    title: 'The incentive math, itemized in writing',
+    body: 'Gross cost, the federal 30% credit, the NY State 25% credit, the NYSERDA NY-Sun per-watt rebate, net cost, and year-by-year cash flow — all itemized in the quote, before you sign anything. If the economics do not work on your roof, we say so.',
   },
   {
     glyph: 'shield',
     title: 'We service what we sell — and what we didn\'t',
     body: "A lot of Long Island installers from the 2018-2020 boom are gone, leaving homeowners with orphaned systems no one will touch. We do flat-rate diagnostics on any residential solar system in Suffolk County, so you're picking a company that will still answer the phone in year 12.",
-  },
-  {
-    glyph: 'star',
-    title: '4.9 / 5 across 127 installs',
-    body: 'BBB A+ rated, licensed and insured in Suffolk and Nassau counties, with the license number printed on every contract. The rating below isn\'t a stock photo — it\'s 127 real north-shore installs.',
   },
 ];
 
@@ -55,9 +57,9 @@ const checklist = [
   'Can I see recent installs in my town, with real payback numbers?',
 ];
 
-// AggregateRating anchored on the same 4.9/127 the homepage LocalBusiness
-// schema ships. Review schema references the case-study quotes so the
-// structured data maps to real, on-page testimonials.
+// 2026-08-01 liability fix: the LocalBusiness node here previously carried an
+// aggregateRating (4.9 / 127) and a review array built from invented customer
+// quotes. Both removed. This node must stay rating-free and review-free.
 const jsonLd = {
   '@context': 'https://schema.org',
   '@graph': [
@@ -68,18 +70,6 @@ const jsonLd = {
       url: siteUrl,
       telephone: phoneTel,
       priceRange: '$$$',
-      aggregateRating: {
-        '@type': 'AggregateRating',
-        ratingValue: '4.9',
-        reviewCount: '127',
-      },
-      review: caseStudies.map((c) => ({
-        '@type': 'Review',
-        reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' },
-        author: { '@type': 'Person', name: c.customer },
-        reviewBody: c.quote,
-        itemReviewed: { '@id': `${siteUrl}/#business` },
-      })),
     },
     {
       '@type': 'WebPage',
@@ -107,17 +97,12 @@ const jsonLd = {
   <section class="hero">
     <div class="wrap hero-inner">
       <p class="eyebrow">Why {business}</p>
-      <h1>What makes the best solar company on Long Island?</h1>
+      <h1>How to choose a solar company on Long Island.</h1>
       <p class="lead">
         There are dozens of solar companies on Long Island. The one worth signing with is the one
-        that's still answering the phone in year 20 — with its own crew, its own warranty, and a
-        track record you can actually check. Here's how we stack up, and the questions to ask before
-        you sign with anyone.
-      </p>
-      <p class="lead">
-        <span class="stars" aria-hidden="true">★★★★★</span>
-        <strong>4.9 / 5 across 127 Long Island installs.</strong> BBB A+ · licensed &amp; insured in
-        Suffolk + Nassau.
+        that's still answering the phone in year 20 — with its own crew, its own warranty, and
+        straight answers to the questions below. Here's what to ask before you sign with anyone,
+        and how we answer.
       </p>
       <div class="hero-ctas">
         <a class="btn btn-primary" href="#contact">Get a free quote</a>
@@ -126,19 +111,13 @@ const jsonLd = {
     </div>
   </section>
 
-  <section class="stat-bar">
-    <div class="wrap stat-grid">
-      <div class="stat"><strong>4.9/5</strong><span>Across 127 installs</span></div>
-      <div class="stat"><strong>A+</strong><span>BBB rated</span></div>
-      <div class="stat"><strong>0</strong><span>Subcontractors</span></div>
-      <div class="stat"><strong>25yr</strong><span>Warranty accountability</span></div>
-    </div>
-  </section>
+  {/* 2026-08-01: stat bar removed — it published a 4.9/5 rating, a 127-install
+      count, and a BBB A+ grade, none of which could be substantiated. */}
 
   <section class="why">
     <div class="wrap">
-      <p class="section-eyebrow">Why homeowners pick us</p>
-      <h2>Four differences that matter over a 25-year decision.</h2>
+      <p class="section-eyebrow">How we work</p>
+      <h2>Three differences that matter over a 25-year decision.</h2>
       <div class="grid grid-3">
         {reasons.map((r) => (
           <article class="why-card">
@@ -166,8 +145,9 @@ const jsonLd = {
         </ul>
         <p>
           If an installer can't give you a straight answer on subcontracting, warranty scope, or
-          servicing older systems, that's your answer. Below are five real installs across the
-          north shore — with the before, the system we specced, and the actual result.
+          servicing older systems, that's your answer. Below are five worked examples of how a
+          north-shore system gets sized — the starting point, the hardware, and the projected
+          payback.
         </p>
       </article>
     </div>
@@ -175,20 +155,23 @@ const jsonLd = {
 
   <section class="services">
     <div class="wrap">
-      <p class="section-eyebrow">Proof, not promises</p>
-      <h2>Five real north-shore installs.</h2>
+      <p class="section-eyebrow">What the math looks like</p>
+      <h2>Five example north-shore builds.</h2>
+      <p style="max-width:60ch;margin-bottom:1.75rem;opacity:.85;">
+        These are illustrative examples modelled on typical Long Island home types, system sizes,
+        and PSEG Long Island rates — not records of specific completed projects.
+      </p>
       <div class="grid grid-3">
         {caseStudies.map((c) => (
           <article class="svc-card">
             <h3>{c.headline}</h3>
-            <p style="opacity:.85;">{c.town}, {state} · installed {c.installedAt}</p>
-            <p>“{c.quote}”</p>
-            <p style="opacity:.75;">— {c.customer}</p>
+            <p style="opacity:.85;">{c.town}, {state} · example scenario</p>
+            <p>{c.system[0]}</p>
           </article>
         ))}
       </div>
       <p class="trust-foot">
-        <a href="/case-studies/">Read the full case studies with system specs and payback math →</a>
+        <a href="/case-studies/">See the full example builds with system specs and payback math →</a>
       </p>
     </div>
   </section>
@@ -219,11 +202,11 @@ const jsonLd = {
       <div class="related-grid">
         <a class="related-card" href="/about/">
           <h3>About {business}</h3>
-          <p>Who we are, our credentials, and where we work across Suffolk County.</p>
+          <p>Who we are, how we work, and where we work across Suffolk County.</p>
         </a>
         <a class="related-card" href="/case-studies/">
-          <h3>Case studies</h3>
-          <p>Five real installs with full system specs, incentive math, and payback timelines.</p>
+          <h3>Example builds</h3>
+          <p>Five illustrative builds with full system specs, incentive math, and payback timelines.</p>
         </a>
         <a class="related-card" href="/warranty/">
           <h3>Our warranty</h3>

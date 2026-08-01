@@ -67,7 +67,7 @@ const firstArea = areas[0];
               <a class="nav-menu-link" href="/financing/" role="menuitem">Financing</a>
               <a class="nav-menu-link" href="/process/" role="menuitem">Our process</a>
               <a class="nav-menu-link" href="/warranty/" role="menuitem">Warranty</a>
-              <a class="nav-menu-link" href="/case-studies/" role="menuitem">Case studies</a>
+              <a class="nav-menu-link" href="/case-studies/" role="menuitem">Example builds</a>
               <a class="nav-menu-link" href="/why-huntington-solar/" role="menuitem">Why choose us</a>
               <a class="nav-menu-link" href="/insights/" role="menuitem">Insights</a>
             </div>
@@ -88,7 +88,7 @@ const firstArea = areas[0];
       <div class="wrap foot-grid">
         <div class="foot-col">
           <div class="foot-brand"><Logo size={40} variant="light" /></div>
-          <p>Residential and commercial solar across {city} and the Suffolk County north shore. NABCEP-certified · NYSERDA-approved · Licensed and insured.</p>
+          <p>Residential and commercial solar across {city} and the Suffolk County north shore.</p>
           <p class="foot-phone"><a href={'tel:' + phoneTel}>{phoneDisplay}</a></p>
         </div>
         <div class="foot-col">
@@ -116,23 +116,18 @@ const firstArea = areas[0];
             <li><a href="/incentives/">Incentives</a></li>
             <li><a href="/warranty/">Warranty</a></li>
             <li><a href="/process/">Our process</a></li>
-            <li><a href="/case-studies/">Case studies</a></li>
+            <li><a href="/case-studies/">Example builds</a></li>
             <li><a href="/insights/">Insights</a></li>
             <li><a href="/#contact">Get a quote</a></li>
             <li><a href={'tel:' + phoneTel}>Call {phoneDisplay}</a></li>
           </ul>
         </div>
       </div>
-      <div class="wrap foot-creds">
-        <span class="foot-cred">NABCEP Certified</span>
-        <span class="foot-cred">NYSERDA NY-Sun Installer</span>
-        <span class="foot-cred">Tesla Powerwall Certified</span>
-        <span class="foot-cred">Enphase Platinum Installer</span>
-        <span class="foot-cred">BBB A+ Rated</span>
-        <span class="foot-cred">★ 4.9 · 127 reviews</span>
-      </div>
+      {/* 2026-08-01: credential badge row removed — the NABCEP / NYSERDA /
+          Tesla / Enphase / BBB badges and the 4.9-of-127 review count could
+          not be substantiated. Do not restore without verifiable proof. */}
       <div class="wrap foot-legal">
-        <span>© {year} {business}. Licensed and Insured · Suffolk County, NY</span>
+        <span>© {year} {business} · Suffolk County, NY</span>
         <span class="foot-legal-links">
           <a href="/privacy/">Privacy</a>
           <span aria-hidden="true">·</span>

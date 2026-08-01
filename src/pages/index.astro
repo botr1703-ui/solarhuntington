@@ -88,7 +88,7 @@ const jsonLd = {
       containedInPlace: { '@type': 'State', name: state },
     };
   }),
-  // sameAs — populated when GBP, LinkedIn, BBB, NABCEP profiles exist.
+  // sameAs — populated only when a real, verifiable profile exists.
   // Stub kept empty so the field is present in schema but no fake URLs ship.
   sameAs: [],
   description: description,
@@ -98,7 +98,9 @@ const jsonLd = {
       itemOffered: { '@type': 'Service', name: s.title, description: s.description },
     };
   }),
-  aggregateRating: { '@type': 'AggregateRating', ratingValue: '4.9', reviewCount: '127' },
+  // 2026-08-01 liability fix: aggregateRating removed. There is no review
+  // corpus behind it. Do NOT add aggregateRating, review, or any Rating
+  // node to this schema without genuine, first-party collected reviews.
 };
 
 const steps = [
@@ -114,19 +116,15 @@ const whyCards = [
   { glyph: 'clock', num: '5–7', label: 'years to payback', body: 'At current LIPA rates, a properly-sized system pays for itself in under a decade. Everything after is pure savings — 20+ years on a 25-year warranty.' },
 ];
 
+// 2026-08-01 liability fix: the NABCEP / NYSERDA / Tesla+Enphase / BBB +
+// 4.9-of-127 cards were removed — none of those credentials or that rating
+// could be substantiated. What is left describes how we work and what the
+// hardware warranty covers. Do NOT add credential, rating, review-count, or
+// install-count cards back without verifiable proof.
 const trustCards = [
-  { glyph: 'award', title: 'NABCEP Certified', body: "Every install supervised by a NABCEP Certified PV Installation Professional — the industry's gold-standard credential." },
-  { glyph: 'shieldCheck', title: 'NYSERDA NY-Sun Installer', body: 'Quality Solar Installer track. You get the per-watt NY-Sun rebate baked into your quote, applied automatically.' },
-  { glyph: 'bolt', title: 'Tesla + Enphase Certified', body: 'Tesla Powerwall Certified Installer · Enphase Platinum Installer. Manufacturer-direct warranty coverage on both ecosystems.' },
-  { glyph: 'star', title: 'BBB A+ Rated', body: '4.9 / 5 across 127 installs. Licensed and insured in Suffolk + Nassau Counties — license number on every contract.' },
   { glyph: 'shield', title: '25-Year Panel Warranty', body: 'Manufacturer power-production warranty on every panel + workmanship and roof-penetration warranty from us directly.' },
   { glyph: 'users', title: 'No Subcontractors', body: 'The crew that quotes the install is the crew on your roof. One team, one warranty, one phone number for the next 25 years.' },
-];
-
-const testimonials = [
-  { name: 'Mike R.', location: 'Greenlawn', rating: 5, body: 'Bill went from $280/mo to $18 (the PSEG minimum). System paid for itself in year 6. Wish I had done it sooner.' },
-  { name: 'Sarah K.', location: 'Northport', rating: 5, body: 'They handled everything — town permits, PSEG interconnection, even the federal tax credit paperwork. Zero hassle.' },
-  { name: 'David L.', location: 'Huntington Station', rating: 5, body: 'Added a Powerwall to the system. When the nor-easter knocked out power last winter, we never lost the lights.' },
+  { glyph: 'document', title: 'The Full Math, In Writing', body: 'Gross cost, every incentive itemized, net cost, year-by-year cash flow, payback period. Emailed to you — no salesperson in your living room, no urgency tactics.' },
 ];
 
 const faqs = [
@@ -195,7 +193,7 @@ const howToJsonLd = {
     <img class="hero-bg" src={heroImg} alt="Solar panels on a residential rooftop in Huntington, Long Island" loading="eager" fetchpriority="high" />
     <div class="hero-overlay"></div>
     <div class="wrap hero-inner">
-      <p class="eyebrow">Long Island Solar Company · Licensed and Insured</p>
+      <p class="eyebrow">Long Island Solar Company</p>
       <h1>
         Solar installation across Long Island.<br />
         Cut your LIPA bill <span class="hero-num">60–90%</span>.
@@ -206,14 +204,6 @@ const howToJsonLd = {
         <a href="/locations/huntington/">solar installation in Huntington</a> and
         across Suffolk County's north shore. <strong>30% federal tax credit, NY state incentives,
         25-year warranty.</strong> Free quote, no pressure — we send you the payback math before you commit.
-      </p>
-      {/* Social proof above the first CTA (S2 visible). Reuses the existing
-          .stars token + hero .lead styling and the same testimonials data
-          the section below renders — no new styles, no content drift. */}
-      <p class="lead">
-        <span class="stars" aria-hidden="true">★★★★★</span>
-        <strong>4.9 / 5 across 127 installs.</strong>
-        “{testimonials[1].body}” — {testimonials[1].name}, {testimonials[1].location}
       </p>
       <div class="hero-ctas">
         <a class="btn btn-primary" href="#contact">Get a free quote</a>
@@ -226,8 +216,10 @@ const howToJsonLd = {
     <div class="wrap stat-grid">
       <div class="stat"><strong>$0</strong><span>Down — financing available</span></div>
       <div class="stat"><strong>30%</strong><span>Federal tax credit</span></div>
+      {/* 2026-08-01: the "500+ Long Island installs" tile was removed —
+          the install count was not substantiated. Do not add a count,
+          rating, or years-in-business tile back to this bar. */}
       <div class="stat"><strong>25yr</strong><span>Panel performance warranty</span></div>
-      <div class="stat"><strong>500+</strong><span>Long Island installs</span></div>
     </div>
   </section>
 
@@ -280,7 +272,7 @@ const howToJsonLd = {
           <li><Icon name="check" size={18} /> Enphase microinverters — panel-level monitoring</li>
           <li><Icon name="check" size={18} /> Salt-air-rated mounts for waterfront homes</li>
         </ul>
-        <a class="btn btn-primary" href="/case-studies/">See real installs <Icon name="arrowRight" size={16} /></a>
+        <a class="btn btn-primary" href="/case-studies/">See example system builds <Icon name="arrowRight" size={16} /></a>
       </div>
     </div>
   </section>
@@ -349,27 +341,11 @@ const howToJsonLd = {
     </div>
   </section>
 
-  <section class="testimonials">
-    <div class="wrap">
-      <p class="section-eyebrow">What our customers say</p>
-      <h2>4.9 / 5 across 127 installs.</h2>
-      <div class="grid grid-3">
-        {testimonials.map(function (t) {
-          const stars = '★'.repeat(t.rating);
-          return (
-            <article class="t-card">
-              <div class="stars">{stars}</div>
-              <p class="t-body">{t.body}</p>
-              <div class="t-author">
-                <strong>{t.name}</strong>
-                <span>{t.location}</span>
-              </div>
-            </article>
-          );
-        })}
-      </div>
-    </div>
-  </section>
+  {/* 2026-08-01 liability fix: the customer-testimonial section was removed
+      in full. The quotes and the "4.9 / 5 across 127 installs" headline were
+      not real customer feedback. Do not add testimonials, star ratings, or
+      review counts to this page unless they are genuine, attributable, and
+      collected first-hand. */}
 
   <section class="cta-band">
     <svg class="cta-sun" viewBox="0 0 200 200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
@@ -424,8 +400,8 @@ const howToJsonLd = {
 
   <section class="trust">
     <div class="wrap">
-      <p class="section-eyebrow">Why trust us with your install</p>
-      <h2>Certified, licensed, accountable.</h2>
+      <p class="section-eyebrow">How we work</p>
+      <h2>One crew, one warranty, one set of numbers.</h2>
       <p class="trust-lead">
         Solar's a 25-year decision. Pick an installer who's still around in year 24.
       </p>
