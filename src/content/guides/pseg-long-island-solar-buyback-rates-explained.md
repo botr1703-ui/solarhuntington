@@ -55,7 +55,7 @@ faqs:
       retail window. The exception is anyone planning a near-term EV
       purchase, heat pump conversion, or pool: those add enough annual
       kWh that a system sized purely to today's usage will undersize
-      quickly. We ask about planned electric loads during design for
+      quickly. Planned electric loads should be asked about during design for
       exactly this reason.
 ---
 
@@ -75,7 +75,7 @@ This is the part that trips people up: "solar buyback" sounds like a flat per-kW
 
 ## Why this makes system sizing the real lever
 
-The buyback structure means the financial return on your array isn't just about total production — it's about how much of that production gets used as retail-value credit versus how much spills into the true-up. Our [residential solar installation](/services/residential-solar-installation/) design process starts from your trailing 12-month PSEG-LI usage specifically because of this math.
+The buyback structure means the financial return on your array isn't just about total production — it's about how much of that production gets used as retail-value credit versus how much spills into the true-up. The [residential solar installation](/services/residential-solar-installation/) design process starts from your trailing 12-month PSEG-LI usage specifically because of this math.
 
 **A tight-sized system.** A house pulling 9,000 kWh/year with an 8 kW array (roughly matched to that usage under Long Island's ~4.3 peak sun hours) will produce close to what it consumes across the year. Nearly all of that production either offsets real-time usage directly or earns a retail-rate credit that gets drawn down within the same cycle. Very little ever reaches the low-value true-up.
 
@@ -87,7 +87,7 @@ Oversizing isn't always wrong — see the EV and heat pump note below — but it
 
 Buyback economics change the calculus once you know a major new electric load is coming. A homeowner in Northport planning to add a heat pump within two years, or a Huntington family that's already ordered an EV, is going to add several thousand kWh of annual usage that doesn't exist yet in this year's PSEG-LI bill. Sizing to today's usage alone would leave that future load running mostly on grid power at retail rates.
 
-In that case, a moderately oversized system captures value two ways: it produces at retail-offset value once the new load exists, and in the interim, the "excess" production banks credit that softens the bill during the gap. The true-up cost of temporary overproduction is often smaller than a year or two of paying full retail for an EV's charging load. Our [install process](/process/) walks through how we ask about planned loads — EV timeline, heat pump conversion, pool — before finalizing array size, specifically to make this call with real numbers instead of a guess.
+In that case, a moderately oversized system captures value two ways: it produces at retail-offset value once the new load exists, and in the interim, the "excess" production banks credit that softens the bill during the gap. The true-up cost of temporary overproduction is often smaller than a year or two of paying full retail for an EV's charging load. The [install process](/process/) page walks through why planned loads — EV timeline, heat pump conversion, pool — get asked about before array size is finalized, specifically so this call is made with real numbers instead of a guess.
 
 ## Time-of-use and the SC1-VS rate
 
@@ -105,7 +105,7 @@ Where it matters more is for storm-season resilience and for homes carrying a mo
 
 Net metering credits are one piece of a larger incentive picture that includes the 30% federal Investment Tax Credit, NYSERDA's NY-Sun rebate, and New York State's 25% solar tax credit — all of which reduce the up-front install cost rather than the ongoing energy value. Our [full incentives breakdown](/incentives/) covers how those stack, and how the combination typically compares against a straight cash purchase versus financed system on a Long Island roof.
 
-Real [Long Island install case studies](/case-studies/) show this play out with actual PSEG-LI bills: homeowners who sized close to usage saw true-up payouts in the low hundreds of dollars or less, while a couple of case studies with intentionally oversized systems — tied to a documented EV purchase — carried a larger true-up balance for one cycle before usage caught up to production.
+The [Long Island example system builds](/case-studies/) model this against PSEG-LI rates: a system sized close to usage lands true-up payouts in the low hundreds of dollars or less, while an intentionally oversized system — sized ahead of a planned EV purchase — carries a larger true-up balance for a cycle until usage catches up to production.
 
 ## The bottom line on PSEG-LI buyback rates
 

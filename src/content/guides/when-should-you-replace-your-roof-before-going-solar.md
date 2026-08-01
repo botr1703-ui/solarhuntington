@@ -92,7 +92,7 @@ If the structural assessment reveals a borderline roof, the honest answer is a s
 
 For homeowners adding [battery storage](/services/battery-storage/) (a Franklinwh aGate, Enphase IQ Battery 5P, or Tesla Powerwall 3), roof condition is doubly important: the battery install requires additional structural load calculations on the wall where the battery mounts, and the solar-plus-storage permit is a single combined permit in most Long Island towns. A roof that needs replacement will delay the entire permit package — plan the re-roof first if you are going solar-plus-storage.
 
-You can see how roof assessment plays into actual timelines in our [Long Island install case studies](/case-studies/).
+You can see how roof assessment plays into overall timelines in the [Long Island example system builds](/case-studies/).
 
 ## Making the call
 

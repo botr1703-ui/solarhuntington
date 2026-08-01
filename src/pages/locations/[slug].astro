@@ -39,7 +39,7 @@ const localBusinessLd = {
   url: siteUrl,
   telephone: phoneTel,
   areaServed: { '@type': 'City', name: area.title, containedInPlace: { '@type': 'State', name: state } },
-  description: `${business} provides solar installation, battery storage, and repair services in ${area.title}, NY.`,
+  description: `${business} provides residential solar installation and battery storage in ${area.title}, NY.`,
 };
 
 const huntingtonFaqLd = slug === 'huntington' ? {
@@ -168,8 +168,7 @@ const matrixServices = services.filter((s) => HAS_MATRIX.has(s.slug));
         <h2>{area.title} solar — tell us your LIPA bill.</h2>
         <p class="contact-lead">
           We use your actual kWh usage to size a system, model the federal and NY state credits,
-          and project the payback period. Same business day. No salesperson visit required to
-          see the number.
+          and project the payback period. No salesperson visit required to see the number.
         </p>
         <p class="contact-call">
           Want to talk first? <a href={`tel:${phoneTel}`}>Call {phoneDisplay}</a>
@@ -218,7 +217,7 @@ const matrixServices = services.filter((s) => HAS_MATRIX.has(s.slug));
         </a>
         <a class="related-card" href="/process/">
           <h3>From quote to turn-on</h3>
-          <p>9-step timeline — most {area.title} installs complete in 7–10 weeks.</p>
+          <p>9-step timeline from first call to PSEG Long Island turn-on.</p>
         </a>
       </div>
 

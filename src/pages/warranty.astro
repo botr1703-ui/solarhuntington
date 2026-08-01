@@ -10,7 +10,7 @@ const siteUrl =
   import.meta.env.PUBLIC_SITE_URL?.replace(/\/$/, '') || 'https://www.solarhuntington.com';
 
 const title = `Solar Warranties Explained — Long Island Coverage in 2026 | ${business}`;
-const description = `What is actually covered by a residential solar warranty in 2026 — 25-year panel performance, 12-year inverter, 10-year workmanship, and what happens if your installer goes out of business.`;
+const description = `What is actually covered by a residential solar warranty in 2026 — 25-year panel performance, 12-year inverter, 10-year workmanship, and what happens if the installer goes out of business.`;
 
 const faqs = [
   {
@@ -23,7 +23,7 @@ const faqs = [
   },
   {
     q: 'What happens if my solar installer goes out of business?',
-    a: 'Manufacturer warranties on panels, inverters, and batteries are honored by the manufacturer directly — they do not depend on the installer. Your workmanship warranty is the part that can lapse. We recover and continue service on stranded installs from defunct installers across Suffolk County; the manufacturer warranties still pay for the equipment, we charge labor.',
+    a: 'Manufacturer warranties on panels, inverters, and batteries are honored by the manufacturer directly — they do not depend on the installer. Your workmanship warranty is the part that can lapse, which is why the installer you pick matters over a 25-year decision.',
   },
   {
     q: 'Does the federal tax credit affect warranty coverage?',
@@ -100,16 +100,15 @@ const jsonLd = {
         <p>
           The most likely failure mode in any solar system over 15 years is an inverter — Long
           Island humidity + summer heat stresses electronics. The warranty includes a free
-          replacement; you typically pay for the labor to swap it. We do flat-rate inverter
-          replacements across Suffolk County (typical out-of-pocket: $400–$700 in labor; the
-          inverter itself comes free from the manufacturer).
+          replacement unit; the labor to swap it is normally out of pocket, so it is worth
+          checking what a prospective installer charges for that before you sign.
         </p>
       </div>
 
       <div class="prose-block">
         <h2>3. Workmanship warranty — 10 years</h2>
         <p>
-          The workmanship warranty covers our labor: roof penetrations + flashing, panel mounting,
+          The workmanship warranty covers the installer's labor: roof penetrations + flashing, panel mounting,
           electrical conduit, conduit-to-junction-box terminations, monitoring setup. Standard
           across the Long Island residential solar industry is 10 years.
         </p>
@@ -137,26 +136,28 @@ const jsonLd = {
             shop that may not be around in 10 years.
         </p>
         <p>
-          We recover stranded installs from defunct installers across Suffolk County. The
-          manufacturer warranties still pay for the equipment; we charge labor at flat-rate
-          ($400–$700 inverter swap, $250 per panel re-seat). If you bought from a long-gone shop,
-          we can still help.
+          - <strong>Practical consequence.</strong> A homeowner with an orphaned system can still
+            claim equipment from the manufacturer, but has to find a contractor willing to do the
+            labor. That is worth pricing into the decision when you compare quotes today.
         </p>
       </div>
 
+      {/* 2026-08-01 liability pass 2: two blocks were removed here. The first
+          offered to recover stranded installs at named labor prices ($400–$700
+          inverter swap, $250 per panel re-seat) — a live price list for work
+          the business is not currently in a position to perform. The second
+          published a specific warranty schedule ("10 years on our labor").
+          Do NOT reintroduce a price, a labor rate, or a first-party warranty
+          term on this page. What remains describes the three warranty layers
+          any Long Island homeowner should expect and verify in writing. */}
       <div class="prose-block">
-        <h2>How we structure {business} warranties</h2>
+        <h2>Before you sign</h2>
         <p>
-          - <strong>Panels:</strong> 25-year power-output + 25-year product warranty (Tier-1 only — Q Cells, REC, SunPower).<br />
-          - <strong>Inverters:</strong> 25 years on Enphase microinverters, 12 years on SolarEdge (extendable to 25).<br />
-          - <strong>Battery (if installed):</strong> 10 years Tesla Powerwall 3 / 15 years Enphase IQ Battery 5P.<br />
-          - <strong>Workmanship:</strong> 10 years on our labor including roof leaks, electrical, monitoring setup.<br />
-          - <strong>Monitoring:</strong> lifetime included via Enphase Enlighten or SolarEdge Monitoring (per-panel data, alerts, performance reports).
-        </p>
-        <p>
-          All of this is spelled out in the contract — no fine print, no exclusions buried in
-          appendix B. Ask for the warranty letter before you sign; if any installer cannot produce
-          it, walk away.
+          Warranty terms belong in the contract, not in a brochure — panel product and
+          power-output terms, inverter term and whether it is extendable, battery term if one is
+          included, the workmanship period and exactly what it covers, and who holds the
+          monitoring subscription. Ask for the warranty letter before you sign; if an installer
+          cannot produce one, walk away.
         </p>
       </div>
     </div>
@@ -179,12 +180,11 @@ const jsonLd = {
   <section id="contact" class="contact">
     <div class="wrap contact-grid">
       <div class="contact-copy">
-        <p class="section-eyebrow">Have a system from another installer?</p>
-        <h2>We service systems we did not install.</h2>
+        <p class="section-eyebrow">Get in touch</p>
+        <h2>Questions about warranty coverage?</h2>
         <p class="contact-lead">
-          Inverter failures, panel re-seating, monitoring offline, storm damage — we do flat-rate
-          diagnostics on any residential solar system in Suffolk County, regardless of who put it
-          on your roof. Send a recent monitoring screenshot and we will quote the work.
+          Tell us what system you have and what you are trying to confirm — panel and inverter
+          make, roughly when it went up, and what the monitoring app is showing.
         </p>
         <p class="contact-call">
           Or call: <a href={`tel:${phoneTel}`}>{phoneDisplay}</a>

@@ -76,16 +76,15 @@ export const services: ServicePage[] = [
         ],
       },
       {
-        heading: 'What a Huntington Solar Co install includes',
+        heading: 'What a residential solar install includes',
         paragraphs: [
-          "Every residential install comes with site assessment + shade analysis, custom panel layout designed for your roof, all permit pulls + PSEG interconnection paperwork, panels with a 25-year power-output warranty, inverters with 10–25 year warranties depending on model, and workmanship + roof-penetration warranty from us directly.",
-          "We do not subcontract the install — same crew that quotes the job is on your roof. Most residential systems go up in 6 to 8 hours and you're producing power that afternoon.",
+          "A residential install covers site assessment + shade analysis, a panel layout designed for the specific roof, the permit pulls + PSEG interconnection paperwork, panels with a 25-year power-output warranty, inverters with 10–25 year warranties depending on model, and a workmanship + roof-penetration warranty.",
         ],
       },
       {
         heading: 'Why Huntington-area homes are strong candidates',
         paragraphs: [
-          "The north shore of Suffolk gets roughly 4.3 average peak sun-hours per day — solid for the latitude. Most homes have either south-, west-, or east-facing roof planes that produce 80–100% of optimal output. Heavy shade is the main blocker; we do a free site visit before any contract and tell you upfront if the economics don't work.",
+          "The north shore of Suffolk gets roughly 4.3 average peak sun-hours per day — solid for the latitude. Most homes have either south-, west-, or east-facing roof planes that produce 80–100% of optimal output. Heavy shade is the main blocker, and it is worth assessing on site before any contract is signed.",
           "Huntington and surrounding towns are also covered by PSEG Long Island net-metering — every kWh you push back to the grid offsets a kWh you pull from it 1:1, so right-sizing the system to your actual usage matters more than maxing roof real estate.",
         ],
       },
@@ -96,12 +95,11 @@ export const services: ServicePage[] = [
       'NYSERDA NY-Sun rebate (per-watt)',
       '25-year panel performance warranty',
       'PSEG net-metering — full retail credit',
-      'No subcontractors — our crew installs',
     ],
     faq: [
       {
         q: 'Can I get solar if my roof is older than 15 years?',
-        a: 'You can, but it usually makes sense to replace the roof first or together with the install. We do not install on roofs we estimate have under 10 years of life left — the system warranty would outlast the shingles, and removing panels for a future re-roof adds cost. We can recommend a roofer or coordinate the timing if needed.',
+        a: 'You can, but it usually makes sense to replace the roof first or together with the install. On a roof with under 10 years of life left the system warranty outlasts the shingles, and removing and reinstalling panels for a future re-roof adds cost.',
       },
       {
         q: 'Do I need HOA approval?',
@@ -128,7 +126,7 @@ export const services: ServicePage[] = [
         ],
       },
       {
-        heading: 'Financing structures we work with',
+        heading: 'Commercial financing structures',
         paragraphs: [
           "Direct purchase remains the highest-return option for businesses that can use the depreciation. A commercial system bought outright typically pays back the net-of-incentives cost in 3–5 years, and the business owns the system at the end of it.",
           "For businesses that cannot use depreciation (non-profits, churches, low-tax-burden LLCs), Power Purchase Agreements (PPAs) work better. A third-party finances + owns the system; you sign a 15-to-25-year contract to buy the solar electricity at a fixed rate below your current PSEG rate. Zero upfront, immediate bill reduction.",
@@ -208,7 +206,7 @@ export const services: ServicePage[] = [
     faq: [
       {
         q: 'Can I add a battery to an existing solar system?',
-        a: 'Yes. AC-coupled batteries (Tesla Powerwall, Enphase IQ Battery) integrate with any existing inverter and only need a sub-panel for backed-up circuits. We retrofit batteries to systems we did not originally install — common across the LI installer landscape.',
+        a: 'Yes. AC-coupled batteries (Tesla Powerwall, Enphase IQ Battery) integrate with any existing inverter and only need a sub-panel for backed-up circuits. Battery retrofits onto an existing array are common across the Long Island installer landscape.',
       },
       {
         q: 'How long does a Powerwall keep my house running during an outage?',
@@ -219,53 +217,45 @@ export const services: ServicePage[] = [
   {
     slug: 'solar-repair-maintenance',
     title: 'Repair & Maintenance',
+    // 2026-08-01 liability pass 2: this page previously published a live
+    // "$185 flat-rate diagnostic" price and an open offer to service systems
+    // installed by other companies. Both were removed — the price was a hard
+    // commercial commitment and the offer asserted a service capability the
+    // business is not currently in a position to deliver. The page is now
+    // informational: what fails on a residential solar system and how it is
+    // diagnosed. Do NOT reintroduce a price, a callout fee, a response-time
+    // promise, or a service-anyone's-system offer here.
     description:
-      'Inverter replacements, panel re-seating, monitoring system fixes, and post-storm inspections. We service systems we did NOT install — flat-rate diagnostics.',
-    pageHeading: 'Solar Repair & Maintenance — Suffolk County',
+      'What fails on a residential solar system on Long Island — inverter faults, panel re-seating, monitoring dropouts, post-storm damage — and how each is diagnosed.',
+    pageHeading: 'Solar Repair & Maintenance on Long Island',
     bodySections: [
       {
-        heading: 'What we diagnose and fix',
+        heading: 'What goes wrong with residential solar systems',
         paragraphs: [
-          "Inverter failures (string inverters typically last 10-15 years, microinverters longer — but both fail). Monitoring system dropouts (your app says \"no production\" but the panels are fine — usually a CT clamp or comms board). Production drops that don't match seasonal patterns (panel-level diagnostics via thermal imaging to spot dead cells or bypass-diode failures). Post-storm panel inspections (Long Island gets the occasional nor'easter or hurricane edge that loosens mounts).",
-          "Roof-leak callbacks years after install — we re-flash penetrations and fix any waterproofing failures. Critter intrusion (squirrels chewing wiring under panels) — we install critter guards to prevent recurrence.",
+          "Inverter failures (string inverters typically last 10-15 years, microinverters longer — but both fail). Monitoring system dropouts (the app says \"no production\" but the panels are fine — usually a CT clamp or comms board). Production drops that don't match seasonal patterns (panel-level diagnostics via thermal imaging spot dead cells or bypass-diode failures). Post-storm panel inspections (Long Island gets the occasional nor'easter or hurricane edge that loosens mounts).",
+          "Roof-leak callbacks years after install are usually a flashing failure at a penetration, and are fixed by re-flashing rather than by sealant. Critter intrusion — squirrels chewing wiring under panels — is prevented by critter guards fitted around the array perimeter.",
         ],
       },
       {
-        heading: 'We service systems we didn\'t install',
+        heading: 'Orphaned systems on Long Island',
         paragraphs: [
-          "Most LI solar installers will not touch a system they didn't put up — they refer you back to your original installer (who may be out of business). We do flat-rate diagnostics on any residential solar system in Suffolk County: $185 for the site visit, full report on root cause + repair path, fee credited toward the repair if you proceed with us.",
-          "Common case: original installer went under during the 2018-2020 industry shakeout; homeowner has a non-producing system and nowhere to turn. We pick those up.",
+          "A large number of Long Island residential arrays were installed by companies that went under during the 2018-2020 industry shakeout. Panel and inverter warranties survive that — they are honoured by the manufacturer directly, not by the installer — but the workmanship warranty does not, which is why the original installer's longevity matters when comparing quotes.",
+          "If you are trying to get an orphaned system looked at, the useful things to have ready are the original installer's name, the inverter make and model, a screenshot of the monitoring app, and photographs of any visible damage. Any contractor quoting the work will ask for those first.",
         ],
       },
-    ],
-    bullets: [
-      'Flat-rate diagnostic — $185, credited toward repair',
-      'Service any residential solar system in Suffolk County',
-      'Inverter replacements (string + micro)',
-      'Monitoring repair (Enphase, SolarEdge, Tesla, SMA)',
-      'Post-storm + thermal imaging inspections',
-      'Critter guards + roof-leak warranty repairs',
     ],
     faq: [
       {
         q: 'My solar system shows no production — what should I check first?',
-        a: 'Start at the inverter — is the status light green? Red or off usually means a fault code worth photographing for the diagnostic. Next, check your monitoring app: a "no data" reading often points to a CT clamp or comms board issue (not the panels themselves). Production drops on a sunny day with the inverter showing green typically mean panel-level issues — a dead bypass diode, soiling, or partial shade we can pinpoint with thermal imaging.',
-      },
-      {
-        q: 'Do you service solar systems you did not install?',
-        a: 'Yes — that is most of what we do. Most LI solar installers will not touch a system they did not put up; they refer you back to your original installer (who may be out of business after the 2018–2020 industry shakeout). We do flat-rate $185 site visits on any residential solar system in Suffolk County, full report on root cause + repair path, fee credited toward the repair if you proceed.',
+        a: 'Start at the inverter — is the status light green? Red or off usually means a fault code worth photographing for the diagnostic. Next, check your monitoring app: a "no data" reading often points to a CT clamp or comms board issue (not the panels themselves). Production drops on a sunny day with the inverter showing green typically mean panel-level issues — a dead bypass diode, soiling, or partial shade, all of which thermal imaging can pinpoint.',
       },
       {
         q: 'How long do residential solar inverters typically last?',
-        a: 'String inverters average 10–15 years before needing replacement; microinverters (Enphase) carry 25-year warranties and we see them last that long in the field. If your system is 10+ years old and underperforming, plan for an inverter replacement — typically $2,500–$4,500 installed for a residential string inverter, less per-unit for microinverter swaps.',
+        a: 'String inverters average 10–15 years before needing replacement; microinverters (Enphase) carry 25-year warranties. If your system is 10+ years old and underperforming, plan for an inverter replacement — typically $2,500–$4,500 installed for a residential string inverter, less per-unit for microinverter swaps.',
       },
       {
         q: 'After a hurricane or nor\'easter, what should I inspect on my solar?',
-        a: 'Walk the perimeter and look for any visibly cracked or shifted panels, then check your monitoring app — a sudden drop in production after a storm is the clearest tell. Wind events can loosen panel clamps or rooftop standoffs; if your monitoring shows uneven production across the array, schedule a thermal-imaging inspection. We re-flash any compromised roof penetrations as part of the post-storm service.',
-      },
-      {
-        q: 'What is your warranty on repair work?',
-        a: 'Workmanship: 5 years on any panel re-seating, wiring, or mounting work we touch. Parts: pass-through manufacturer warranty (inverters 12–25 years depending on model; panels 25 years on most). Roof-leak repairs around standoffs we install carry a 5-year leak warranty.',
+        a: 'Walk the perimeter and look for any visibly cracked or shifted panels, then check your monitoring app — a sudden drop in production after a storm is the clearest tell. Wind events can loosen panel clamps or rooftop standoffs; if your monitoring shows uneven production across the array, a thermal-imaging inspection is the usual next step. Any compromised roof penetration should be re-flashed rather than sealed over.',
       },
     ],
   },
@@ -276,7 +266,7 @@ export const services: ServicePage[] = [
     // in GSC — target the "solar panel quote near me" intent explicitly.
     metaTitle: 'Free Solar Panel Quote — Huntington & Long Island',
     metaDescription:
-      'Get a free solar panel quote near Huntington and across Long Island — send a recent LIPA bill and we return system size, itemized incentives, projected savings, and payback within 1 business day. No sales visit.',
+      'Get a free solar panel quote near Huntington and across Long Island — send a recent LIPA bill and get back system size, itemized incentives, projected savings, and payback. No sales visit.',
     description:
       "Tell us your average LIPA bill and roof orientation — we'll send back a system size, projected savings, and payback period. No salesperson visit required to get the number.",
     pageHeading: 'Free Long Island Solar Quote (No Pressure)',
@@ -291,13 +281,12 @@ export const services: ServicePage[] = [
       {
         heading: 'What we need from you',
         paragraphs: [
-          "Your address (for the satellite shade analysis). A recent LIPA bill — any month, we use the kWh number not the dollar amount. Your roof orientation (south / west / east / mixed — we can also pull this from satellite).",
-          "We send the quote back within 1 business day. If the math doesn't work for your situation, we tell you why and don't push. Solar is a great fit for most LI homes — not all of them.",
+          "Your address (for the satellite shade analysis). A recent LIPA bill — any month, we use the kWh number not the dollar amount. Your roof orientation (south / west / east / mixed — this can also be pulled from satellite).",
+          "If the math doesn't work for your situation, we tell you why and don't push. Solar is a great fit for most LI homes — not all of them.",
         ],
       },
     ],
     bullets: [
-      'Quote turnaround within 1 business day',
       'No in-home visit required for the initial number',
       'Itemized: gross cost, incentives, net, payback',
       '25-year warranty terms included in the quote',
@@ -452,27 +441,34 @@ export const caseStudies: CaseStudy[] = [
 
 export const aboutPage: AboutPage = {
   pageHeading: 'About Huntington Solar Co',
+  // 2026-08-01 liability pass 2: this page previously described an employed
+  // crew ("same crew, every step", "no subcontractors"), an operating base
+  // and dispatch radius ("under 30 minutes from our base"), and an open
+  // offer to service other companies' systems at a flat diagnostic price.
+  // All removed. Do NOT reintroduce staffing counts, crew claims, an
+  // operating address or dispatch radius, response-time promises, or a
+  // price for any service.
   lead:
-    'A small, Long Island-based solar team. We design, permit, and install — no subcontractors. Federal + NY State + NYSERDA incentive paperwork handled end to end. No high-pressure sales.',
+    'A Long Island solar company covering the Suffolk County north shore. Design, permitting, installation, and the federal + NY State + NYSERDA incentive paperwork that goes with them. No high-pressure sales.',
   bodySections: [
     {
       heading: 'Who we are',
       paragraphs: [
-        "Huntington Solar Co is a small solar team based on the north shore of Suffolk County. We do design, engineering, permits, installation, and post-install service ourselves — same crew, every step. We don't subcontract.",
+        "Huntington Solar Co is a solar company serving the north shore of Suffolk County — residential solar installation, battery storage, and the design, permitting, and PSEG Long Island interconnection work that goes with them.",
         "We started doing solar on Long Island because the math here is the most compelling in the country: LIPA rates are roughly 2x the national average, federal and NY State incentives stack to ~50% of system cost, and PSEG net-metering means every kWh you produce offsets one at full retail rate. Solar on a north-shore home pays itself off in 5-7 years on average and runs another 20 on warranty after that.",
       ],
     },
     {
       heading: 'How we work',
       paragraphs: [
-        "Every install starts with a free site visit and an honest payback model. We send you the math — system size, projected production, gross + net cost after all incentives, year-by-year cash flow, payback period — by email. No salesperson in your living room. If the economics don't work for your situation, we tell you upfront and don't push.",
-        "We handle every permit pull, every PSEG interconnection form, and every incentive application. NYSERDA, federal ITC paperwork, NY State residential solar credit, PSEG demand-response (if you're adding a battery) — all on us. You get one signed contract, one date for install, and one paid-off system at the end.",
+        "Every install starts with a site assessment and an honest payback model. The math — system size, projected production, gross + net cost after all incentives, year-by-year cash flow, payback period — goes to you in writing. No salesperson in your living room. If the economics don't work for your situation, we tell you upfront and don't push.",
+        "Permit pulls, PSEG interconnection forms, and incentive applications — NYSERDA, federal ITC paperwork, the NY State residential solar credit, PSEG demand-response for a battery pairing — are part of the install scope rather than homework for the homeowner.",
       ],
     },
     {
-      heading: 'What sets us apart on Long Island',
+      heading: 'Equipment selection',
       paragraphs: [
-        "Three things that matter most for solar on LI specifically. First — local crews based on the north shore. Huntington, Northport, Centerport, Greenlawn, and Cold Spring Harbor are all under 30 minutes from our base. Second — we service systems we didn't install. Plenty of LI homeowners have orphaned solar from installers who went under during the 2018-2020 industry shakeout; we pick those up at flat-rate diagnostic pricing. Third — we don't lock you into one manufacturer. Tesla, Enphase, Q Cells, REC, SolarEdge, FranklinWH — we design for your roof and budget, not for a brand kickback.",
+        "No single manufacturer covers every roof well. Tesla, Enphase, Q Cells, REC, SolarEdge, FranklinWH — hardware should be specified against the roof, the shade pattern, the existing inverter, and the budget, not against a manufacturer relationship. When you compare quotes from any Long Island installer, it is worth asking why the specific panel and inverter were chosen for your roof.",
       ],
     },
   ],
@@ -482,14 +478,14 @@ export const aboutPage: AboutPage = {
   // repopulate without a verifiable certificate or profile URL for each
   // line, and never restate a rating or review count here.
   serviceAreaCopy:
-    "We service all of Suffolk County's north shore and into Nassau where it makes geographic sense — Huntington, Huntington Station, Greenlawn, Centerport, Northport, Cold Spring Harbor, Lloyd Harbor, Eaton's Neck, Halesite, East Northport, Smithtown, Commack. For installs further east or in Nassau interior, we refer to trusted partners.",
+    "Service area: Suffolk County's north shore and into Nassau where it makes geographic sense — Huntington, Huntington Station, Greenlawn, Centerport, Northport, Cold Spring Harbor, Lloyd Harbor, Eaton's Neck, Halesite, East Northport, Smithtown, Commack.",
 };
 
 export const areas: AreaPage[] = [
   {
     slug: 'huntington',
     title: 'Huntington',
-    lead: 'Solar installs across Huntington — from Huntington Bay waterfronts to West Hills hillsides. Local crews, same-day site visits, no subcontractors.',
+    lead: 'Solar installs across Huntington — from Huntington Bay waterfronts to West Hills hillsides. Town of Huntington permitting, PSEG Long Island net metering, 30% federal + 25% NY State tax credits.',
     bodySections: [
       {
         heading: 'Solar in Huntington, NY',
@@ -499,19 +495,19 @@ export const areas: AreaPage[] = [
         ],
       },
       {
-        heading: 'What we typically install in town',
+        heading: 'Typical Huntington system sizes',
         paragraphs: [
-          "Most Huntington homes land in the 6-10 kW range — about 16-26 panels depending on the panel wattage we spec. Tesla Powerwall pairs are increasingly common since the 2024 Sandy-anniversary memory and the 2023 federal tax-credit expansion to standalone batteries.",
-          "Heritage homes and Victorians around Old Huntington and Huntington Harbor often need extra attention on aesthetic + mount style — we use low-profile black-on-black panels and ballasted (no roof penetration) configurations where appropriate.",
+          "Most Huntington homes land in the 6-10 kW range — about 16-26 panels depending on panel wattage. Tesla Powerwall pairs are increasingly common since the 2024 Sandy-anniversary memory and the 2023 federal tax-credit expansion to standalone batteries.",
+          "Heritage homes and Victorians around Old Huntington and Huntington Harbor often need extra attention on aesthetic + mount style — low-profile black-on-black panels and ballasted (no roof penetration) configurations are the usual answer.",
         ],
       },
       {
         heading: 'Solar permits in the Town of Huntington: process, timeline, and inspection',
         paragraphs: [
-          "If you're pricing solar panels in Huntington, the local details matter as much as the hardware. Every residential system in the Town of Huntington is permitted through the Town of Huntington Building Department at 100 Main Street. Standard roof-mount photovoltaic permits run 2-3 weeks; the electrical side is inspected under a Suffolk County electrical permit, and grid connection is approved by PSEG Long Island. Start to turn-on is usually 6-10 weeks, and we handle the entire paperwork chain for you.",
+          "If you're pricing solar panels in Huntington, the local details matter as much as the hardware. Every residential system in the Town of Huntington is permitted through the Town of Huntington Building Department at 100 Main Street. Standard roof-mount photovoltaic permits run 2-3 weeks; the electrical side is inspected under a Suffolk County electrical permit, and grid connection is approved by PSEG Long Island. Start to turn-on is usually 6-10 weeks.",
           "The Town of Huntington solar permit process runs in three parallel tracks. First, the Building Department reviews the structural and zoning side — signed-and-sealed engineering drawings showing the roof rafters can carry the panel and snow load, the panel layout, and the electrical single-line diagram; residential permit fees typically run $300-$400 and first review comes back in 1-2 weeks. Second, a Suffolk County electrical permit covers the DC and AC disconnects, grounding, and conductor sizing, and clears in about a week. Third, PSEG Long Island reviews the interconnection application and issues Permission to Operate (PTO) — usually 1-2 weeks for systems under 25 kW. Homes inside an incorporated village (Northport Village, Lloyd Harbor, Asharoken) or a historic district add 2-3 weeks of Architectural Review Board review on top.",
           "Inspection happens after the install, not before. Once the array is up, a Suffolk County electrical inspector visits on-site to confirm the wiring, disconnects, and labeling meet code, then issues the green tag. PSEG swaps in a bidirectional net meter (at no charge) and grants PTO — the final gate before the system can legally export to the grid and start earning net-metering credit. For a step-by-step walkthrough of each approval, see our full Town of Huntington solar permits guide linked below.",
-          "We install solar panels across every Huntington ZIP: 11743 (Huntington and Huntington Bay), 11746 (the Huntington Station / Dix Hills side), 11724 (Cold Spring Harbor), and 11721 (Centerport). Roof stock and shading vary by ZIP — the older Huntington-village blocks in 11743 skew toward smaller south-and-west roofs and heritage aesthetics, while newer 11746 construction tends to offer larger, cleaner planes that fit a full 8-10 kW array without compromise.",
+          "Solar installs run across every Huntington ZIP: 11743 (Huntington and Huntington Bay), 11746 (the Huntington Station / Dix Hills side), 11724 (Cold Spring Harbor), and 11721 (Centerport). Roof stock and shading vary by ZIP — the older Huntington-village blocks in 11743 skew toward smaller south-and-west roofs and heritage aesthetics, while newer 11746 construction tends to offer larger, cleaner planes that fit a full 8-10 kW array without compromise.",
           "Because Huntington sits in PSEG Long Island territory, solar panels here earn full retail net metering up to 25 kW — every kWh you export is credited against a kWh you later draw. Combined with the 30% federal Investment Tax Credit and New York's 25% state residential solar credit (capped at $5,000), a typical Huntington homeowner nets $11,000-$18,000 out of pocket on an 8 kW system and reaches payback in 5-7 years.",
         ],
       },
@@ -527,7 +523,7 @@ export const areas: AreaPage[] = [
       {
         heading: 'Solar in Huntington Station',
         paragraphs: [
-          "Huntington Station's housing stock skews mid-century single-family with the kind of large south-facing roofs that produce excellent solar output. Many homes were built with 1960s-1970s asphalt-shingle roofs that are now at end-of-life — we frequently coordinate with local roofers so the new roof + solar install happen in one work window, avoiding the cost of removing + reinstalling panels later.",
+          "Huntington Station's housing stock skews mid-century single-family with the kind of large south-facing roofs that produce excellent solar output. Many homes were built with 1960s-1970s asphalt-shingle roofs that are now at end-of-life — sequencing the new roof and the solar install into one work window avoids the cost of removing + reinstalling panels later.",
           "PSEG net-metering applies the same as elsewhere in Huntington Township. Permits go through the Town of Huntington — same 2-3 week typical turnaround as the main Huntington area.",
         ],
       },
@@ -549,8 +545,8 @@ export const areas: AreaPage[] = [
       {
         heading: 'Solar in Greenlawn',
         paragraphs: [
-          "Greenlawn's split between newer (1990s+) construction north of Pulaski Road and older homes south of it gives us a good mix of straightforward installs and more involved roof-condition cases. Most newer construction has 25-year architectural shingles still well within warranty, making solar a clean fit.",
-          "Tree cover is heavier than in Huntington proper — we do a careful shade analysis with satellite imagery before quoting. South-facing roofs with mature oaks on the south side sometimes need either tree trimming (with the homeowner's consent) or a system sized down to actual unshaded production area.",
+          "Greenlawn splits between newer (1990s+) construction north of Pulaski Road and older homes south of it — a mix of straightforward installs and more involved roof-condition cases. Most newer construction has 25-year architectural shingles still well within warranty, making solar a clean fit.",
+          "Tree cover is heavier than in Huntington proper, so a careful shade analysis with satellite imagery matters before any quote. South-facing roofs with mature oaks on the south side sometimes need either tree trimming (with the homeowner's consent) or a system sized down to actual unshaded production area.",
         ],
       },
       {
@@ -566,13 +562,13 @@ export const areas: AreaPage[] = [
   {
     slug: 'northport',
     title: 'Northport',
-    lead: 'Solar across Northport — the Village, Asharoken, and Eaton\'s Neck. Waterfront-aware crews, heritage-home experience.',
+    lead: 'Solar across Northport — the Village, Asharoken, and Eaton\'s Neck. Historic-district review, salt-air hardware, and PSEG Long Island net metering.',
     bodySections: [
       {
         heading: 'Solar in Northport, NY',
         paragraphs: [
           "Northport's a mix of village core (smaller historic homes, often with detached garages), Asharoken (waterfront, special wind-load and corrosion considerations), and the more standard suburban housing inland. Each has its own install playbook.",
-          "Village historic-district homes sometimes require additional review by the Northport Village Building Department. Asharoken waterfront installs need marine-grade mounts and tilt panels away from prevailing salt-spray; we spec hardware accordingly.",
+          "Village historic-district homes sometimes require additional review by the Northport Village Building Department. Asharoken waterfront installs need marine-grade mounts and panels tilted away from prevailing salt-spray, and hardware has to be specced accordingly.",
         ],
       },
       {
@@ -681,7 +677,7 @@ export const insights: InsightPost[] = [
       {
         heading: 'The 8 kW Huntington baseline',
         paragraphs: [
-          "Most homeowners we quote in Huntington, Greenlawn, and Northport land on a system between 7 and 10 kW — enough to offset roughly 95% of their annual electric usage. The 8 kW system is the mid-point and a useful baseline to anchor the cost conversation.",
+          "Most Huntington, Greenlawn, and Northport homes land on a system between 7 and 10 kW — enough to offset roughly 95% of annual electric usage. The 8 kW system is the mid-point and a useful baseline to anchor the cost conversation.",
           "Installed cost for a turnkey 8 kW residential system in Huntington in 2026 is $24,000–$28,000. That covers panels (Tier-1 monocrystalline, typically Q Cells, REC, or SunPower), inverters (Enphase microinverters or a SolarEdge string + optimizers), racking, electrical work, permits, PSEG interconnection, monitoring, and the full 25-year panel + 12-year inverter warranties.",
           "Battery storage is separate. A Tesla Powerwall 3 (13.5 kWh) adds about $13,000–$15,000 to the install. Most homeowners go solar-only first and add a battery later, since the federal tax credit applies to storage retrofits even after the initial install.",
         ],
@@ -874,13 +870,13 @@ export const insights: InsightPost[] = [
         ],
       },
       {
-        heading: 'How we typically recommend',
+        heading: 'How to pick between them',
         paragraphs: [
           "If you want one battery, whole-home backup, simplest install, lowest $/kWh: Tesla Powerwall 3.",
           "If you have Enphase microinverters already, want modular sizing, prefer to start small and expand: Enphase IQ Battery 5P (1–3 units).",
           "If you have aging SolarEdge string inverter approaching end of warranty: Tesla Powerwall 3 + retire the SolarEdge inverter.",
           "If you want maximum storm-rideover capacity (multi-day outages, heat pump + EV): two Powerwall 3 units in parallel (27 kWh, ~24 hours of full-home runtime even without solar production).",
-          "We install both. The recommendation is always driven by your existing inverter, your backup-load priority list, and your budget — not by which product we sell more of.",
+          "In every case the decision should be driven by your existing inverter, your backup-load priority list, and your budget — not by which product an installer happens to sell more of.",
         ],
       },
     ],
@@ -911,7 +907,7 @@ export const insights: InsightPost[] = [
       },
       {
         q: 'Can I add a battery to my existing solar system?',
-        a: 'Yes — both Tesla Powerwall and Enphase IQ Battery can retrofit to existing solar systems. The federal 30% Investment Tax Credit covers battery retrofits (the battery does not need to be installed with the original solar to qualify). We do battery retrofits on solar systems we did not install.',
+        a: 'Yes — both Tesla Powerwall and Enphase IQ Battery can retrofit to existing solar systems. The federal 30% Investment Tax Credit covers battery retrofits (the battery does not need to be installed with the original solar to qualify).',
       },
     ],
   },

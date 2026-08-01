@@ -2,7 +2,6 @@
 import Layout from '../layouts/Layout.astro';
 import LeadForm from '../components/LeadForm.astro';
 import Breadcrumb from '../components/Breadcrumb.astro';
-import Icon from '../components/Icon.astro';
 import { caseStudies, services } from '../config/site';
 
 const business = import.meta.env.PUBLIC_BUSINESS_NAME || 'Huntington Solar Co';
@@ -22,30 +21,17 @@ const siteUrl =
 // to evaluate ANY Long Island installer — plus how we answer those questions
 // about our own process. Do NOT re-add ratings, review counts, install
 // counts, BBB claims, certifications, or customer quotes to this page.
+//
+// 2026-08-01 liability pass 2: the three "why us" cards were removed in full.
+// Two of them made operational claims the business cannot currently make — an
+// employed crew ("the crew that quotes your install is the crew on your roof")
+// and an open offer to run flat-rate diagnostics on any Suffolk County system.
+// The page now stands entirely on the buyer's checklist, which is advice about
+// evaluating any Long Island installer and asserts nothing about this one.
+// Do NOT re-add crew claims, dispatch radii, response times, or service prices.
 const title = `How to Choose a Solar Company on Long Island | ${business}`;
 const description =
-  'How to pick a solar company on Long Island — the questions that actually matter about subcontracting, warranty scope, and long-term service, and how Huntington Solar Co answers them.';
-
-// Why-us differentiators — framed as a buyer's comparison checklist for the
-// "best solar company" query intent. Every item here describes how we work,
-// not a credential or a track record.
-const reasons = [
-  {
-    glyph: 'users',
-    title: 'No subcontractors — one accountable crew',
-    body: 'The crew that quotes your install is the crew on your roof. Many Long Island solar companies subcontract the actual installation to rotating third-party crews, which is where warranty finger-pointing starts. One team, one warranty, one phone number for the next 25 years.',
-  },
-  {
-    glyph: 'document',
-    title: 'The incentive math, itemized in writing',
-    body: 'Gross cost, the federal 30% credit, the NY State 25% credit, the NYSERDA NY-Sun per-watt rebate, net cost, and year-by-year cash flow — all itemized in the quote, before you sign anything. If the economics do not work on your roof, we say so.',
-  },
-  {
-    glyph: 'shield',
-    title: 'We service what we sell — and what we didn\'t',
-    body: "A lot of Long Island installers from the 2018-2020 boom are gone, leaving homeowners with orphaned systems no one will touch. We do flat-rate diagnostics on any residential solar system in Suffolk County, so you're picking a company that will still answer the phone in year 12.",
-  },
-];
+  'How to pick a solar company on Long Island — the questions that actually matter about subcontracting, warranty scope, and long-term service.';
 
 // Buyer checklist — the questions to ask any LI solar company before signing.
 const checklist = [
@@ -100,9 +86,8 @@ const jsonLd = {
       <h1>How to choose a solar company on Long Island.</h1>
       <p class="lead">
         There are dozens of solar companies on Long Island. The one worth signing with is the one
-        that's still answering the phone in year 20 — with its own crew, its own warranty, and
-        straight answers to the questions below. Here's what to ask before you sign with anyone,
-        and how we answer.
+        that's still answering the phone in year 20, and that gives straight answers to the
+        questions below. Here's what to ask before you sign with anyone.
       </p>
       <div class="hero-ctas">
         <a class="btn btn-primary" href="#contact">Get a free quote</a>
@@ -113,22 +98,6 @@ const jsonLd = {
 
   {/* 2026-08-01: stat bar removed — it published a 4.9/5 rating, a 127-install
       count, and a BBB A+ grade, none of which could be substantiated. */}
-
-  <section class="why">
-    <div class="wrap">
-      <p class="section-eyebrow">How we work</p>
-      <h2>Three differences that matter over a 25-year decision.</h2>
-      <div class="grid grid-3">
-        {reasons.map((r) => (
-          <article class="why-card">
-            <div class="why-icon"><Icon name={r.glyph} size={26} /></div>
-            <h3>{r.title}</h3>
-            <p>{r.body}</p>
-          </article>
-        ))}
-      </div>
-    </div>
-  </section>
 
   <section class="prose-section">
     <div class="wrap">
@@ -183,8 +152,7 @@ const jsonLd = {
         <h2>See how we'd handle your roof.</h2>
         <p class="contact-lead">
           Tell us your LIPA bill and roof orientation — we'll send back a system size, projected
-          savings, and payback period within one business day. No salesperson visit required to see
-          the number.
+          savings, and payback period. No salesperson visit required to see the number.
         </p>
         <p class="contact-call">
           Want to talk first? <a href={`tel:${phoneTel}`}>Call {phoneDisplay}</a>
@@ -209,8 +177,8 @@ const jsonLd = {
           <p>Five illustrative builds with full system specs, incentive math, and payback timelines.</p>
         </a>
         <a class="related-card" href="/warranty/">
-          <h3>Our warranty</h3>
-          <p>Exactly what our workmanship and roof-penetration warranty covers, in plain English.</p>
+          <h3>Solar warranties</h3>
+          <p>What panel, inverter, and workmanship warranties actually cover, in plain English.</p>
         </a>
         <a class="related-card" href="/locations/huntington/">
           <h3>Solar panels in Huntington</h3>

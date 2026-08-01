@@ -83,7 +83,7 @@ const data = {
   "faqs": [
     {
       "q": "How many panels does my Northport home actually need?",
-      "a": "Sizing depends on three numbers: your annual kWh usage (pulled from a year of PSEG-LI bills), your roof's south/southwest exposure square footage, and the panel wattage we ship (currently 430 W per REC Alpha Pure-R 430 module). For a typical Northport home, a roughly 9-kW array is the sweet spot — that's two dozen-ish REC Alpha Pure-R 430 modules. The system designer scales the panel count up or down from there based on actual roof exposure and your last twelve months of PSEG-LI billing. East- or west-facing slopes need roughly ten-to-fifteen percent more panels to match the annual production of a same-sized south-facing array."
+      "a": "Sizing depends on three numbers: your annual kWh usage (pulled from a year of PSEG-LI bills), your roof's south/southwest exposure square footage, and the panel wattage specified (430 W per REC Alpha Pure-R 430 module). For a typical Northport home, a roughly 9-kW array is the sweet spot — that's two dozen-ish REC Alpha Pure-R 430 modules. The system designer scales the panel count up or down from there based on actual roof exposure and your last twelve months of PSEG-LI billing. East- or west-facing slopes need roughly ten-to-fifteen percent more panels to match the annual production of a same-sized south-facing array."
     },
     {
       "q": "What's the difference between microinverters and string inverters for Northport roofs?",
@@ -91,7 +91,7 @@ const data = {
     },
     {
       "q": "Does the roof need to be in good shape before installing solar?",
-      "a": "Yes — ideally with at least 15-20 years of useful life remaining. REC Alpha Pure-R 430 panels carry a 25-year power-production warranty, so installing on a roof that needs to be replaced in five years means paying for a panel-removal and re-install when the roof comes off. For Northport homes, we send a roofing-condition photo report with every quote: any shingle slope older than 15 years gets flagged, and we'll either coordinate with a roofer for replacement before install or recommend deferring solar by a year to do them together. Coastal Northport addresses with salt air see faster shingle wear than inland — worth flagging in your assessment."
+      "a": "Yes — ideally with at least 15-20 years of useful life remaining. REC Alpha Pure-R 430 panels carry a 25-year power-production warranty, so installing on a roof that needs to be replaced in five years means paying for a panel-removal and re-install when the roof comes off. For Northport homes, a roofing-condition assessment belongs in the quote: any shingle slope older than 15 years should be flagged, and either the roof replacement gets sequenced ahead of the install or solar gets deferred a year so both happen in one work window. Coastal Northport addresses with salt air see faster shingle wear than inland — worth flagging in your assessment."
     },
     {
       "q": "What permits does my Northport install need, and how long is the timeline?",
@@ -99,7 +99,7 @@ const data = {
     },
     {
       "q": "Should I lease panels, finance them, or pay cash for my Northport solar install?",
-      "a": "Cash maximizes the lifetime savings — you collect all four incentives (federal ITC, NY State credit, NYSERDA rebate, RPTL §487 property-tax exemption) and own the production from year one. A solar loan keeps the same incentive stack but spreads the cash outlay; we underwrite loans at rates that usually keep the monthly payment lower than your current PSEG-LI bill from day one. Solar leases (PPAs) shift the incentives to the leasing company — you trade upside (the tax credits, the long-term ownership value, the resale boost) for zero up-front cost. For most Northport homeowners with reasonable credit, cash or loan wins on lifetime economics; PPAs are usually a worse deal in a high-incentive state like NY."
+      "a": "Cash maximizes the lifetime savings — you collect all four incentives (federal ITC, NY State credit, NYSERDA rebate, RPTL §487 property-tax exemption) and own the production from year one. A solar loan keeps the same incentive stack but spreads the cash outlay; Long Island solar loans currently run in the 5.99-8.99% APR range over 20-25 year terms, which for many households puts the monthly payment near or below the PSEG-LI bill it replaces. Solar leases (PPAs) shift the incentives to the leasing company — you trade upside (the tax credits, the long-term ownership value, the resale boost) for zero up-front cost. For most Northport homeowners with reasonable credit, cash or loan wins on lifetime economics; PPAs are usually a worse deal in a high-incentive state like NY."
     },
     {
       "q": "Will solar increase or decrease my Northport home's resale value?",
@@ -236,7 +236,7 @@ const jsonLd = {
         <p class="section-eyebrow">{data.cta.primary}</p>
         <h2>Tell us about your {data.area_display_name} project — we'll send back the math.</h2>
         <p class="contact-lead">
-          We use your actual usage to size the system, model federal and NY state credits, and project the payback period. Same business day. No salesperson visit required.
+          We use your actual usage to size the system, model federal and NY state credits, and project the payback period. No salesperson visit required.
         </p>
         <p class="contact-call">
           Want to talk first? <a href={`tel:${phoneTel}`}>Call {phoneDisplay}</a>

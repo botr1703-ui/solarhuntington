@@ -34,7 +34,7 @@ const siteUrl =
 //   /services/residential-solar-installation/ → "solar installation"
 //   /why-huntington-solar/       → "best solar company long island"
 const title = 'Long Island Solar Company · ' + business;
-const description = 'A Long Island solar company that installs and services what it sells. Cut your LIPA bill 60-90% with 30% federal + 25% NY tax credits. Suffolk + Nassau.';
+const description = 'A Long Island solar company covering Suffolk and Nassau. Cut your LIPA bill 60-90% with the 30% federal and 25% NY State solar tax credits.';
 
 const heroImg = 'https://images.unsplash.com/photo-1509391366360-2e959784a276?w=2000&q=85&auto=format&fit=crop';
 
@@ -106,7 +106,7 @@ const jsonLd = {
 const steps = [
   { num: '01', glyph: 'document', title: 'Send your bill', body: 'Email or text us a recent LIPA bill. We use your actual kWh usage to size the system.' },
   { num: '02', glyph: 'search', title: 'Free site visit', body: 'Roof inspection, shade analysis, panel layout. About 45 minutes. No pitch, just numbers.' },
-  { num: '03', glyph: 'panel', title: 'Install in a day', body: 'Most residential systems go up in 6 to 8 hours. We pull all permits and handle PSEG paperwork.' },
+  { num: '03', glyph: 'panel', title: 'Install', body: 'Most residential rooftop arrays go up in a single working day. Permits and PSEG interconnection paperwork are filed as part of the install scope.' },
   { num: '04', glyph: 'zap', title: 'Activate and save', body: 'PSEG approves the system, the meter spins backwards, your next bill drops 60 to 90%.' },
 ];
 
@@ -118,21 +118,23 @@ const whyCards = [
 
 // 2026-08-01 liability fix: the NABCEP / NYSERDA / Tesla+Enphase / BBB +
 // 4.9-of-127 cards were removed — none of those credentials or that rating
-// could be substantiated. What is left describes how we work and what the
-// hardware warranty covers. Do NOT add credential, rating, review-count, or
+// could be substantiated. Do NOT add credential, rating, review-count, or
 // install-count cards back without verifiable proof.
+//
+// 2026-08-01 liability pass 2: the "No Subcontractors" card was removed too —
+// it guaranteed which crew shows up on the roof, which is a staffing claim
+// the business cannot currently make. Do NOT add crew, staffing, dispatch-
+// radius, or response-time cards to this row.
 const trustCards = [
-  { glyph: 'shield', title: '25-Year Panel Warranty', body: 'Manufacturer power-production warranty on every panel + workmanship and roof-penetration warranty from us directly.' },
-  { glyph: 'users', title: 'No Subcontractors', body: 'The crew that quotes the install is the crew on your roof. One team, one warranty, one phone number for the next 25 years.' },
+  { glyph: 'shield', title: '25-Year Panel Warranty', body: 'Manufacturer power-production warranty on every panel, plus a workmanship and roof-penetration warranty on the install.' },
   { glyph: 'document', title: 'The Full Math, In Writing', body: 'Gross cost, every incentive itemized, net cost, year-by-year cash flow, payback period. Emailed to you — no salesperson in your living room, no urgency tactics.' },
 ];
 
 const faqs = [
   { q: 'How much does solar cost on Long Island?', a: 'A typical 8 kW residential system runs $24,000 to $28,000 before incentives. The 30% federal tax credit drops that to $17,000 to $20,000, and the NY State residential solar tax credit (25% up to $5,000) drops it further to $12,000 to $15,000. Most Huntington homeowners are paid back in 5 to 7 years and stack 20+ years of bill savings on top.' },
-  { q: 'How long does the install take?', a: 'The actual rooftop install is 6 to 8 hours for most homes. Permits and PSEG interconnection paperwork take 2 to 4 weeks (we handle all of it). From signed contract to system turned on: usually 4 to 6 weeks.' },
-  { q: 'Do you service systems you didn\'t install?', a: 'Yes. We do flat-rate diagnostics on any residential solar system in Suffolk County — inverter failures, panel re-seating, monitoring issues, post-storm inspections.' },
+  { q: 'How long does the install take?', a: 'The actual rooftop install is 6 to 8 hours for most homes. Town of Huntington building permits and PSEG Long Island interconnection review are the long pole — typically 2 to 4 weeks each, running in parallel.' },
   { q: 'What happens during a power outage?', a: 'By default, grid-tied solar systems shut down during outages (PSEG safety requirement). Pair it with a Tesla Powerwall or Enphase IQ Battery and the system islands itself — your essential circuits keep running on the battery plus sun.' },
-  { q: 'Will solar work on my roof?', a: 'Most Long Island roofs work. South-facing is best, but west and east still produce about 85% of optimal. Heavy shade is the main blocker. We do a free site visit before any contract — if your roof would not make economic sense, we tell you upfront.' },
+  { q: 'Will solar work on my roof?', a: 'Most Long Island roofs work. South-facing is best, but west and east still produce about 85% of optimal. Heavy shade is the main blocker, and it needs assessing on site before any contract — if the roof would not make economic sense, we tell you upfront.' },
 ];
 
 
@@ -321,12 +323,12 @@ const howToJsonLd = {
   <section class="areas">
     <div class="wrap">
       <p class="section-eyebrow">Suffolk County coverage</p>
-      <h2>Local crews. Same-day site visits. North-shore based.</h2>
+      <h2>Solar across the Suffolk County north shore.</h2>
       <p class="areas-lead">
-        Huntington is home base. If you're looking at <a href="/locations/huntington/">solar panels in Huntington</a>,
-        our <a href="/locations/huntington/">Huntington solar installation page</a> has the town-specific
+        If you're looking at <a href="/locations/huntington/">solar panels in Huntington</a>,
+        the <a href="/locations/huntington/">Huntington solar installation page</a> has the town-specific
         details — permit office, PSEG interconnection, and ZIP-level notes for 11743, 11746, and 11750.
-        We cover every north-shore town below the same way.
+        Every north-shore town below has a page of its own.
       </p>
       <div class="area-grid home-areas">
         {areas.map(function (a) {
@@ -364,7 +366,7 @@ const howToJsonLd = {
     <div class="wrap cta-band-inner">
       <div class="cta-band-copy">
         <h2>Your LIPA bill only goes up. The sun is free.</h2>
-        <p>Get a free quote with the full payback math — same business day, no salesperson visit required.</p>
+        <p>Get a free quote with the full payback math — no salesperson visit required.</p>
       </div>
       <div class="cta-band-actions">
         <a class="btn btn-dark" href="#contact">Get a free quote</a>
@@ -401,7 +403,7 @@ const howToJsonLd = {
   <section class="trust">
     <div class="wrap">
       <p class="section-eyebrow">How we work</p>
-      <h2>One crew, one warranty, one set of numbers.</h2>
+      <h2>One warranty, one set of numbers.</h2>
       <p class="trust-lead">
         Solar's a 25-year decision. Pick an installer who's still around in year 24.
       </p>
@@ -429,8 +431,7 @@ const howToJsonLd = {
         <h2>Tell us your LIPA bill — we'll send back the math.</h2>
         <p class="contact-lead">
           We use your actual kWh usage to size a system, model the federal and NY state credits,
-          and project the payback period. Same business day. No salesperson visit required to
-          see the number.
+          and project the payback period. No salesperson visit required to see the number.
         </p>
         <p class="contact-call">
           Want to talk first?

@@ -40,7 +40,7 @@ On the back of your PSEG-LI paper bill — or in the "Usage History" tab at pseg
 
 For a typical 1,800 sq. ft. north shore Long Island home with central AC, the annual total runs 9,000–13,000 kWh. A well-insulated 2,400 sq. ft. home with gas heat might be 7,500 kWh. A smaller house with electric baseboard heat can hit 18,000 kWh or more.
 
-A rough sizing rule for Long Island: divide your annual kWh by 1,150 to get a ballpark kilowatt-DC array size. A 10,000 kWh/year home needs roughly an 8.7 kW system, based on our local average of 4.3 peak sun hours per day. Our [residential solar installation](/services/residential-solar-installation/) page walks through how we apply this math using your specific roof and usage.
+A rough sizing rule for Long Island: divide your annual kWh by 1,150 to get a ballpark kilowatt-DC array size. A 10,000 kWh/year home needs roughly an 8.7 kW system, based on our local average of 4.3 peak sun hours per day. The [residential solar installation](/services/residential-solar-installation/) page walks through how this math is applied to a specific roof and usage profile.
 
 **Your blended cost per kWh**
 
@@ -76,7 +76,7 @@ Under PSEG Long Island's net metering program, excess solar power exported to th
 
 Credits carry forward month to month within a 12-month billing cycle. During summer, panels typically produce more than you consume, banking credits. In winter, production drops and you draw down that accumulated balance. This seasonal swing is why solar works well on Long Island even with cold winters — the summer surplus offsets the winter deficit.
 
-PSEG-LI performs an annual true-up (typically April): any remaining credit is paid out at the avoided-cost rate, approximately $0.08–$0.10/kWh — roughly one-third of the retail rate earned during the year. This is why sizing matters. An array producing 120% of your annual usage will push a meaningful fraction of its output into the low-rate true-up, lowering your return on investment. Our [install process](/process/) covers how we calculate the right system size to stay close to 100% offset.
+PSEG-LI performs an annual true-up (typically April): any remaining credit is paid out at the avoided-cost rate, approximately $0.08–$0.10/kWh — roughly one-third of the retail rate earned during the year. This is why sizing matters. An array producing 120% of your annual usage will push a meaningful fraction of its output into the low-rate true-up, lowering your return on investment. The [install process](/process/) page covers how the right system size is calculated to stay close to 100% offset.
 
 For the 30% federal Investment Tax Credit, NYSERDA NY-Sun rebate, and NY State 25% tax credit that all stack on top of net metering savings, see our [full incentives breakdown](/incentives/).
 
@@ -88,7 +88,7 @@ You don't need a full year of paper bills. Log into pseg.com or the MyPSEG app a
 - **Bill History** — downloadable PDFs going back several years
 - **Green Button Data** — 15-minute-interval usage in a machine-readable format; many installers use design software (Aurora Solar, Solargraf, EagleView) that ingests it directly
 
-For our sizing conversations, we ask for either a Green Button download or two representative bills: your highest summer month and a typical spring month. Real [Long Island install case studies](/case-studies/) show how those actual usage numbers translate into a specific array size, payback timeline, and monthly savings figure.
+For a sizing conversation the useful inputs are either a Green Button download or two representative bills: your highest summer month and a typical spring month. The [Long Island example system builds](/case-studies/) show how usage numbers translate into a specific array size, payback timeline, and monthly savings figure.
 
 ## Common bill items to flag for your installer
 

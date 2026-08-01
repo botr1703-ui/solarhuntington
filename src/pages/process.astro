@@ -10,7 +10,7 @@ const siteUrl =
   import.meta.env.PUBLIC_SITE_URL?.replace(/\/$/, '') || 'https://www.solarhuntington.com';
 
 const title = `What happens after you request a solar quote — Long Island Process | ${business}`;
-const description = `The actual step-by-step process for a residential solar install in Suffolk County: from first call through PSEG turn-on. Realistic timeline, who you talk to, what we file.`;
+const description = `The actual step-by-step process for a residential solar install in Suffolk County: from first call through PSEG turn-on. Realistic timeline and what happens at each stage.`;
 
 const steps = [
   {
@@ -23,11 +23,11 @@ const steps = [
     n: '02',
     label: 'Free site visit (45 minutes)',
     days: 'Day 3–10',
-    body: "An installer (not a salesperson) walks your roof, measures it with a laser, takes shade readings with a Solar Pathfinder, photographs your electrical panel, and confirms the planned panel layout. No pitch — we are gathering install data.",
+    body: "The site visit covers a roof walk and laser measurement, shade readings with a Solar Pathfinder, photographs of the electrical panel, and confirmation of the planned panel layout. It is a data-gathering visit, not a sales pitch.",
   },
   {
     n: '03',
-    label: 'Numbered proposal (3 days later)',
+    label: 'Numbered proposal',
     days: 'Day 6–13',
     body: "You receive a single PDF: roof layout with panel placement, kWh production estimate by month, gross install cost, line-by-line incentive math, net out-of-pocket, projected payback year. If you have questions we answer in writing — no high-pressure follow-ups.",
   },
@@ -41,7 +41,7 @@ const steps = [
     n: '05',
     label: 'Design + drawings (1–2 weeks)',
     days: 'Day 14–44',
-    body: "Our engineer produces signed-and-sealed drawings: structural load calculation, electrical single-line, site plan with setbacks. These go to the Town Building Department + Suffolk County Electrical.",
+    body: "A licensed engineer produces signed-and-sealed drawings: structural load calculation, electrical single-line, site plan with setbacks. These go to the Town Building Department + Suffolk County Electrical.",
   },
   {
     n: '06',
@@ -53,19 +53,19 @@ const steps = [
     n: '07',
     label: 'Install day (6–8 hours on the roof)',
     days: 'Day 35–80',
-    body: "Crew arrives 7 AM, panels are on by 1 PM, electrical is finished by 4 PM. We are off your roof same day on residential. Larger 12+ kW systems sometimes take 2 days. We will tell you when we schedule.",
+    body: "Most residential rooftop arrays are mounted and wired inside a single working day — racking and panels through the morning, electrical and disconnects through the afternoon. Larger 12+ kW systems can run into a second day.",
   },
   {
     n: '08',
     label: 'Inspection + PSEG approval (1–3 weeks)',
     days: 'Day 42–101',
-    body: "Suffolk County electrical inspector visits within 1–2 weeks of install — usually no issues. PSEG Long Island reviews the interconnection paperwork (1–2 weeks) and schedules a meter swap. Once the new bidirectional meter is installed, we flip the system on.",
+    body: "Suffolk County electrical inspector visits within 1–2 weeks of install — usually no issues. PSEG Long Island reviews the interconnection paperwork (1–2 weeks) and schedules a meter swap. Once the new bidirectional meter is installed, the system can be energized.",
   },
   {
     n: '09',
     label: 'System turned on',
     days: 'Day 49–108',
-    body: "We come back, energize the inverters, walk you through the monitoring app (per-panel production, alerts, performance reports), hand off the final placed-in-service letter for your federal Form 5695 and NY Form IT-255. You start producing free electricity that day.",
+    body: "The inverters are energized, the monitoring app is handed over (per-panel production, alerts, performance reports), and the final placed-in-service letter goes to you for your federal Form 5695 and NY Form IT-255. The system starts producing that day.",
   },
 ];
 
@@ -97,8 +97,8 @@ const jsonLd = {
       <h1>What actually happens after you request a solar quote.</h1>
       <p class="lead">
         Most Long Island solar customers go from initial call to a turned-on, producing solar
-        system in 7–12 weeks. Here is the realistic step-by-step — what we do, what you do,
-        and who you actually talk to.
+        system in 7–12 weeks. Here is the realistic step-by-step — what happens at each stage,
+        and what is needed from you.
       </p>
       <div class="hero-ctas">
         <a class="btn btn-primary" href="#contact">Start the process</a>
@@ -127,7 +127,7 @@ const jsonLd = {
         <p>
           Faster path (no village review, fast PSEG queue): 7 weeks. Standard Suffolk County
           residential install: 9 weeks. Village or historic-district install (Northport, Lloyd
-          Harbor): 11–12 weeks. We will tell you which bucket you are in at the site visit.
+          Harbor): 11–12 weeks.
         </p>
       </div>
     </div>
@@ -140,8 +140,8 @@ const jsonLd = {
         <h2>Send us a recent LIPA bill.</h2>
         <p class="contact-lead">
           The fastest way to start is to send a recent LIPA bill (just the first page is fine).
-          We will reply within one business day with a rough quote range; if it makes sense to
-          continue, we schedule the site visit.
+          That is enough to come back with a rough quote range; if it makes sense to continue,
+          the next step is the site visit.
         </p>
         <p class="contact-call">
           Or call: <a href={`tel:${phoneTel}`}>{phoneDisplay}</a>
@@ -163,7 +163,7 @@ const jsonLd = {
         </a>
         <a class="related-card" href="/incentives/">
           <h3>Incentives</h3>
-          <p>The federal + NY State + NYSERDA stack we apply at contract.</p>
+          <p>The federal + NY State + NYSERDA stack applied at contract.</p>
         </a>
         <a class="related-card" href="/case-studies/">
           <h3>Example builds</h3>

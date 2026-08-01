@@ -87,13 +87,18 @@ const linkBatteryComparison = slug === 'battery-storage';
 // incentives — right for new-install pages, misleading on the repair /
 // maintenance page (a homeowner with a dead inverter isn't shopping for
 // a new system or tax credits). Swap in repair-appropriate copy there.
+//
+// 2026-08-01 liability pass 2: the repair variant previously promised a
+// same-business-day response and quoted a live "$185 flat-rate diagnostic".
+// Both removed — no price, no response-time promise, no offer to service
+// any system in the county. Do NOT reintroduce them here.
 const isRepairService = slug === 'solar-repair-maintenance';
 const contactHeading = isRepairService
-  ? "Tell us what's wrong — we'll get it working again."
+  ? "Tell us what your system is doing."
   : "Tell us about your project — we'll send back the math.";
 const contactLead = isRepairService
-  ? "Tell us what your system is doing (or not doing) — panel offline, inverter fault, monitoring gone dark, a leak around a standoff. We service any residential solar system in Suffolk County, even one we didn't install. Same business day. $185 flat-rate diagnostic, credited toward the repair."
-  : "We use your actual usage to size the system, model the federal and NY state credits, and project the payback period. Same business day. No salesperson visit required.";
+  ? "Panel offline, inverter fault, monitoring gone dark, a leak around a standoff — the more detail the better. Useful things to include: the inverter make and model, roughly when the system went up, and what the monitoring app is showing."
+  : "We use your actual usage to size the system, model the federal and NY state credits, and project the payback period. No salesperson visit required.";
 ---
 
 <Layout
@@ -176,7 +181,7 @@ const contactLead = isRepairService
   <section id="contact" class="contact">
     <div class="wrap contact-grid">
       <div class="contact-copy">
-        <p class="section-eyebrow">{isRepairService ? 'Book a diagnostic' : 'Get your free quote'}</p>
+        <p class="section-eyebrow">{isRepairService ? 'Get in touch' : 'Get your free quote'}</p>
         <h2>{contactHeading}</h2>
         <p class="contact-lead">{contactLead}</p>
         <p class="contact-call">
@@ -223,7 +228,7 @@ const contactLead = isRepairService
         {linkHuntingtonLocation && (
           <a class="related-card" href="/locations/huntington/">
             <h3>Solar installation in Huntington, NY</h3>
-            <p>Town permit timeline, PSEG net metering, and what we typically install in Huntington.</p>
+            <p>Town permit timeline, PSEG net metering, and typical system sizes in Huntington.</p>
           </a>
         )}
         {linkBatteryComparison && (
@@ -234,7 +239,7 @@ const contactLead = isRepairService
         )}
         <a class="related-card" href="/incentives/">
           <h3>2026 Long Island solar incentives</h3>
-          <p>30% federal ITC + 25% NY State + NYSERDA rebate — what each one is and what we file.</p>
+          <p>30% federal ITC + 25% NY State + NYSERDA rebate — what each one is and how it is claimed.</p>
         </a>
         <a class="related-card" href="/process/">
           <h3>Our process</h3>
