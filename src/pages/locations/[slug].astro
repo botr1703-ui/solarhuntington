@@ -34,12 +34,15 @@ const description = area.lead
 
 const localBusinessLd = {
   '@type': 'LocalBusiness',
-  '@id': `${siteUrl}/#business`,
+  '@id': `${siteUrl}/locations/${slug}/#business`,
   name: business,
-  url: siteUrl,
+  url: `${siteUrl}/locations/${slug}/`,
   telephone: phoneTel,
   areaServed: { '@type': 'City', name: area.title, containedInPlace: { '@type': 'State', name: state } },
   description: `${business} provides residential solar installation and battery storage in ${area.title}, NY.`,
+  // Distinct @id per town page so Google doesn't merge this thin node with
+  // the fully-populated homepage entity (which owns address/geo/hours/offers).
+  parentOrganization: { '@id': `${siteUrl}/#business` },
 };
 
 const huntingtonFaqLd = slug === 'huntington' ? {
