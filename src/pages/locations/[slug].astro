@@ -66,8 +66,34 @@ const huntingtonFaqLd = slug === 'huntington' ? {
   ],
 } : null;
 
-const jsonLd: Record<string, unknown> = huntingtonFaqLd
-  ? { '@context': 'https://schema.org', '@graph': [localBusinessLd, huntingtonFaqLd] }
+// Northport-specific FAQ: Village historic district, Asharoken salt-air/wind-load
+// hardware, and Eaton's Neck outage frequency are all covered in the page body —
+// this documents that live copy rather than duplicating the Huntington FAQ.
+const northportFaqLd = slug === 'northport' ? {
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'Does the Village of Northport historic district affect solar panel approval?',
+      acceptedAnswer: { '@type': 'Answer', text: `Homes within the Village of Northport's historic district may need Architectural Review Board sign-off on panel placement and visibility from the street, in addition to the standard Town of Huntington building permit. Panels mounted on rear-facing or non-street-visible roof planes typically clear review faster.` },
+    },
+    {
+      '@type': 'Question',
+      name: 'Do Asharoken homes need special hardware for solar panels?',
+      acceptedAnswer: { '@type': 'Answer', text: `Yes. Asharoken's waterfront location on Long Island Sound means constant salt-air exposure and higher wind-load requirements. We spec corrosion-resistant stainless steel or coated aluminum mounting hardware and racking rated for the higher wind-uplift zone, rather than standard inland hardware.` },
+    },
+    {
+      '@type': 'Question',
+      name: `How often does Eaton's Neck lose power, and is battery backup worth it?`,
+      acceptedAnswer: { '@type': 'Answer', text: `Eaton's Neck's exposed peninsula location sees more frequent PSEG outages than inland Northport, especially during nor'easters and summer storms. A battery like the Tesla Powerwall lets solar-equipped homes there keep essential circuits running when the grid drops.` },
+    },
+  ],
+} : null;
+
+const areaFaqLd = huntingtonFaqLd || northportFaqLd;
+
+const jsonLd: Record<string, unknown> = areaFaqLd
+  ? { '@context': 'https://schema.org', '@graph': [localBusinessLd, areaFaqLd] }
   : { '@context': 'https://schema.org', ...localBusinessLd };
 
 // Related: surface 3 services on every location page so visitors who
