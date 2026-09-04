@@ -1,7 +1,7 @@
 ---
-title: PSEG Long Island Solar Buyback Rates Explained
+title: "PSEG Long Island Solar Buyback Rates: $0.27–$0.31/kWh Explained"
 slug: pseg-long-island-solar-buyback-rates-explained
-description: How PSEG-LI credits solar exports under net metering, what the annual true-up actually pays, and why buyback rates matter more for system sizing than most homeowners realize.
+description: "PSEG-LI credits exported solar at retail, $0.27–$0.31/kWh; leftover credits pay only $0.08–$0.10/kWh at the April true-up. Size so nothing spills."
 keyword: "pseg long island solar buyback rates explained"
 vertical: cost-and-incentives
 pillar_url: /incentives/
