@@ -28,6 +28,30 @@ const action = import.meta.env.PUBLIC_FORM_ACTION
     Email
     <input type="email" name="email" autocomplete="email" />
   </label>
+  <!-- Qualifiers (2026-09-11 conversion-tracking pilot): the two answers
+       that separate a buyer from a browser for residential solar. The GA4
+       generate_lead conversion fires only when both qualify; every submit
+       still records form_submit, so nothing is lost — the ad platforms just
+       stop being taught to find renters and $80/month bills. -->
+  <label>
+    Do you own the home?
+    <select name="homeowner" required>
+      <option value="">Choose one</option>
+      <option value="yes">Yes, I own it</option>
+      <option value="no">No, I rent</option>
+      <option value="unsure">Not sure / other</option>
+    </select>
+  </label>
+  <label>
+    Average monthly electric bill
+    <select name="electric_bill" required>
+      <option value="">Choose one</option>
+      <option value="under-150">Under $150</option>
+      <option value="150-300">$150 – $300</option>
+      <option value="over-300">Over $300</option>
+    </select>
+  </label>
+  <input type="hidden" name="lead_qualified" value="" />
   <label>
     How can we help?
     <textarea name="message" rows={4} />
@@ -60,22 +84,49 @@ const action = import.meta.env.PUBLIC_FORM_ACTION
           form.submit();
         }
 
+        /* Qualify before we tell the ad platforms anything. A homeowner
+           with a $150+ bill is a buyer; a renter or an $80 bill is a
+           browser. Both are recorded (form_submit), only the buyer is a
+           conversion (generate_lead). */
+        var homeowner = (form.querySelector('[name="homeowner"]') || {}).value || '';
+        var bill = (form.querySelector('[name="electric_bill"]') || {}).value || '';
+        var qualified = homeowner === 'yes' && bill !== '' && bill !== 'under-150';
+        var qf = form.querySelector('[name="lead_qualified"]');
+        if (qf) qf.value = qualified ? 'true' : 'false';
+
+        /* Enhanced conversions: hand the platform the identifiers it
+           matches on, so the conversion is attributed to a real person. */
+        var email = ((form.querySelector('[name="email"]') || {}).value || '').trim().toLowerCase();
+        var phone = ((form.querySelector('[name="phone"]') || {}).value || '').replace(/[^0-9+]/g, '');
+        if (email || phone) {
+          var ud = {};
+          if (email) ud.email = email;
+          if (phone) ud.phone_number = phone.indexOf('+') === 0 ? phone : '+1' + phone.replace(/^1/, '');
+          gtag('set', 'user_data', ud);
+        }
+
         gtag('event', 'form_submit', {
           event_category: 'lead',
           event_label: 'solar_callback_form',
+          lead_qualified: qualified,
+          homeowner: homeowner,
+          electric_bill: bill,
           page_path: window.location.pathname,
           transport_type: 'beacon',
           event_callback: resubmit,
           event_timeout: 400,
         });
 
-        gtag('event', 'generate_lead', {
-          event_category: 'lead',
-          event_label: 'solar_callback_form',
-          transport_type: 'beacon',
-          value: 1,
-          currency: 'USD',
-        });
+        if (qualified) {
+          gtag('event', 'generate_lead', {
+            event_category: 'lead',
+            event_label: 'solar_callback_form',
+            lead_qualified: true,
+            transport_type: 'beacon',
+            value: 1,
+            currency: 'USD',
+          });
+        }
 
         /* Belt-and-suspenders: never let the user wait more than 500ms. */
         setTimeout(resubmit, 500);
